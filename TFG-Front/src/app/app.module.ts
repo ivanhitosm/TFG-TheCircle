@@ -9,6 +9,9 @@ import { MiddleComponent } from './shared/middle/middle.component';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselComponent } from './componentes/carousel/carousel.component'; 
+import { ProductComponent } from './componentes/product/product.component';
+import { CarouselProductsComponent } from './componentes/carousel-products/carousel-products.component';
+import { GaleryProductsComponent } from './componentes/galery-products/galery-products.component';
 
 
 
@@ -19,6 +22,9 @@ import { CarouselComponent } from './componentes/carousel/carousel.component';
     FooterComponent,
     MiddleComponent,
     CarouselComponent,
+    ProductComponent,
+    CarouselProductsComponent,
+    GaleryProductsComponent,
 
   ],
   imports: [

@@ -1,20 +1,25 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
 import { CarouselComponent } from './carousel/carousel.component';
-import { ProductFrameComponent } from './product-frame/product-frame.component';
+import { GaleryProductsComponent } from './galery-products/galery-products.component';
+import { CarouselProductsComponent } from './carousel-products/carousel-products.component';
+import { ProductComponent } from './product/product.component';
 
 
 
 @NgModule({
   declarations: [
-    ProductFrameComponent
+
   ],
   imports: [
     CommonModule
   ],
   exports:[
     CarouselComponent,
-    ProductFrameComponent,
+    ProductComponent,
+    CarouselProductsComponent,
+    GaleryProductsComponent,
   ]
 })
 export class ComponentesModule { }
