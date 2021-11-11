@@ -14,3 +14,4 @@ export class MiddleComponent implements OnInit {
   }
 
 }
+

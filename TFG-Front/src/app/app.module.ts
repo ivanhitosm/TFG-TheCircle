@@ -7,6 +7,9 @@ import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { MiddleComponent } from './shared/middle/middle.component';
 import { ProductFrameComponent } from './Componentes/product-frame/product-frame.component';
+import {MatGridListModule} from '@angular/material/grid-list';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
+
 
 @NgModule({
   declarations: [
@@ -19,6 +22,8 @@ import { ProductFrameComponent } from './Componentes/product-frame/product-frame
   imports: [
     BrowserModule,
     AppRoutingModule,
+    MatGridListModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
