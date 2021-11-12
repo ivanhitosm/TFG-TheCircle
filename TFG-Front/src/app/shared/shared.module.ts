@@ -7,9 +7,6 @@ import { MiddleComponent } from './middle/middle.component';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { ComponentesModule } from '../componentes/componentes.module';
 
-
-
-
 @NgModule({
   declarations: [],
   imports: [

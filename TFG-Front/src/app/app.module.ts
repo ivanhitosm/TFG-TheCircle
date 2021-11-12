@@ -12,6 +12,10 @@ import { CarouselComponent } from './componentes/carousel/carousel.component';
 import { ProductComponent } from './componentes/product/product.component';
 import { CarouselProductsComponent } from './componentes/carousel-products/carousel-products.component';
 import { GaleryProductsComponent } from './componentes/galery-products/galery-products.component';
+import { CarouselPauseComponent } from './componentes/carousel-pause/carousel-pause.component';
+import { FormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 
 
@@ -25,6 +29,7 @@ import { GaleryProductsComponent } from './componentes/galery-products/galery-pr
     ProductComponent,
     CarouselProductsComponent,
     GaleryProductsComponent,
+    CarouselPauseComponent,
 
   ],
   imports: [
@@ -32,6 +37,9 @@ import { GaleryProductsComponent } from './componentes/galery-products/galery-pr
     AppRoutingModule,
     MatGridListModule,
     BrowserAnimationsModule,
+    FormsModule,
+    NgbModule,
+
 
   ],
   providers: [],
