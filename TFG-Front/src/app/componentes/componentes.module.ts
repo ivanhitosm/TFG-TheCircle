@@ -6,16 +6,16 @@ import { GaleryProductsComponent } from './galery-products/galery-products.compo
 import { CarouselProductsComponent } from './carousel-products/carousel-products.component';
 import { ProductComponent } from './product/product.component';
 import { CarouselPauseComponent } from './carousel-pause/carousel-pause.component';
-
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
   declarations: [
-    
+
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    BrowserAnimationsModule,
   ],
   exports:[
     CarouselComponent,
@@ -24,6 +24,9 @@ import { CarouselPauseComponent } from './carousel-pause/carousel-pause.componen
     GaleryProductsComponent,
     CarouselPauseComponent,
 
-  ]
+
+  ],
+  bootstrap: [
+  ],
 })
 export class ComponentesModule { }
