@@ -7,6 +7,7 @@ import { CarouselProductsComponent } from './carousel-products/carousel-products
 import { ProductComponent } from './product/product.component';
 import { CarouselPauseComponent } from './carousel-pause/carousel-pause.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BigProductComponent } from './big-product/big-product.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CarouselProductsComponent,
     GaleryProductsComponent,
     CarouselPauseComponent,
+    BigProductComponent,
 
 
   ],

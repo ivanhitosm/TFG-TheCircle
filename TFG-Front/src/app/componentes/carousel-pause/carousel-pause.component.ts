@@ -8,10 +8,14 @@ import { NgbCarousel, NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/n
 })
 export class CarouselPauseComponent{
 
+
+  // images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
+
   images = [
   'assets/images/photo1.jpg',
   'assets/images/photo2.jpg',
-  'assets/images/photo3.jpg']
+  'assets/images/photo3.jpg'
+  ]
 
   paused = false;
   unpauseOnArrow = false;
