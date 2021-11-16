@@ -8,11 +8,13 @@ import { ProductComponent } from './product/product.component';
 import { CarouselPauseComponent } from './carousel-pause/carousel-pause.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BigProductComponent } from './big-product/big-product.component';
+import { CarouselBasicComponent } from './carousel-basic/carousel-basic.component';
+import { ArticleSimpleComponent } from './article-simple/article-simple.component';
 
 
 @NgModule({
   declarations: [
-
+  
   ],
   imports: [
     CommonModule,
@@ -25,7 +27,8 @@ import { BigProductComponent } from './big-product/big-product.component';
     GaleryProductsComponent,
     CarouselPauseComponent,
     BigProductComponent,
-
+    CarouselBasicComponent,
+    ArticleSimpleComponent,
 
   ],
   bootstrap: [

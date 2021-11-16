@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-product',
@@ -7,5 +7,4 @@ import { Component } from '@angular/core';
 })
 export class ProductComponent{
 
-  constructor() { }
 }

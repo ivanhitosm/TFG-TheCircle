@@ -20,6 +20,8 @@ import { CarouselProductsComponent } from './componentes/carousel-products/carou
 import { GaleryProductsComponent } from './componentes/galery-products/galery-products.component';
 import { CarouselPauseComponent } from './componentes/carousel-pause/carousel-pause.component';
 import { BigProductComponent } from './componentes/big-product/big-product.component';
+import { CarouselBasicComponent } from './componentes/carousel-basic/carousel-basic.component';
+import { ArticleSimpleComponent } from './componentes/article-simple/article-simple.component';
 
 
 
@@ -35,6 +37,8 @@ import { BigProductComponent } from './componentes/big-product/big-product.compo
     GaleryProductsComponent,
     CarouselPauseComponent,
     BigProductComponent,
+    CarouselBasicComponent,
+    ArticleSimpleComponent,
 
   ],
   imports: [
