@@ -20,8 +20,9 @@ import { ProductComponent } from './componentes/product/product.component';
 import { CarouselProductsComponent } from './componentes/carousel-products/carousel-products.component';
 import { GaleryProductsComponent } from './componentes/galery-products/galery-products.component';
 import { BigProductComponent } from './componentes/big-product/big-product.component';
-// import { CarouselBasicComponent } from './componentes/carousel-basic/carousel-basic.component';
+import { CarouselBasicComponent } from './componentes/carousel-basic/carousel-basic.component';
 import { ArticleSimpleComponent} from './componentes/article-simple/article-simple.component';
+import { NgbdCarouselPause } from './componentes/carousel-pause/carousel-pause.component';
 
 
 
@@ -37,8 +38,9 @@ import { ArticleSimpleComponent} from './componentes/article-simple/article-simp
     CarouselProductsComponent,
     GaleryProductsComponent,
     BigProductComponent,
-    // CarouselBasicComponent,
+    CarouselBasicComponent,
     ArticleSimpleComponent,
+    NgbdCarouselPause,
 
 
   ],
