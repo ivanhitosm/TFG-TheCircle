@@ -10,11 +10,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BigProductComponent } from './big-product/big-product.component';
 import { CarouselBasicComponent } from './carousel-basic/carousel-basic.component';
 import { ArticleSimpleComponent } from './article-simple/article-simple.component';
+import { CheckboxComponent } from './checkbox/checkbox.component';
 
 
 @NgModule({
   declarations: [
-  
   ],
   imports: [
     CommonModule,
@@ -29,6 +29,7 @@ import { ArticleSimpleComponent } from './article-simple/article-simple.componen
     BigProductComponent,
     CarouselBasicComponent,
     ArticleSimpleComponent,
+    CheckboxComponent,
 
   ],
   bootstrap: [

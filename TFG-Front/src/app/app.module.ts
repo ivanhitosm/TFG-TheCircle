@@ -4,6 +4,7 @@ import { BrowserModule, HammerModule } from '@angular/platform-browser';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatSliderModule } from '@angular/material/slider';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {AccordionModule} from 'primeng/accordion'; 
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,6 +23,8 @@ import { CarouselPauseComponent } from './componentes/carousel-pause/carousel-pa
 import { BigProductComponent } from './componentes/big-product/big-product.component';
 import { CarouselBasicComponent } from './componentes/carousel-basic/carousel-basic.component';
 import { ArticleSimpleComponent } from './componentes/article-simple/article-simple.component';
+import { CheckboxComponent } from './componentes/checkbox/checkbox.component';
+import {CheckboxModule} from 'primeng/checkbox';
 
 
 
@@ -39,6 +42,7 @@ import { ArticleSimpleComponent } from './componentes/article-simple/article-sim
     BigProductComponent,
     CarouselBasicComponent,
     ArticleSimpleComponent,
+    CheckboxComponent,
 
   ],
   imports: [
@@ -51,6 +55,9 @@ import { ArticleSimpleComponent } from './componentes/article-simple/article-sim
     FormsModule,
     NgbModule,
     MaterialExampleModule,
+    AccordionModule,
+    CheckboxModule,
+    
 
   ],
   providers: [],
