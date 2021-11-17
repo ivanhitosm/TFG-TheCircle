@@ -4,7 +4,7 @@ import { BrowserModule, HammerModule } from '@angular/platform-browser';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatSliderModule } from '@angular/material/slider';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {AccordionModule} from 'primeng/accordion'; 
+import { AccordionModule } from 'primeng/accordion'; 
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,12 +19,10 @@ import { CarouselComponent } from './componentes/carousel/carousel.component';
 import { ProductComponent } from './componentes/product/product.component';
 import { CarouselProductsComponent } from './componentes/carousel-products/carousel-products.component';
 import { GaleryProductsComponent } from './componentes/galery-products/galery-products.component';
-import { CarouselPauseComponent } from './componentes/carousel-pause/carousel-pause.component';
 import { BigProductComponent } from './componentes/big-product/big-product.component';
-import { CarouselBasicComponent } from './componentes/carousel-basic/carousel-basic.component';
-import { ArticleSimpleComponent } from './componentes/article-simple/article-simple.component';
-import { CheckboxComponent } from './componentes/checkbox/checkbox.component';
-import {CheckboxModule} from 'primeng/checkbox';
+// import { CarouselBasicComponent } from './componentes/carousel-basic/carousel-basic.component';
+import { ArticleSimpleComponent} from './componentes/article-simple/article-simple.component';
+
 
 
 
@@ -38,11 +36,10 @@ import {CheckboxModule} from 'primeng/checkbox';
     ProductComponent,
     CarouselProductsComponent,
     GaleryProductsComponent,
-    CarouselPauseComponent,
     BigProductComponent,
-    CarouselBasicComponent,
+    // CarouselBasicComponent,
     ArticleSimpleComponent,
-    CheckboxComponent,
+
 
   ],
   imports: [
@@ -56,7 +53,7 @@ import {CheckboxModule} from 'primeng/checkbox';
     NgbModule,
     MaterialExampleModule,
     AccordionModule,
-    CheckboxModule,
+
     
 
   ],

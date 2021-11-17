@@ -5,12 +5,11 @@ import { CarouselComponent } from './carousel/carousel.component';
 import { GaleryProductsComponent } from './galery-products/galery-products.component';
 import { CarouselProductsComponent } from './carousel-products/carousel-products.component';
 import { ProductComponent } from './product/product.component';
-import { CarouselPauseComponent } from './carousel-pause/carousel-pause.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BigProductComponent } from './big-product/big-product.component';
-import { CarouselBasicComponent } from './carousel-basic/carousel-basic.component';
-import { ArticleSimpleComponent } from './article-simple/article-simple.component';
-import { CheckboxComponent } from './checkbox/checkbox.component';
+// import { CarouselBasicComponent } from './carousel-basic/carousel-basic.component';
+import {  ArticleSimpleComponent } from './article-simple/article-simple.component';
+
 
 
 @NgModule({
@@ -25,11 +24,10 @@ import { CheckboxComponent } from './checkbox/checkbox.component';
     ProductComponent,
     CarouselProductsComponent,
     GaleryProductsComponent,
-    CarouselPauseComponent,
     BigProductComponent,
-    CarouselBasicComponent,
+    // CarouselBasicComponent,
     ArticleSimpleComponent,
-    CheckboxComponent,
+
 
   ],
   bootstrap: [
