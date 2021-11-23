@@ -42,5 +42,11 @@ public class Property {
     private String status;
     @Column
     private String username;
+
+    
+    public Integer getId() {
+        return id;
+    }
+   
 }
 
