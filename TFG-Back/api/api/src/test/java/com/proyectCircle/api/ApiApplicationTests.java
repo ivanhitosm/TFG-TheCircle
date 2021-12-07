@@ -1,10 +1,10 @@
-package com.spring.demo;
+package com.proyectCircle.api;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SpringbootDemoH2ApplicationTests {
+class ApiApplicationTests {
 
 	@Test
 	void contextLoads() {
