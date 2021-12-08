@@ -7,6 +7,7 @@ import com.proyectCircle.api.models.ClienteModel;
 import com.proyectCircle.api.services.ClienteService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,7 +28,7 @@ public class ClienteController {
     ClienteService clienteService;
 
     @GetMapping()
-    public List<ClienteModel> obenerClientes() {
+    public List<ClienteModel> obtenerClientes() {
         return clienteService.obtenerClientes();
     }
     
@@ -36,7 +37,7 @@ public class ClienteController {
         return this.clienteService.guardarCliente(cliente);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping( path = "/{id}")
     public Optional<ClienteModel> obtenerClientePorId(@PathVariable("id") Long id){
         return this.clienteService.obtenerPorId(id)
     }
@@ -46,7 +47,7 @@ public class ClienteController {
         return this.clienteService.obtenerPorZip(zip);
     }
 
-    @DeleteMapping(path ="/{id}")
+    @DeleteMapping( path ="/{id}")
     public String eliminarPorId(@PathVariable("id") Long id){
         boolean ok = this.clienteService.eliminarCliente(id);
         if (ok) {
@@ -54,5 +55,24 @@ public class ClienteController {
         } else {
             return "No se elimino el Cliente con el id: "+id;
         }
+    }
+
+    @GetMapping(value="/query")
+     Page<ClienteModel> obtenerClientesPaginado(@RequestParam Integer pageNo, @RequestParam pageSize) {
+        return clienteService.obtenerClientesPaginado(pageNo, pageSize)
+    }
+    
+    @GetMapping
+    Page<ClienteModel> getClientesPag(
+            @RequestParam Optional<Integer> page,
+            @RequestParam Optional<String> sortBy
+    ) {
+        return ClienteRepository.findAll(
+                PageRequest.of(
+                        page.orElse(0),
+                        5,
+                        Sort.Direction.ASC, sortBy.orElse("id")
+                )
+        );
     }
 }

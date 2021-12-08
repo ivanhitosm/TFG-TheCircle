@@ -7,6 +7,9 @@ import com.proyectCircle.api.models.ClienteModel;
 import com.proyectCircle.api.repositories.ClienteRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Pageable;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import antlr.collections.List;
@@ -40,6 +43,11 @@ public class ClienteService {
             //TODO: handle exception
             retun false;
         }
+    }
+
+    public Page<ClienteModel> obtenerClientesPaginado(int pageNo,int pageSize){
+        Pageable page =PageRequest.of(pageNo, pageSize);
+        return clienteRepository.findAll(page)
     }
 
 }
