@@ -1,24 +1,23 @@
 package com.proyectCircle.api.controllers;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import com.proyectCircle.api.models.ClienteModel;
 import com.proyectCircle.api.services.ClienteService;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import antlr.collections.List;
-
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 
 
 @RestController
@@ -27,9 +26,19 @@ public class ClienteController {
     @Autowired
     ClienteService clienteService;
 
+    // @GetMapping()
+    // public List<ClienteModel> obtenerClientes() {
+    //     return clienteService.obtenerClientes();
+    // }
     @GetMapping()
-    public List<ClienteModel> obtenerClientes() {
-        return clienteService.obtenerClientes();
+    public ResponseEntity<List<ClienteModel>> getClientesPag(
+                        @RequestParam(defaultValue = "0") Integer pageNo, 
+                        @RequestParam(defaultValue = "10") Integer pageSize,
+                        @RequestParam(defaultValue = "id") String sortBy) 
+    {
+        List<ClienteModel> list = clienteService.getClientesPag(pageNo, pageSize, sortBy);
+ 
+        return new ResponseEntity<List<ClienteModel>>(list, new HttpHeaders(), HttpStatus.OK); 
     }
     
     @PostMapping()
@@ -39,7 +48,7 @@ public class ClienteController {
 
     @GetMapping( path = "/{id}")
     public Optional<ClienteModel> obtenerClientePorId(@PathVariable("id") Long id){
-        return this.clienteService.obtenerPorId(id)
+        return this.clienteService.obtenerPorId(id);
     }
 
     @GetMapping("/query")
@@ -57,22 +66,5 @@ public class ClienteController {
         }
     }
 
-    @GetMapping(value="/query")
-     Page<ClienteModel> obtenerClientesPaginado(@RequestParam Integer pageNo, @RequestParam pageSize) {
-        return clienteService.obtenerClientesPaginado(pageNo, pageSize)
-    }
     
-    @GetMapping
-    Page<ClienteModel> getClientesPag(
-            @RequestParam Optional<Integer> page,
-            @RequestParam Optional<String> sortBy
-    ) {
-        return ClienteRepository.findAll(
-                PageRequest.of(
-                        page.orElse(0),
-                        5,
-                        Sort.Direction.ASC, sortBy.orElse("id")
-                )
-        );
-    }
 }

@@ -1,15 +1,15 @@
 package com.proyectCircle.api.repositories;
 
+import java.util.List;
+
 import com.proyectCircle.api.models.ClienteModel;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
-
-import antlr.collections.List;
-
 @Repository
-public interface ClienteRepository extends CrudRepository<ClienteModel,Long>{
+public interface ClienteRepository 
+    extends PagingAndSortingRepository<ClienteModel,Long> {
+
     public abstract List<ClienteModel> findByZip(Integer zip);
-    public abstract List<ClienteModel> findByFirstName(String firstName);
     
 }
