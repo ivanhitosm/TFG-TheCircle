@@ -7,19 +7,26 @@ import { CarouselProductsComponent } from './carousel-products/carousel-products
 import { ProductComponent } from './product/product.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BigProductComponent } from './big-product/big-product.component';
+import { ArticleSimpleComponent } from './article-simple/article-simple.component';
 import { CarouselBasicComponent } from './carousel-basic/carousel-basic.component';
-import {  ArticleSimpleComponent } from './article-simple/article-simple.component';
-import { NgbdCarouselPause } from './carousel-pause/carousel-pause.component';
-
-
+import { MatSliderComponent } from './mat-slider/mat-slider.component';
+import { ChipsInputComponent } from './chips-input/chips-input.component';
+import { PaginatorComponent } from './paginator/paginator.component';
+import { ProgressBarComponent } from './progress-bar/progress-bar.component';
+import { ProgressSpinnerComponent } from './progress-spinner/progress-spinner.component';
+import { SnackBarComponent } from './snack-bar/snack-bar.component';
+import { TableComponent } from './table/table.component';
+import { DatePickerComponent } from './date-picker/date-picker.component';
 
 @NgModule({
   declarations: [
+  
 
   ],
   imports: [
     CommonModule,
     BrowserAnimationsModule,
+
   ],
   exports:[
     CarouselComponent,
@@ -27,11 +34,16 @@ import { NgbdCarouselPause } from './carousel-pause/carousel-pause.component';
     CarouselProductsComponent,
     GaleryProductsComponent,
     BigProductComponent,
-    CarouselBasicComponent,
     ArticleSimpleComponent,
-    NgbdCarouselPause,
-
-
+    CarouselBasicComponent,
+    MatSliderComponent,
+    ChipsInputComponent,
+    PaginatorComponent,
+    ProgressBarComponent,
+    ProgressSpinnerComponent,
+    SnackBarComponent,
+    TableComponent,
+    DatePickerComponent,
   ],
   bootstrap: [
   ],

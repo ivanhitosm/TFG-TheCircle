@@ -6,9 +6,12 @@ import { HeaderComponent } from './header/header.component';
 import { MiddleComponent } from './middle/middle.component';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { ComponentesModule } from '../componentes/componentes.module';
+import { HeaderResponsiveComponent } from './header/header-responsive.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    
+  ],
   imports: [
     CommonModule,
     MatGridListModule,
@@ -18,6 +21,7 @@ import { ComponentesModule } from '../componentes/componentes.module';
     FooterComponent,
     HeaderComponent,
     MiddleComponent,
+    HeaderResponsiveComponent,
   ]
 })
 export class SharedModule { }
