@@ -16,7 +16,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-import { CarouselComponent } from './componentes/carousel/carousel.component'; 
+import { CarouselComponent } from './componentes/carousel/carousel.component';
 import { ProductComponent } from './componentes/product/product.component';
 import { CarouselProductsComponent } from './componentes/carousel-products/carousel-products.component';
 import { GaleryProductsComponent } from './componentes/galery-products/galery-products.component';
@@ -32,6 +32,7 @@ import { SnackBarComponent } from './componentes/snack-bar/snack-bar.component';
 import { TableComponent } from './componentes/table/table.component';
 import { DatePickerComponent } from './componentes/date-picker/date-picker.component';
 import { HeaderResponsiveComponent } from './shared/header/header-responsive.component';
+import { CarouselImageComponent } from './componentes/carousel-image/carousel-image.component';
 
 
 
@@ -58,6 +59,7 @@ import { HeaderResponsiveComponent } from './shared/header/header-responsive.com
     TableComponent,
     DatePickerComponent,
     HeaderResponsiveComponent,
+    CarouselImageComponent,
 
   ],
   imports: [

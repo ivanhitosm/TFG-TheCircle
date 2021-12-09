@@ -17,10 +17,10 @@ import { ProgressSpinnerComponent } from './progress-spinner/progress-spinner.co
 import { SnackBarComponent } from './snack-bar/snack-bar.component';
 import { TableComponent } from './table/table.component';
 import { DatePickerComponent } from './date-picker/date-picker.component';
+import { CarouselImageComponent } from './carousel-image/carousel-image.component';
 
 @NgModule({
   declarations: [
-  
 
   ],
   imports: [
@@ -44,6 +44,7 @@ import { DatePickerComponent } from './date-picker/date-picker.component';
     SnackBarComponent,
     TableComponent,
     DatePickerComponent,
+    CarouselImageComponent,
   ],
   bootstrap: [
   ],
