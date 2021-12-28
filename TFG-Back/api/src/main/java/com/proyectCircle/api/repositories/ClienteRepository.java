@@ -4,12 +4,19 @@ import java.util.List;
 
 import com.proyectCircle.api.models.ClienteModel;
 
-import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.domain.*;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
+
 @Repository
 public interface ClienteRepository 
-    extends PagingAndSortingRepository<ClienteModel,Long> {
+    extends JpaRepository<ClienteModel,Long> {
 
-    public abstract List<ClienteModel> findByZip(Integer zip);
-    
+
+    Page<ClienteModel> findByfirstNameContaining(String firstName, Pageable pagingSort);
+    List<ClienteModel> findByUsername(Integer username);
+    List<ClienteModel> findAll(Sort by);
+    Page<ClienteModel> findAll(Pageable pagingSort);
+	List<ClienteModel> findBytelefoneN(Integer telefoneN);
 }

@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 
-
 @RestController
 @RequestMapping("/cliente")
 public class ClienteController {
@@ -28,43 +27,41 @@ public class ClienteController {
 
     // @GetMapping()
     // public List<ClienteModel> obtenerClientes() {
-    //     return clienteService.obtenerClientes();
+    // return clienteService.obtenerClientes();
     // }
     @GetMapping()
     public ResponseEntity<List<ClienteModel>> getClientesPag(
-                        @RequestParam(defaultValue = "0") Integer pageNo, 
-                        @RequestParam(defaultValue = "10") Integer pageSize,
-                        @RequestParam(defaultValue = "id") String sortBy) 
-    {
+            @RequestParam(defaultValue = "0") Integer pageNo,
+            @RequestParam(defaultValue = "10") Integer pageSize,
+            @RequestParam(defaultValue = "id") String sortBy) {
         List<ClienteModel> list = clienteService.getClientesPag(pageNo, pageSize, sortBy);
- 
-        return new ResponseEntity<List<ClienteModel>>(list, new HttpHeaders(), HttpStatus.OK); 
+
+        return new ResponseEntity<>(list, new HttpHeaders(), HttpStatus.OK);
     }
-    
+
     @PostMapping()
-    public ClienteModel guardarCliente(@RequestBody ClienteModel cliente){
+    public ClienteModel guardarCliente(@RequestBody ClienteModel cliente) {
         return this.clienteService.guardarCliente(cliente);
     }
 
-    @GetMapping( path = "/{id}")
-    public Optional<ClienteModel> obtenerClientePorId(@PathVariable("id") Long id){
+    @GetMapping(path = "/{id}")
+    public Optional<ClienteModel> obtenerClientePorId(@PathVariable("id") Long id) {
         return this.clienteService.obtenerPorId(id);
     }
 
     @GetMapping("/query")
-    public List<ClienteModel> obtenerClientePorZip(@RequestParam("zip") Integer zip){
-        return this.clienteService.obtenerPorZip(zip);
+    public List<ClienteModel> obtenerClientePortelefoneN(@RequestParam("telefoneN") Integer telefoneN) {
+        return this.clienteService.obtenerPortelefoneN(telefoneN);
     }
 
-    @DeleteMapping( path ="/{id}")
-    public String eliminarPorId(@PathVariable("id") Long id){
+    @DeleteMapping(path = "/{id}")
+    public String eliminarPorId(@PathVariable("id") Long id) {
         boolean ok = this.clienteService.eliminarCliente(id);
         if (ok) {
-            return "Se elimino el Ciente con el id: "+id;
+            return "Se elimino el Ciente con el id: " + id;
         } else {
-            return "No se elimino el Cliente con el id: "+id;
+            return "No se elimino el Cliente con el id: " + id;
         }
     }
 
-    
 }

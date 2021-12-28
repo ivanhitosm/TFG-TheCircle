@@ -1,5 +1,8 @@
 package com.proyectCircle.api.models;
 
+import java.sql.Date;
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -10,26 +13,42 @@ public class ClienteModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true,nullable = false)
     private Long id;
-    
-    
+
+    @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH },fetch = FetchType.LAZY)
+    @JoinColumn(name = "uId", foreignKey = @ForeignKey(name = "uId", value =ConstraintMode.CONSTRAINT))
+    private List<DireccionesModel> direcciones;
+ 
+    @Column(name = "firstName")
     private String firstName;
+    @Column(name = "lastName")
     private String lastName;
-    private String address;
-    private String city;
-    private String state;
-    private Integer zip;
-    private Float area;
-    private String type;
+    @Column(name = "email")
     private String email;
-    private String status;
+    @Column(name = "gender")
+    private String gender;
+    @Column(name = "username")
     private String username;
+    @Column(name = "telefoneN")
+    private Integer telefoneN;
+    @Column(name = "birthdDate")
+    private Date birthdDate;
 
-
-    public Long getId() {
-        return id;
+    public ClienteModel(Object username2, String getfirstName, boolean b) {
     }
-    public void setId(Long id) {
-        this.id = id;
+    public String getFirstName() {
+        return firstName;
+    }
+    public Date getBirthdDate() {
+        return birthdDate;
+    }
+    public void setBirthdDate(Date birthdDate) {
+        this.birthdDate = birthdDate;
+    }
+    public Integer getTelefoneN() {
+        return telefoneN;
+    }
+    public void setTelefoneN(Integer telefoneN) {
+        this.telefoneN = telefoneN;
     }
     public String getUsername() {
         return username;
@@ -37,11 +56,11 @@ public class ClienteModel {
     public void setUsername(String username) {
         this.username = username;
     }
-    public String getStatus() {
-        return status;
+    public String getGender() {
+        return gender;
     }
-    public void setStatus(String status) {
-        this.status = status;
+    public void setGender(String gender) {
+        this.gender = gender;
     }
     public String getEmail() {
         return email;
@@ -49,53 +68,16 @@ public class ClienteModel {
     public void setEmail(String email) {
         this.email = email;
     }
-    public String getType() {
-        return type;
-    }
-    public void setType(String type) {
-        this.type = type;
-    }
-    public Float getArea() {
-        return area;
-    }
-    public void setArea(Float area) {
-        this.area = area;
-    }
-    public Integer getZip() {
-        return zip;
-    }
-    public void setZip(Integer zip) {
-        this.zip = zip;
-    }
-    public String getState() {
-        return state;
-    }
-    public void setState(String state) {
-        this.state = state;
-    }
-    public String getCity() {
-        return city;
-    }
-    public void setCity(String city) {
-        this.city = city;
-    }
-    public String getAddress() {
-        return address;
-    }
-    public void setAddress(String address) {
-        this.address = address;
-    }
     public String getLastName() {
         return lastName;
     }
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-    public String getFirstName() {
-        return firstName;
-    }
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
+
+
     
 }
