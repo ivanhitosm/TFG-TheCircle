@@ -3,7 +3,18 @@ package com.proyectCircle.api.models;
 import java.sql.Date;
 import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.ConstraintMode;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
 @Table(name="cliente")
@@ -33,8 +44,19 @@ public class ClienteModel {
     @Column(name = "birthdDate")
     private Date birthdDate;
 
-    public ClienteModel(Object username2, String getfirstName, boolean b) {
+    public ClienteModel(Long id, List<DireccionesModel> direcciones, String firstName, String lastName, String email,
+            String gender, String username, Integer telefoneN, Date birthdDate) {
+        this.id = id;
+        this.direcciones = direcciones;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.gender = gender;
+        this.username = username;
+        this.telefoneN = telefoneN;
+        this.birthdDate = birthdDate;
     }
+
     public String getFirstName() {
         return firstName;
     }
