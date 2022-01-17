@@ -3,7 +3,7 @@ package com.proyectCircle.api.models;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "productos")
+@Table(name = "producto")
 public class ProductoModel {
 
     @Id

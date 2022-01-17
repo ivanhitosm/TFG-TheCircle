@@ -26,7 +26,7 @@ public class ClienteModel {
     private Long id;
 
     @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH },fetch = FetchType.LAZY)
-    @JoinColumn(name = "uId", foreignKey = @ForeignKey(name = "uId", value =ConstraintMode.CONSTRAINT))
+    @JoinColumn(name = "cliente_Id", foreignKey = @ForeignKey(name = "cliente_Id", value =ConstraintMode.CONSTRAINT))
     private List<DireccionesModel> direcciones;
  
     @Column(name = "firstName")

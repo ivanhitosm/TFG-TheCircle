@@ -12,7 +12,7 @@ public class DireccionesModel {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "uId", foreignKey = @ForeignKey(name = "uId"))
+    @JoinColumn(name = "cliente_Id", foreignKey = @ForeignKey(name = "cliente_Id"))
     private ClienteModel cliente;
 
     public DireccionesModel(Long id, ClienteModel cliente, String direccion, String ciudad, String poblacion,
