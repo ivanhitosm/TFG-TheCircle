@@ -1,7 +1,41 @@
-/* You can add global styles to this file, and also import other style files */
+.p-menubar {
+    border-radius: 0px ;
+    
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+@media screen and (max-width: 960px){
+.p-menubar .p-menubar-button {
+      display: flex;
+      width: 5rem ;
+      height: 2.5rem ;
+      color: rgba(255, 255, 255, 0.6);
+      border-radius: 100% ;
+      transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
+  }
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.carousel-control-next, .carousel-control-prev{
+    position: absolute ;
+    z-index: auto;
+}
+
+@media screen and (max-width: 960px){
+    .p-menubar .p-menubar-button:hover {
+        color: rgba(255, 255, 255, 0.87);
+        background: none ;
+        position: fixed;
+        right: 0;
+    }
+
+    .p-menubar .p-menubar-button {
+
+        position: fixed;
+        right: 0;
+    }
+}
+    
+
+/*"node_modules/primeng/resources/themes/arya-blue/theme.css",
+
+"node_modules/primeng/resources/themes/bootstrap4-light-blue/theme.css",
+*/
