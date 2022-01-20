@@ -8,4 +8,8 @@ public class MarcaModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true,nullable = false)
     private long id;
+
+    
+    @Column(name = "Nombre")
+    private String nombre;
 }
