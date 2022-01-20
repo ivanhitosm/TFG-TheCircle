@@ -1,83 +1,40 @@
-import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BrowserModule, HammerModule } from '@angular/platform-browser';
-import { MatGridListModule } from '@angular/material/grid-list';
-import { MatSliderModule } from '@angular/material/slider';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LOCALE_ID, NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { AppRouterModule } from './app-router.module';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './shared/header/header.component';
-import { FooterComponent } from './shared/footer/footer.component';
-import { MiddleComponent } from './shared/middle/middle.component';
-import { MaterialExampleModule} from '../material.module';
-import {MatDatepickerModule} from '@angular/material/datepicker';
 
+import { SharedModule } from './shared/shared.module';
+import { LoungeModule } from './lounge/lounge.module';
 
+import { ComponentesModule } from './componentes/componentes.module';
+
+//Cambiar el locale de la app
+import localeES from '@angular/common/locales/es';
+import { registerLocaleData } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-import { CarouselComponent } from './componentes/carousel/carousel.component';
-import { ProductComponent } from './componentes/product/product.component';
-import { CarouselProductsComponent } from './componentes/carousel-products/carousel-products.component';
-import { GaleryProductsComponent } from './componentes/galery-products/galery-products.component';
-import { BigProductComponent } from './componentes/big-product/big-product.component';
-import { ArticleSimpleComponent} from './componentes/article-simple/article-simple.component';
-import { CarouselBasicComponent } from './componentes/carousel-basic/carousel-basic.component';
-import { MatSliderComponent } from './componentes/mat-slider/mat-slider.component';
-import { ChipsInputComponent } from './componentes/chips-input/chips-input.component';
-import { PaginatorComponent } from './componentes/paginator/paginator.component';
-import { ProgressBarComponent } from './componentes/progress-bar/progress-bar.component';
-import { ProgressSpinnerComponent } from './componentes/progress-spinner/progress-spinner.component';
-import { SnackBarComponent } from './componentes/snack-bar/snack-bar.component';
-import { TableComponent } from './componentes/table/table.component';
-import { DatePickerComponent } from './componentes/date-picker/date-picker.component';
-import { HeaderResponsiveComponent } from './shared/header/header-responsive.component';
-import { CarouselImageComponent } from './componentes/carousel-image/carousel-image.component';
+registerLocaleData(localeES);
 
 
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HeaderComponent,
-    FooterComponent,
-    MiddleComponent,
-    CarouselComponent,
-    ProductComponent,
-    CarouselProductsComponent,
-    GaleryProductsComponent,
-    BigProductComponent,
-    ArticleSimpleComponent,
-    CarouselBasicComponent,
-    MatSliderComponent,
-    ChipsInputComponent,
-    PaginatorComponent,
-    ProgressBarComponent,
-    ProgressSpinnerComponent,
-    SnackBarComponent,
-    TableComponent,
-    DatePickerComponent,
-    HeaderResponsiveComponent,
-    CarouselImageComponent,
-
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    MatGridListModule,
-    MatSliderModule,
-    BrowserAnimationsModule,
-    HammerModule,
-    FormsModule,
+    AppRouterModule,
+    SharedModule,
+    LoungeModule,
     NgbModule,
-    MaterialExampleModule,
-    MatDatepickerModule,
-    ReactiveFormsModule,
-
-
+    ComponentesModule,
+    
   ],
-  providers: [],
+  providers: [
+    {provide: LOCALE_ID, useValue: 'es'}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

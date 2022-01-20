@@ -1,0 +1,15 @@
+p.Nosq{
+    visibility: hidden;
+ }  
+ 
+ @media (max-width: 767.98px) {
+     div.MarginA{
+         margin-top: 50px;
+     }
+ }
+   
+ @media (min-width: 767.98px) {
+     div.MarginA{
+         margin-top: 0px;
+     }
+ }
