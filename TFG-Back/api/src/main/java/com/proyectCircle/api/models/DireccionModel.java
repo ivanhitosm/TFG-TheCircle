@@ -1,10 +1,15 @@
 package com.proyectCircle.api.models;
 
+
+
+import java.util.List;
+
 import javax.persistence.*;
 
+
 @Entity
-@Table(name = "direcciones")
-public class DireccionesModel {
+@Table(name = "direccion")
+public class DireccionModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,21 +18,25 @@ public class DireccionesModel {
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "cliente_Id", foreignKey = @ForeignKey(name = "cliente_Id"))
-    private ClienteModel cliente;
+    private ClienteModel cliente; 
 
-    public DireccionesModel(Long id, ClienteModel cliente, String direccion, String ciudad, String poblacion,
+    @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH },fetch = FetchType.LAZY)
+    @JoinColumn(name = "direccion_Id", foreignKey = @ForeignKey(name = "direccion_Id", value =ConstraintMode.CONSTRAINT))
+    private List<PedidoModel> pedidos;
+
+
+    public DireccionModel(Long id, ClienteModel cliente, List<PedidoModel> pedidos, String ciudad, String poblacion,
             Integer numero, Integer piso) {
         this.id = id;
         this.cliente = cliente;
-        this.direccion = direccion;
+        this.pedidos = pedidos;
         this.ciudad = ciudad;
         this.poblacion = poblacion;
         this.numero = numero;
         this.piso = piso;
     }
 
-    @Column(name = "Dirección")
-    private String direccion;
+  
     @Column(name = "Ciudad")
     private String ciudad;
     @Column(name = "Población")
@@ -37,13 +46,6 @@ public class DireccionesModel {
     @Column(name = "Piso")
     private Integer piso;
 
-    public String getDireccion() {
-        return this.direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
 
     public String getCiudad() {
         return this.ciudad;

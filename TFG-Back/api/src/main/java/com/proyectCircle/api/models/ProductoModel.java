@@ -1,6 +1,12 @@
 package com.proyectCircle.api.models;
 
+
+import java.util.List;
+import java.util.Set;
+
 import javax.persistence.*;
+
+
 
 @Entity
 @Table(name = "producto")
@@ -10,6 +16,18 @@ public class ProductoModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
     private Long id;
+
+    @ManyToMany(mappedBy = "pedido")
+    Set<PedidoModel> pedido;
+
+    @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH },fetch = FetchType.LAZY)
+    @JoinColumn(name = "producto_Id", foreignKey = @ForeignKey(name = "producto_Id" ,value =ConstraintMode.CONSTRAINT))
+    private List<ValoracionModel> valoracion;
+
+    @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH },fetch = FetchType.LAZY)
+    @JoinColumn(name = "producto_Id", foreignKey = @ForeignKey(name = "producto_Id" ,value =ConstraintMode.CONSTRAINT))
+    private List<VariacionModel> variacion;
+    
 
     private String nombre;
     private String descripcion;

@@ -2,19 +2,7 @@ package com.proyectCircle.api.models;
 
 import java.sql.Date;
 import java.util.List;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.ConstraintMode;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.ForeignKey;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="cliente")
@@ -27,8 +15,19 @@ public class ClienteModel {
 
     @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH },fetch = FetchType.LAZY)
     @JoinColumn(name = "cliente_Id", foreignKey = @ForeignKey(name = "cliente_Id", value =ConstraintMode.CONSTRAINT))
-    private List<DireccionesModel> direcciones;
+    private List<DireccionModel> direcciones;
+
+    @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH },fetch = FetchType.LAZY)
+    @JoinColumn(name = "cliente_Id", foreignKey = @ForeignKey(name = "cliente_Id" ,value =ConstraintMode.CONSTRAINT))
+    private List<PedidoModel> pedido;
+
+    @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH },fetch = FetchType.LAZY)
+    @JoinColumn(name = "cliente_Id", foreignKey = @ForeignKey(name = "cliente_Id" ,value =ConstraintMode.CONSTRAINT))
+    private List<ValoracionModel> valoracion;
   
+  
+    
+
     @Column(name = "firstName")
     private String firstName;
     @Column(name = "lastName")
@@ -44,10 +43,11 @@ public class ClienteModel {
     @Column(name = "birthdDate")
     private Date birthdDate;
 
-    public ClienteModel(Long id, List<DireccionesModel> direcciones, String firstName, String lastName, String email,
+    public ClienteModel(Long id, List<DireccionModel> direcciones,List<PedidoModel> pedido, String firstName, String lastName, String email,
             String gender, String username, Integer telefoneN, Date birthdDate) {
         this.id = id;
         this.direcciones = direcciones;
+        this.pedido=pedido;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
