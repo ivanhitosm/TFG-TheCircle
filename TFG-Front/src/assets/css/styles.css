@@ -2,7 +2,7 @@
   .img_banner1 {
     height: 300px;
     opacity: 0.3;
-    background: url("../../assets/img/TEMPLATE%20PHOTOSHOP%20IMG%20BANNER.jpg") center / cover;
+    background: url("../../assets/img/sisha1.jpg") center / cover;
   }
 }
 
@@ -17,7 +17,7 @@
   .img_banner2 {
     height: 300px;
     opacity: 0.3;
-    background: url("../../assets/img/TEMPLATE%20PHOTOSHOP%20IMG%20BANNER2.jpg") center / cover;
+    background: url("../../assets/img/sisha2.jpg") center / cover;
   }
 }
 
@@ -38,7 +38,7 @@
   .img_banner1 {
     height: 500px;
     opacity: 0.3;
-    background: linear-gradient(90deg, white, transparent), url("../../assets/img/TEMPLATE%20PHOTOSHOP%20IMG%20BANNER.jpg") center / cover;
+    background: linear-gradient(90deg, white, transparent), url("../../assets/img/BANNER.jpg") center / cover;
   }
 }
 
@@ -46,7 +46,7 @@
   .img_banner2 {
     height: 500px;
     opacity: 0.3;
-    background: url("../../assets/img/TEMPLATE%20PHOTOSHOP%20IMG%20BANNER2.jpg") center / cover;
+    background: url("../../assets/img/BANNER2.jpg") center / cover;
   }
 }
 

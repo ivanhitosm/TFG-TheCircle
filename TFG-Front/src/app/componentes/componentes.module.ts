@@ -1,15 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BannerComponent } from './banner/banner.component';
+import { MapComponent } from './map/map.component';
 
 
 
 @NgModule({
   declarations: [
-    BannerComponent
+    BannerComponent,
+    MapComponent,
   ],
   exports:[
-    BannerComponent
+    BannerComponent,
+    MapComponent,
   ],
   imports: [
     CommonModule

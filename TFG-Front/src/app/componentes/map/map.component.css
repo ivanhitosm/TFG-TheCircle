@@ -1,0 +1,18 @@
+.map-container {
+  overflow: hidden;
+  padding-bottom: 20%;
+  position: relative;
+  height: 0;
+}
+.map-container iframe {
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+.caja {
+ text-align: center;
+ padding-top: 5%;
+ padding-bottom:5%;
+}
