@@ -3,8 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-basicas',
   templateUrl: './basicas.component.html',
-  styles: [
-  ]
+  styleUrls: ['./basicas.component.css']
 })
 export class BasicasComponent implements OnInit {
 
