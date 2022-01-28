@@ -14,15 +14,15 @@ public class ClienteModel {
     private Long id;
 
     @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH },fetch = FetchType.LAZY)
-    @JoinColumn(name = "cliente_Id", foreignKey = @ForeignKey(name = "cliente_Id", value =ConstraintMode.CONSTRAINT))
+    @JoinColumn(name = "id_direccionCliente", foreignKey = @ForeignKey(name = "id_direccionCliente", value =ConstraintMode.CONSTRAINT))
     private List<DireccionModel> direcciones;
 
     @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH },fetch = FetchType.LAZY)
-    @JoinColumn(name = "cliente_Id", foreignKey = @ForeignKey(name = "cliente_Id" ,value =ConstraintMode.CONSTRAINT))
+    @JoinColumn(name = "id_pedidoCliente", foreignKey = @ForeignKey(name = "id_pedidoCliente" ,value =ConstraintMode.CONSTRAINT))
     private List<PedidoModel> pedido;
 
     @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH },fetch = FetchType.LAZY)
-    @JoinColumn(name = "cliente_Id", foreignKey = @ForeignKey(name = "cliente_Id" ,value =ConstraintMode.CONSTRAINT))
+    @JoinColumn(name = "id_valoracionCliente", foreignKey = @ForeignKey(name = "id_valoracionCliente" ,value =ConstraintMode.CONSTRAINT))
     private List<ValoracionModel> valoracion;
   
   

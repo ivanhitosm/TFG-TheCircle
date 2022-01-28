@@ -16,11 +16,11 @@ public class PedidoModel {
     private Date date;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "cliente_Id", foreignKey = @ForeignKey(name = "cliente_Id"))
+    @JoinColumn(name = "id_pedidoCliente", foreignKey = @ForeignKey(name = "id_pedidoCliente"))
     private ClienteModel cliente;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "direccion_Id", foreignKey = @ForeignKey(name = "direccion_Id"))
+    @JoinColumn(name = "id_direccionPedido", foreignKey = @ForeignKey(name = "id_direccionPedido"))
     private DireccionModel direccion;
  
     @ManyToMany
@@ -28,6 +28,6 @@ public class PedidoModel {
     name = "pedido_producto", 
     joinColumns = @JoinColumn(name = "pedido_id"), 
     inverseJoinColumns = @JoinColumn(name = "producto_id"))
-    Set<ProductoModel> pedido;
+    private Set<ProductoModel> pedido;
 }
 

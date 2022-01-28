@@ -18,14 +18,14 @@ public class ProductoModel {
     private Long id;
 
     @ManyToMany(mappedBy = "pedido")
-    Set<PedidoModel> pedido;
+    private Set<PedidoModel> pedido;
 
     @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH },fetch = FetchType.LAZY)
-    @JoinColumn(name = "producto_Id", foreignKey = @ForeignKey(name = "producto_Id" ,value =ConstraintMode.CONSTRAINT))
+    @JoinColumn(name = "id_valoracionPedido", foreignKey = @ForeignKey(name = "id_valoracionPedido" ,value =ConstraintMode.CONSTRAINT))
     private List<ValoracionModel> valoracion;
 
     @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH },fetch = FetchType.LAZY)
-    @JoinColumn(name = "producto_Id", foreignKey = @ForeignKey(name = "producto_Id" ,value =ConstraintMode.CONSTRAINT))
+    @JoinColumn(name = "id_variacionPedido", foreignKey = @ForeignKey(name = "id_variacionPedido" ,value =ConstraintMode.CONSTRAINT))
     private List<VariacionModel> variacion;
     
 

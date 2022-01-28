@@ -17,11 +17,11 @@ public class DireccionModel {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "cliente_Id", foreignKey = @ForeignKey(name = "cliente_Id"))
+    @JoinColumn(name = "id_direccionCliente", foreignKey = @ForeignKey(name = "id_direccionCliente"))
     private ClienteModel cliente; 
 
     @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH },fetch = FetchType.LAZY)
-    @JoinColumn(name = "direccion_Id", foreignKey = @ForeignKey(name = "direccion_Id", value =ConstraintMode.CONSTRAINT))
+    @JoinColumn(name = "id_direccionPedido", foreignKey = @ForeignKey(name = "id_direccionPedido", value =ConstraintMode.CONSTRAINT))
     private List<PedidoModel> pedidos;
 
 

@@ -13,7 +13,7 @@ public class VariacionModel {
     private long id;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "producto_Id", foreignKey = @ForeignKey(name = "producto_Id"))
+    @JoinColumn(name = "id_variacionPedido", foreignKey = @ForeignKey(name = "producto_Id"))
     private ProductoModel producto;
 
     @ManyToMany
