@@ -20,6 +20,21 @@ public class ProductoModel {
     @ManyToMany(mappedBy = "pedido")
     private Set<PedidoModel> pedido;
 
+    @ManyToMany(mappedBy = "distribuidor")
+    private Set<DistribuidorModel> distribuidor;
+
+    @ManyToMany(mappedBy = "tag")
+    private Set<TagModel> tag;
+
+    @ManyToMany(mappedBy = "categoria")
+    private Set<CategoriaModel> categoria;
+
+    
+
+    @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH },fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_marcaProducto", foreignKey = @ForeignKey(name = "id_marcaProducto" ,value =ConstraintMode.CONSTRAINT))
+    private List<MarcaModel> marca;
+
     @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH },fetch = FetchType.LAZY)
     @JoinColumn(name = "id_valoracionPedido", foreignKey = @ForeignKey(name = "id_valoracionPedido" ,value =ConstraintMode.CONSTRAINT))
     private List<ValoracionModel> valoracion;

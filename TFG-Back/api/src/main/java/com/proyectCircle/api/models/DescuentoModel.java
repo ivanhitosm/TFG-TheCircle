@@ -1,4 +1,6 @@
 package com.proyectCircle.api.models;
+import java.util.Set;
+
 import javax.persistence.*;
 
 @Entity
@@ -9,6 +11,27 @@ public class DescuentoModel {
     @Column(unique = true,nullable = false)
     private long id;
 
+
+    @ManyToMany
+    @JoinTable(
+    name = "descuento_marca", 
+    joinColumns = @JoinColumn(name = "descuento_id"), 
+    inverseJoinColumns = @JoinColumn(name = "marca_id"))
+    private Set<MarcaModel> marca;
+
+    @ManyToMany
+    @JoinTable(
+    name = "descuento_tag", 
+    joinColumns = @JoinColumn(name = "descuento_id"), 
+    inverseJoinColumns = @JoinColumn(name = "tag_id"))
+    private Set<TagModel> tag;
+
+    @ManyToMany
+    @JoinTable(
+    name = "descuento_categoria", 
+    joinColumns = @JoinColumn(name = "descuento_id"), 
+    inverseJoinColumns = @JoinColumn(name = "categoria_id"))
+    private Set<CategoriaModel> categoria;
 
     private Integer descuestoEur;
 
