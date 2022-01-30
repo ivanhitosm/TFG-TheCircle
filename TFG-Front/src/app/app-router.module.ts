@@ -6,6 +6,7 @@ import { BasicasComponent } from './lounge/pages/basicas/basicas.component';
 import { SubsComponent } from './lounge/pages/subs/subs.component';
 import { MainComponent } from './lounge/pages/main/main.component';
 import { LoginComponent } from './lounge/pages/login/login.component';
+import { PanelADMComponent } from './lounge/pages/panel-adm/panel-adm.component';
 
 const routes: Routes=[
   {
@@ -28,6 +29,10 @@ const routes: Routes=[
   {
     path: 'subs',
     component: SubsComponent,
+  },
+  {
+    path: 'paneladm',
+    component: PanelADMComponent,
   },
   {
     path: '**',

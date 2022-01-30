@@ -8,6 +8,7 @@ import { ArticlesComponent } from './pages/articles/articles.component';
 import { ComponentesModule } from '../componentes/componentes.module';
 import { SubsComponent } from './pages/subs/subs.component';
 import { LoginComponent } from './pages/login/login.component';
+import { PanelADMComponent } from './pages/panel-adm/panel-adm.component';
 
 
 
@@ -20,6 +21,7 @@ import { LoginComponent } from './pages/login/login.component';
     ArticlesComponent,
     SubsComponent,
     LoginComponent,
+    PanelADMComponent,
 
   ],
   imports: [
@@ -33,6 +35,7 @@ import { LoginComponent } from './pages/login/login.component';
     ArticlesComponent,
     SubsComponent,
     LoginComponent,
+    PanelADMComponent,
 
   ]
 })
