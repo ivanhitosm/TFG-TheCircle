@@ -65,6 +65,7 @@ export class MenuComponent implements OnInit {
       {
         label: 'FAQs',
         icon: 'pi pi-comment',
+        routerLink: 'faq'
       },
       {
         icon: 'pi pi-shopping-cart',
