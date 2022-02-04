@@ -10,6 +10,7 @@ export class PanelADMComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    
   }
 
 }

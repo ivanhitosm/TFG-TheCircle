@@ -25,6 +25,7 @@ import { FaqComponent } from './pages/faq/faq.component';
     PanelADMComponent,
     FaqComponent,
 
+
   ],
   imports: [
     CommonModule,
@@ -39,6 +40,7 @@ import { FaqComponent } from './pages/faq/faq.component';
     LoginComponent,
     PanelADMComponent,
     FaqComponent,
+
 
   ]
 })

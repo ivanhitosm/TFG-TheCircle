@@ -8,6 +8,7 @@ import { MainComponent } from './lounge/pages/main/main.component';
 import { LoginComponent } from './lounge/pages/login/login.component';
 import { PanelADMComponent } from './lounge/pages/panel-adm/panel-adm.component';
 import { FaqComponent } from './lounge/pages/faq/faq.component';
+import { SectorCircularComponent } from './componentes/sector-circular/sector-circular.component';
 
 const routes: Routes=[
   {
