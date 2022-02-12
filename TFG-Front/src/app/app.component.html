@@ -1,5 +1,23 @@
-<app-menu></app-menu>
+<!-- This is where my before login router stays
+  <div class="logedIn-route" *ngIf="login">
+  <ng-container *ngTemplateOutlet="admin"></ng-container>
+  </div>
+  
+  This is where my after login router stays
+  <div class="logedout-route" *ngIf="!login">
+    <ng-container *ngTemplateOutlet="cliente"></ng-container>
+  </div>
 
-<router-outlet></router-outlet>
+  <ng-template #cliente>
+    <app-area-lounge></app-area-lounge>
+  </ng-template>
 
-<app-footer></app-footer>
+  <ng-template #admin>
+    <app-area-admin></app-area-admin>
+  </ng-template> -->
+
+  <app-menu></app-menu>
+
+  <router-outlet></router-outlet>
+  
+  <app-footer></app-footer>

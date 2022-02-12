@@ -24,15 +24,15 @@ export class MenuComponent implements OnInit {
         items:[
           {
             label: 'Para Fumar',
-            routerLink: 'basicas'
+            routerLink: 'carta'
           },
           {
             label: 'Para Beber',
-            routerLink: 'basicas'
+            routerLink: 'carta'
           },
           {
             label: 'Para Picar',
-            routerLink: 'basicas'
+            routerLink: 'carta'
           }]
       },
       {

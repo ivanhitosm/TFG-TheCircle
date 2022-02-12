@@ -1,14 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { ArticlesComponent } from './lounge/pages/articles/articles.component';
-import { BasicasComponent } from './lounge/pages/basicas/basicas.component';
-import { SubsComponent } from './lounge/pages/subs/subs.component';
-import { MainComponent } from './lounge/pages/main/main.component';
-import { LoginComponent } from './lounge/pages/login/login.component';
-import { PanelADMComponent } from './lounge/pages/panel-adm/panel-adm.component';
-import { FaqComponent } from './lounge/pages/faq/faq.component';
-import { SectorCircularComponent } from './componentes/sector-circular/sector-circular.component';
+import { ArticlesComponent } from './area-lounge/pages/articles/articles.component';
+import { CartaComponent } from './area-lounge/pages/carta/carta.component';
+import { SubsComponent } from './area-lounge/pages/subs/subs.component';
+import { MainComponent } from './area-lounge/pages/main/main.component';
+import { LoginComponent } from './area-lounge/pages/login/login.component';
+import { PanelAdmComponent } from './area-admin/panel-adm/panel-adm.component';
+import { FaqComponent } from './area-lounge/pages/faq/faq.component';
 
 const routes: Routes=[
   {
@@ -17,8 +16,8 @@ const routes: Routes=[
     pathMatch: 'full'
   },
   {
-    path: 'basicas',
-    component: BasicasComponent,
+    path: 'carta',
+    component: CartaComponent,
   },
   {
     path: 'login',
@@ -34,7 +33,7 @@ const routes: Routes=[
   },
   {
     path: 'paneladm',
-    component: PanelADMComponent,
+    component: PanelAdmComponent,
   },
   {
     path: 'faq',

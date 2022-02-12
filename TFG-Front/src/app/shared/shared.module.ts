@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MenuComponent } from './menu/menu.component';
-
-import { PrimeNgModule } from '../prime-ng/prime-ng.module';
 import { FooterComponent } from './footer/footer.component';
+import { MenuComponent } from './menu/menu.component';
+import { PrimeNgModule } from '../prime-ng/prime-ng.module';
+
+
 
 @NgModule({
   declarations: [
-    MenuComponent,
     FooterComponent,
-    
+    MenuComponent
   ],
   exports:[
-    MenuComponent,
     FooterComponent,
+    MenuComponent
   ],
   imports: [
     CommonModule,

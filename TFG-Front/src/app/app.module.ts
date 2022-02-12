@@ -1,23 +1,21 @@
-import { LOCALE_ID, NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID, } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+
 import { AppRouterModule } from './app-router.module';
+import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-
+import { PagesModule } from './area-lounge/pages/pages.module';
+import { ComponentesModule } from './area-lounge/componentes/componentes.module';
 import { SharedModule } from './shared/shared.module';
-import { LoungeModule } from './lounge/lounge.module';
-
-import { ComponentesModule } from './componentes/componentes.module';
 
 //Cambiar el locale de la app
 import localeES from '@angular/common/locales/es';
 import { registerLocaleData } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+
 registerLocaleData(localeES);
-
-
-
 
 @NgModule({
   declarations: [
@@ -26,11 +24,11 @@ registerLocaleData(localeES);
   imports: [
     BrowserModule,
     AppRouterModule,
-    SharedModule,
-    LoungeModule,
-    NgbModule,
+    RouterModule,
     ComponentesModule,
-    
+    PagesModule,
+    NgbModule,
+    SharedModule
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'es'}
@@ -38,3 +36,4 @@ registerLocaleData(localeES);
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
