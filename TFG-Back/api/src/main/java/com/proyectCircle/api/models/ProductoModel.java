@@ -12,6 +12,10 @@ import javax.persistence.*;
 @Table(name = "producto")
 public class ProductoModel {
 
+    public ProductoModel(){
+        super();
+     }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
@@ -50,9 +54,8 @@ public class ProductoModel {
     private Integer cantidad;
     private Boolean visible;
 
-    public ProductoModel(Long id, String nombre, String descripcion, Integer precio, Integer cantidad,
+    public ProductoModel( String nombre, String descripcion, Integer precio, Integer cantidad,
             Boolean visible) {
-        this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.precio = precio;
@@ -99,5 +102,10 @@ public class ProductoModel {
     public void setVisible(Boolean visible) {
         this.visible = visible;
     }
+
+    public Long getId() {
+        return this.id;
+    }
+    
 
 }
