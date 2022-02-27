@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRouterModule } from './app-router.module';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule  } from "@angular/common/http";
 
 import { AppComponent } from './app.component';
 import { PagesModule } from './area-lounge/pages/pages.module';
@@ -28,7 +29,9 @@ registerLocaleData(localeES);
     ComponentesModule,
     PagesModule,
     NgbModule,
+    HttpClientModule,
     SharedModule
+    
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'es'}
