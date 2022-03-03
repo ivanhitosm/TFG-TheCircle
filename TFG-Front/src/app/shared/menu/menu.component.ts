@@ -11,6 +11,7 @@ export class MenuComponent implements OnInit {
 
   items: MenuItem[]=[];
   itemsM: MenuItem[]=[];
+  
 
   ngOnInit() {
     this.items = [
@@ -41,11 +42,11 @@ export class MenuComponent implements OnInit {
         items:[
           {
             label: 'SiSHAS',
-            routerLink: 'articles'
+            routerLink: 'product'
           },
           {
             label: 'TABACOS',
-            routerLink: 'articles'
+            routerLink: 'product'
           },
           {
             label: 'MANGUERAS',

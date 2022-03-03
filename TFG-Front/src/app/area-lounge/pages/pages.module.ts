@@ -8,6 +8,7 @@ import { MainComponent } from './main/main.component';
 import { SubsComponent } from './subs/subs.component';
 import { ComponentesModule } from '../componentes/componentes.module';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { ProductosComponent } from './productos/productos.component';
 
 
 
@@ -18,7 +19,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
     FaqComponent,
     LoginComponent,
     MainComponent,
-    SubsComponent
+    SubsComponent,
+    ProductosComponent
   ],
   exports:[
     ArticlesComponent,
