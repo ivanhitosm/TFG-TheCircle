@@ -9,6 +9,7 @@ import { DataService } from 'src/app/servicios/Data.service';
 export class ProductosComponent implements OnInit {
 
   productos:any = [];
+  productosrefin:any = [];
 
   constructor(private dataService: DataService) { }
 
@@ -18,6 +19,7 @@ export class ProductosComponent implements OnInit {
       console.log(data);
       this.productos=data;
     })  
+    
   }
 
 }

@@ -29,8 +29,6 @@
                     <div>
                         <div class="row g-0 row-cols-3">
                             <div  *ngFor="let producto of productos; let id = index">
-                                <div *ngIf="producto.visible" else noData>
-                                    
                                     <div class="col column-center">
                                         <div class="m-2 p-2" style="border-radius: 15px;border: 4.5px solid rgb(238,238,238) ;">
                                             <div class="view-product"><img src="assets/img/comprar-nuevo-iphone-13-pro-max-color-plata-128gb.jpg"></div>
@@ -41,14 +39,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <ng-template #noData>
-                                </ng-template>
                             </div>
-                           
-                           
                         </div>
-                    </div>
                     <nav class="d-flex float-end pt-4 pe-2">
                         <ul class="pagination">
                             <li class="page-item"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
