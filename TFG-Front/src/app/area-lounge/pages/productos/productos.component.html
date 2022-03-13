@@ -31,11 +31,11 @@
                             <div  *ngFor="let producto of productos; let id = index">
                                     <div class="col column-center">
                                         <div class="m-2 p-2" style="border-radius: 15px;border: 4.5px solid rgb(238,238,238) ;">
-                                            <div class="view-product"><img src="assets/img/comprar-nuevo-iphone-13-pro-max-color-plata-128gb.jpg"></div>
+                                            <!-- <div class="view-product"><img src="assets/img/comprar-nuevo-iphone-13-pro-max-color-plata-128gb.jpg"></div> -->
                                             <div class="p-2">
                                                 <p class="text-start fw-bold mb-1">{{producto.nombre}}</p>
                                                 <p class="mb-0" style="text-align: justify;">{{producto.descripcion}}</p>
-                                                <p class="text-center fw-bold m-0 fs-4">{{producto.precio}}</p>
+                                                <p class="text-center fw-bold m-0 fs-4">{{producto.precio}}€</p>
                                             </div>
                                         </div>
                                     </div>
@@ -43,14 +43,36 @@
                         </div>
                     <nav class="d-flex float-end pt-4 pe-2">
                         <ul class="pagination">
-                            <li class="page-item"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#">4</a></li>
-                            <li class="page-item"><a class="page-link" href="#">5</a></li>
-                            <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                          <li class="page-item"> <a class="page-link" aria-label="Previous" (click)="previousPage()">
+                              <span aria-hidden="true">
+                                «
+                              </span>
+                            </a>
+                          </li>
+                          <div *ngFor="let pagina of [].constructor(raw.totalPages); let num = index">
+                            <li class="page-item active">
+                              <a class="page-link" (click)="specificPage(num)">{{num+1}}</a>
+                            </li>
+                          </div>
+
+                          <li class="page-item">
+                            <a class="page-link" aria-label="Next" (click)="nextPage()">
+                              <span aria-hidden="true">
+                                »
+                              </span>
+                            </a>
+                          </li>
                         </ul>
+                        <div class="dropup">
+                            <button class="dropbtn">Numero de productos</button>
+                            <div class="dropup-content">
+                                <a (click)="cambiarPageSize(12)">12</a>
+                                <a (click)="cambiarPageSize(6)">6</a>
+                                <a (click)="cambiarPageSize(3)">3</a>
+                                <a (click)="cambiarPageSize(raw.totalElements)">max</a>
+                             
+                            </div>
+                          </div> 
                     </nav>
                 </div>
             </div>

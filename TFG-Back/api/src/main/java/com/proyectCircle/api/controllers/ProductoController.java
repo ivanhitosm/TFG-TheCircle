@@ -15,6 +15,7 @@ public class ProductoController {
 
   @Autowired
   private ProductoService service;
+  
 @CrossOrigin(origins = "http://localhost:4200")
   @PostMapping("/addProducto")
   public ProductoModel addProducto(@RequestBody ProductoModel producto) {
@@ -55,9 +56,8 @@ public class ProductoController {
     public Page<ProductoModel> findProductsWithPaginationAndSorting(
             @RequestParam(value="offset", defaultValue = "0") Integer offset,
             @RequestParam(value="pageSize",defaultValue = "10") Integer pageSize,
-            @RequestParam(value="field",defaultValue = "id") String field) 
-           
-            
-            {return service.findProductsWithPaginationAndSorting(offset,pageSize,field);    }
+            @RequestParam(value="field",defaultValue = "id") String field)  {
+     return service.findProductsWithPaginationAndSorting(offset,pageSize,field);
+  }
 
 }
