@@ -44,7 +44,7 @@ export class ProductosComponent implements OnInit {
            
 
             this.productosAll=result.content;
-            this.productos=limpiarNoVisibles(this.productosAll);
+            this.productos=this.limpiarNoVisibles(this.productosAll);
             this.infoPag=result.pageable;
             this.raw=result;
           },
@@ -72,15 +72,15 @@ export class ProductosComponent implements OnInit {
         this.offset=0;
         this.loadTable();
       }
+      limpiarNoVisibles(productosPag: any): any {
+        var productosLimpio: any = [];
+       productosPag.forEach((producto: { visible: any; }) => {
+         if (producto.visible) {productosLimpio.push(producto); }
+       });
+       console.log(productosLimpio);
+         return productosLimpio;
+      }
  
-}
-function limpiarNoVisibles(productosPag: any): any {
-  var productosLimpio: any = [];
- productosPag.forEach((producto: { visible: any; }) => {
-   if (producto.visible) {productosLimpio.push(producto); }
- });
- console.log(productosLimpio);
-   return productosLimpio;
 }
 
 
