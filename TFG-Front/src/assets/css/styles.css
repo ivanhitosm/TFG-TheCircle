@@ -37,8 +37,8 @@
 @media (min-width: 768px) {
   .img_banner1 {
     height: 500px;
-    opacity: 0.3;
-    background: linear-gradient(90deg, white, transparent), url("../../assets/img/BANNER.jpg") center / cover;
+    opacity: 1;
+    background: linear-gradient(white, transparent), url("../../assets/img/razer.jpg") center / cover;
   }
 }
 

@@ -21,3 +21,11 @@
   margin-top: 5%;
   margin-bottom:5%;
 }
+
+.fotoPerfil{
+  max-height: 15rem;
+  max-width: 15rem;
+
+  min-height: 10rem;
+  min-width: 10rem;
+}
