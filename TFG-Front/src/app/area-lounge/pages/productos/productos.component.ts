@@ -42,7 +42,6 @@ export class ProductosComponent implements OnInit {
               this.raw.totalPages
             );
            
-
             this.productosAll=result.content;
             this.productos=this.limpiarNoVisibles(this.productosAll);
             this.infoPag=result.pageable;
