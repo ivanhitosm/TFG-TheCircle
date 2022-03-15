@@ -68,6 +68,7 @@ public class ProductoService {
     }
 
     public Page<ProductoModel> findProductsWithPaginationAndSorting(int offset,int pageSize,String field){
+        // return repository.findAllVisible(PageRequest.of(offset, pageSize).withSort(Sort.by(field)));
        
         return repository.findAll(PageRequest.of(offset, pageSize).withSort(Sort.by(field)));
     }

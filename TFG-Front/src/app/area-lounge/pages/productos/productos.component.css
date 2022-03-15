@@ -1,44 +1,57 @@
 .view-product img {
-    height: 100%;
-    object-fit: contain;
-    object-position: center center;
-  }
-  
-  .column-center {
-    align-items: center;
-    text-align: center;
-  }
-  
-  .view-product {
-    height: 170px;
-  }
-  
-  .breadcrumb.m-0 .breadcrumb-item a {
-    color: gray;
-    text-decoration: none;
-  }
-  
-  .pagination li a {
-    color: grey;
-  }
-  
-  .page-item.active .page-link {
-    color: white;
-    background-color: grey;
-    border-color: gray;
-  }
-  
-  .page-link:hover {
-    z-index: 2;
-    color: black;
-    background-color: #e9ecef;
-    border-color: #dee2e6;
-  }
-  
-  .page-link:focus {
-    color: black;
-    box-shadow: 0px 0px 5px 1px var(--bs-gray-400);
-  }
+  height: 100%;
+  object-fit: contain;
+  object-position: center center;
+}
+
+.column-center {
+  align-items: center;
+  text-align: center;
+}
+
+.view-product {
+  height: 170px;
+}
+
+.breadcrumb.m-0 .breadcrumb-item a {
+  color: gray;
+  text-decoration: none;
+}
+
+.pagination li a {
+  color: grey;
+}
+
+.page-item.active .page-link {
+  color: white;
+  background-color: grey;
+  border-color: gray;
+}
+
+.page-link:hover {
+  z-index: 2;
+  color: black;
+  background-color: #e9ecef;
+  border-color: #dee2e6;
+}
+
+.page-link:focus {
+  color: black;
+  box-shadow: 0px 0px 5px 1px var(--bs-gray-400);
+}
+
+.borderproduct {
+  border-radius: 15px;
+  transition: transform .5s;
+  border: 4.5px solid rgb(238,238,238);
+}
+
+.borderproduct:hover {
+  border: 4.5px solid rgb(58,58,58);
+  transform: scale(1.05);
+}
+
+
  /* Dropup Button */
  .dropbtn {
   color: white;
