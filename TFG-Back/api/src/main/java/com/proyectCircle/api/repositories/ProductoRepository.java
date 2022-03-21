@@ -15,6 +15,8 @@ public interface ProductoRepository extends JpaRepository<ProductoModel, Long> {
     ProductoModel findAllByNombre(String nombre);
 
 
-    // @Query(nativeQuery = true, value="SELECT p FROM Product p WHERE visible like is true;")
-    // Page<ProductoModel> findAllVisible(PageRequest pageRequestpage);
+    @Query(nativeQuery = true, value="SELECT * FROM producto p WHERE p.visible =1")
+    Page<ProductoModel> findAllVisible(PageRequest pageRequestpage);
+
+    
 }

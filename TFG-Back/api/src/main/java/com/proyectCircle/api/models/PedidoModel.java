@@ -28,6 +28,6 @@ public class PedidoModel {
     name = "pedido_producto", 
     joinColumns = @JoinColumn(name = "pedido_id"), 
     inverseJoinColumns = @JoinColumn(name = "producto_id"))
-    private Set<ProductoModel> pedido;
+    private Set<ProductoModel> producto;
 }
 

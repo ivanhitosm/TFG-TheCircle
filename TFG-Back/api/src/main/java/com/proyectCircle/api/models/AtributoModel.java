@@ -12,6 +12,6 @@ public class AtributoModel {
     @Column(unique = true,nullable = false)
     private long id;
 
-    @ManyToMany(mappedBy = "variacion")
+    @ManyToMany(mappedBy = "atributo")
     Set<VariacionModel> variacion;
 }

@@ -16,7 +16,7 @@ public class TagModel {
     name = "producto_tag", 
     joinColumns = @JoinColumn(name = "tag_id"), 
     inverseJoinColumns = @JoinColumn(name = "producto_id"))
-    private Set<ProductoModel> tag;
+    private Set<ProductoModel> producto;
 
     @ManyToMany(mappedBy = "tag")
     private Set<DescuentoModel> descuento;

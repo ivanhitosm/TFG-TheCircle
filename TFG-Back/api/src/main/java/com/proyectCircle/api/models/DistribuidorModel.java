@@ -17,5 +17,5 @@ public class DistribuidorModel {
     name = "producto_distribuidor", 
     joinColumns = @JoinColumn(name = "distribuidor_id"), 
     inverseJoinColumns = @JoinColumn(name = "producto_id"))
-    private Set<ProductoModel> distribuidor;
+    private Set<ProductoModel> producto;
 }

@@ -6,6 +6,11 @@ import javax.persistence.*;
 @Entity
 @Table(name="descuento")
 public class DescuentoModel {
+    
+    public DescuentoModel(){
+        super();
+     }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true,nullable = false)

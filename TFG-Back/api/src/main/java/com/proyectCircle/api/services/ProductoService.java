@@ -43,7 +43,7 @@ public class ProductoService {
     }
     public ProductoModel actualizarProducto(ProductoModel producto){
         
-        ProductoModel productoExistente=repository.findById(producto.getId()).orElse(null);
+        ProductoModel productoExistente=repository.findById(producto.getId()).orElseThrow(()-> new IllegalStateException("id not found"));
         productoExistente.setNombre(producto.getNombre());
         productoExistente.setDescripcion(producto.getDescripcion());
         productoExistente.setPrecio(producto.getPrecio());
@@ -68,8 +68,8 @@ public class ProductoService {
     }
 
     public Page<ProductoModel> findProductsWithPaginationAndSorting(int offset,int pageSize,String field){
-        // return repository.findAllVisible(PageRequest.of(offset, pageSize).withSort(Sort.by(field)));
+         return repository.findAllVisible(PageRequest.of(offset, pageSize).withSort(Sort.by(field)));
        
-        return repository.findAll(PageRequest.of(offset, pageSize).withSort(Sort.by(field)));
+        //return repository.findAll(PageRequest.of(offset, pageSize).withSort(Sort.by(field)));
     }
 }

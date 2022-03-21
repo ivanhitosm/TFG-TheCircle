@@ -7,6 +7,10 @@ import javax.persistence.*;
 @Entity
 @Table(name="cliente")
 public class ClienteModel {
+    public ClienteModel(){
+        super();
+     }
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

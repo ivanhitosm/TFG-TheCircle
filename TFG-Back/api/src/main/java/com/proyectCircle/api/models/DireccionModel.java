@@ -10,6 +10,9 @@ import javax.persistence.*;
 @Entity
 @Table(name = "direccion")
 public class DireccionModel {
+    public DireccionModel(){
+        super();
+     }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
