@@ -4,6 +4,8 @@ import java.util.Set;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="variacion")
 public class VariacionModel {
@@ -13,10 +15,11 @@ public class VariacionModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true,nullable = false)
-    private long id;
+    private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "id_variacionPedido", foreignKey = @ForeignKey(name = "producto_Id"))
+    @JsonIgnore
     private ProductoModel producto;
 
     @ManyToMany
@@ -24,6 +27,7 @@ public class VariacionModel {
     name = "variacion_atributo", 
     joinColumns = @JoinColumn(name = "variacion_id"), 
     inverseJoinColumns = @JoinColumn(name = "atributo_id"))
+    
     Set<AtributoModel> atributo;
 
     private String nombre;

@@ -18,7 +18,6 @@ export class ProductosComponent implements OnInit {
   raw:  any = [];
 
   constructor(
-    private dataService: DataService,
     private _dataService: DataService
     
     ) {   }

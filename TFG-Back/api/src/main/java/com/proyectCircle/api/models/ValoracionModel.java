@@ -2,6 +2,9 @@ package com.proyectCircle.api.models;
 
 import javax.persistence.*;
 
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="valoracion")
 public class ValoracionModel {
@@ -13,12 +16,14 @@ public class ValoracionModel {
     @Column(unique = true, nullable = false)
     private long id;
 
+    
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "id_valoracionCliente", foreignKey = @ForeignKey(name = "id_valoracionCliente"))
     private ClienteModel cliente;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "id_valoracionPedido", foreignKey = @ForeignKey(name = "id_valoracionPedido"))
+    @JsonIgnore
     private ProductoModel producto;
 
     @Column(name = "Texto")
@@ -26,6 +31,15 @@ public class ValoracionModel {
     @Column(name = "Rating")
     private Integer rating;
 
+
+    public ValoracionModel(long id, ClienteModel cliente, ProductoModel producto, String texto, Integer rating) {
+        this.id = id;
+        this.cliente = cliente;
+        this.producto = producto;
+        this.texto = texto;
+        this.rating = rating;
+    }
+    
     public long getId() {
         return this.id;
     }
@@ -66,11 +80,5 @@ public class ValoracionModel {
         this.rating = rating;
     }
 
-    public ValoracionModel(long id, ClienteModel cliente, ProductoModel producto, String texto, Integer rating) {
-        this.id = id;
-        this.cliente = cliente;
-        this.producto = producto;
-        this.texto = texto;
-        this.rating = rating;
-    }
+    
 }

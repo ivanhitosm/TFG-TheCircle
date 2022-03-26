@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name="categoria")
 public class CategoriaModel {
+    
     public CategoriaModel(){
         super();
      }
@@ -16,7 +17,7 @@ public class CategoriaModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
-    private long id;
+    private Long id;
 
     
     @ManyToMany
