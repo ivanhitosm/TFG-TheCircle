@@ -4,10 +4,12 @@ import { Productos } from "../models/productos.models";
 import { Observable } from 'rxjs';
 
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
+  messageSource: any;
  
   constructor(
     private http: HttpClient,
@@ -37,6 +39,10 @@ export class DataService {
 /*-------------Barra de busqueda------------------------- */
 public busqueda(nombre: string){
   return this._http.get(this.REST_API_SERVER+"ProductoNombre/"+nombre)
+}
+
+busquedaMensaje(message: string) {
+  this.messageSource.next(message)
 }
   
 }

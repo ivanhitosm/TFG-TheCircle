@@ -16,6 +16,8 @@ export class ProductosComponent implements OnInit {
   field="id";
   infoPag: any = [];
   raw:  any = [];
+  busqueda:boolean =true;
+  value="";
 
   constructor(
     private _dataService: DataService
@@ -30,14 +32,9 @@ export class ProductosComponent implements OnInit {
     }
 
     loadTableFormSearch(){
-     // this.productos=history.state.result;
-      var productosbusqueda;
-      history.state.result.forEach((producto: any) => {
-         productosbusqueda.push(producto)
-       });
-       
-       this.productos=productosbusqueda;
-        
+      this.busqueda=false;
+      this.value= this._dataService.messageSource;
+      this.productos=history.state.result;  
       
     }
 
