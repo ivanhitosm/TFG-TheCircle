@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from 'src/app/servicios/Data.service';
 
 @Component({
@@ -7,11 +8,14 @@ import { DataService } from 'src/app/servicios/Data.service';
   styleUrls: ['./product-solo.component.css']
 })
 export class ProductSoloComponent implements OnInit {
-  id: number = history.state.id;
+  id:any = this.route.snapshot.paramMap.get('id');
   producto: any;
   idProducto: any;
 
-  constructor(private _dataService: DataService) { }
+  constructor(
+    private _dataService: DataService,
+    private route: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.loadTable();    
