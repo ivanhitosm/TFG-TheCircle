@@ -9,6 +9,7 @@ import { SubsComponent } from './subs/subs.component';
 import { ComponentesModule } from '../componentes/componentes.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ProductosComponent } from './productos/productos.component';
+import { ProductSoloComponent } from './product-solo/product-solo.component';
 
 
 
@@ -20,7 +21,8 @@ import { ProductosComponent } from './productos/productos.component';
     LoginComponent,
     MainComponent,
     SubsComponent,
-    ProductosComponent
+    ProductosComponent,
+    ProductSoloComponent
   ],
   exports:[
     ArticlesComponent,
@@ -28,7 +30,8 @@ import { ProductosComponent } from './productos/productos.component';
     FaqComponent,
     LoginComponent,
     MainComponent,
-    SubsComponent
+    SubsComponent,
+    ProductSoloComponent
   ],
   imports: [
     CommonModule,

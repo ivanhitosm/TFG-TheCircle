@@ -9,6 +9,7 @@ import { LoginComponent } from './area-lounge/pages/login/login.component';
 import { PanelAdmComponent } from './area-admin/panel-adm/panel-adm.component';
 import { FaqComponent } from './area-lounge/pages/faq/faq.component';
 import { ProductosComponent } from './area-lounge/pages/productos/productos.component';
+import { ProductSoloComponent } from './area-lounge/pages/product-solo/product-solo.component';
 
 const routes: Routes=[
   {
@@ -43,6 +44,10 @@ const routes: Routes=[
   {
     path: 'product',
     component: ProductosComponent,
+  },
+  {
+    path: 'productSolo',
+    component: ProductSoloComponent,
   },
   {
     path: '**',
