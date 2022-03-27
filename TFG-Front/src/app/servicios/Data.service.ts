@@ -32,8 +32,8 @@ export class DataService {
     return this.http.get(this.REST_API_SERVER+"Productos/pagina/?offset="+offset+"&pageSize="+pageSize)
   }
 
-  public getUser():Observable<any>{
-    return this._http.get(this.REST_API_SERVER+"ProductoId/2")
+  public getProductoID(id: number):Observable<any>{
+    return this._http.get(this.REST_API_SERVER+"ProductoId/"+ id)
   }
 
 /*-------------Barra de busqueda------------------------- */
