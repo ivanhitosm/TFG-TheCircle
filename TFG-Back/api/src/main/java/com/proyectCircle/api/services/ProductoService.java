@@ -33,8 +33,8 @@ public class ProductoService {
     public ProductoModel getProductoById(long id){
         return repository.findById(id).orElse(null);
     }
-    public ProductoModel getProductosByNombre(String nombre){
-        return repository.findAllByNombre(nombre);
+    public List<ProductoModel> getProductosByNombre(String nombre){
+        return repository.findAllByNombreContaining(nombre);
     }
 
     public String deleteProducto (long id){

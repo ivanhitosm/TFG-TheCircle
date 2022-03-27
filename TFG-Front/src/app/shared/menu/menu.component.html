@@ -4,7 +4,7 @@
         <img src="assets/img/logo1.png" height="40" class="p-mr-2 imgMR ">
     </ng-template>
     <ng-template pTemplate="end" class="HR SearchIP ">
-        <div class="SerachTA"><input type="search" class="form-control SearchIP" placeholder="Search..." aria-label="Search">   </div>
+        <div class="SerachTA"><input #box type="search" class="form-control SearchIP" placeholder="Search..." aria-label="Search"(keydown.enter)="busqueda(box.value)">   </div>
                 
     </ng-template>
 </p-menubar>

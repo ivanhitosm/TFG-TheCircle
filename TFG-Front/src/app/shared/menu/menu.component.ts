@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
+import {Router} from "@angular/router"
+
+
+import { DataService } from 'src/app/servicios/Data.service';
 
 @Component({
   selector: 'app-menu',
@@ -11,9 +15,28 @@ export class MenuComponent implements OnInit {
 
   items: MenuItem[]=[];
   itemsM: MenuItem[]=[];
-  
+  productos:any = [];
 
-  ngOnInit() {
+ 
+  constructor( 
+    private _dataService: DataService ,
+    private router: Router
+    ) {   }
+
+  
+  busqueda(value: string){
+    this._dataService.busqueda(value).subscribe(
+      result=>{
+        this.productos=result;      
+      this.router.navigate(['product'],{state: {result}})
+      },
+      error=>{
+        console.log(error);
+      }
+    );
+  }
+  
+      ngOnInit() {
     this.items = [
       {
         icon: 'pi pi-home',
@@ -23,14 +46,6 @@ export class MenuComponent implements OnInit {
         label: 'CARTA',
         icon: 'pi pi-list',
         items:[
-          {
-            label: 'Para Fumar',
-            routerLink: 'carta'
-          },
-          {
-            label: 'Para Beber',
-            routerLink: 'carta'
-          },
           {
             label: 'Para Picar',
             routerLink: 'carta'
@@ -155,4 +170,7 @@ export class MenuComponent implements OnInit {
       }
     ];
   }
+ 
 }
+
+

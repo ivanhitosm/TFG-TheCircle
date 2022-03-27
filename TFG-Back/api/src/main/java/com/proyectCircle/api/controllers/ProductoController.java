@@ -10,9 +10,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 
-@CrossOrigin(origins = "http://localhost:8081")
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/api")
 public class ProductoController {
 
   @Autowired
@@ -40,7 +39,7 @@ public class ProductoController {
   }
 
   @GetMapping("/ProductoNombre/{nombre}")
-  public ProductoModel productosId(@PathVariable String nombre) {
+  public List<ProductoModel> productosId(@PathVariable String nombre) {
     return service.getProductosByNombre(nombre);
   }
 

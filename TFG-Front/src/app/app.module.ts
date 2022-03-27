@@ -14,6 +14,7 @@ import { SharedModule } from './shared/shared.module';
 import localeES from '@angular/common/locales/es';
 import { registerLocaleData } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 registerLocaleData(localeES);
@@ -30,7 +31,8 @@ registerLocaleData(localeES);
     PagesModule,
     NgbModule,
     HttpClientModule,
-    SharedModule
+    SharedModule,
+    BrowserAnimationsModule
     
   ],
   providers: [
