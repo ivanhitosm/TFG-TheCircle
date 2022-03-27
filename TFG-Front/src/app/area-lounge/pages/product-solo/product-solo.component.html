@@ -9,27 +9,24 @@
             <div class="row">
                 <div class="col-12 col-md-6 col-lg-6 d-md-flex d-xxl-flex justify-content-md-center align-items-md-center justify-content-xxl-center align-items-xxl-center"><img class="d-xxl-flex p-5 p-md-0" src="../../../../assets/img/productoSolo/Sin título-1.png" width="100%"></div>
                 <div class="col-md-6 align-self-center">
-                    <h3 class="pt-3 pt-md-0">Producto</h3>
+                    <h3 class="pt-3 pt-md-0">{{producto.nombre}}</h3>
                     <hr>
                     <div class="row">
                         <div class="col d-flex d-md-flex d-xxl-flex justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-xxl-center align-items-xxl-center">
-                            <h3>300€</h3>
+                            <h3>{{producto.precio}}€</h3>
                         </div>
                         <div class="col"><button class="btn btn-primary p-3" type="button"><i class="icon-basket"></i>Add to Cart</button></div>
                     </div>
                     <hr>
-                    <p class="d-xxl-flex justify-content-xxl-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec augue nunc, pretium at augue at, convallis pellentesque ipsum. Vestibulum diam risus, sagittis at fringilla at, pulvinar vel risus. Vestibulum dignissim eu nulla eu imperdiet. Morbi mollis tellus a nunc vestibulum consequat. Quisque tristique elit et nibh dapibus sodales. Nam sollicitudin a urna sed iaculis.</p>
+                    <p class="d-xxl-flex justify-content-xxl-center">{{producto.descripcion}}</p>
                     <div class="social-icons p-0"><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-instagram-outline"></i></a><a href="#"><i class="icon ion-social-whatsapp"></i></a></div>
                 </div>
             </div>
             <div class="pt-4">
                 <h3 class="pt-2 pb-2" style="background: var(--bs-gray-300);">Descripción</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec augue nunc, pretium at augue at, convallis pellentesque ipsum. Vestibulum diam risus, sagittis at fringilla at, pulvinar vel risus. Vestibulum dignissim eu nulla eu imperdiet. Morbi mollis tellus a nunc vestibulum consequat. Quisque tristique elit et nibh dapibus sodales. Nam sollicitudin a urna sed iaculis.</p>
+                <p>{{producto.descripcion}}</p>
             </div>
-            <div>
-                <h3 class="pt-2 pb-2" style="background: var(--bs-gray-300);">Especificaciones</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec augue nunc, pretium at augue at, convallis pellentesque ipsum. Vestibulum diam risus, sagittis at fringilla at, pulvinar vel risus. Vestibulum dignissim eu nulla eu imperdiet. Morbi mollis tellus a nunc vestibulum consequat. Quisque tristique elit et nibh dapibus sodales. Nam sollicitudin a urna sed iaculis.</p>
-            </div>
+
             <div>
                 <h3 class="pt-2" style="text-align: left;">Productos parecidos</h3>
                 <div class="row g-0 row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-4">

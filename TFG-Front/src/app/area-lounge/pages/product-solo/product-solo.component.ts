@@ -7,13 +7,14 @@ import { DataService } from 'src/app/servicios/Data.service';
   styleUrls: ['./product-solo.component.css']
 })
 export class ProductSoloComponent implements OnInit {
-  id: number = history.state.result;
+  id: number = history.state.id;
+  producto: any;
+  idProducto: any;
 
   constructor(private _dataService: DataService) { }
 
   ngOnInit(): void {
-    this.loadTable();
-    console.log(this.id)
+    this.loadTable();    
   }
 
   loadTable() {
@@ -21,7 +22,8 @@ export class ProductSoloComponent implements OnInit {
       .getProductoID(this.id)
       .subscribe(
         (result) => {
-          console.log(result)
+          this.producto = result;
+          this.idProducto = this.producto.id;
         },
         (error) => {
           console.log(error)
