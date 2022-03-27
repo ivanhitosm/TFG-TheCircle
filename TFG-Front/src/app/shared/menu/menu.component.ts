@@ -16,7 +16,6 @@ export class MenuComponent implements OnInit {
   items: MenuItem[]=[];
   itemsM: MenuItem[]=[];
   productos:any = [];
-
  
   constructor( 
     private _dataService: DataService ,
@@ -29,11 +28,13 @@ export class MenuComponent implements OnInit {
       result=>{
         this.productos=result;      
       this.router.navigate(['product'],{state: {result}})
+      this._dataService.messageSource=value;
       },
       error=>{
         console.log(error);
       }
     );
+   
   }
   
       ngOnInit() {
