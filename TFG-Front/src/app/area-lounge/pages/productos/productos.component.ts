@@ -23,7 +23,7 @@ export class ProductosComponent implements OnInit {
   ngOnInit() {
     //console.log(history.state.result)
     if (history.state.result) {
-      this.loadTableFormSearch();
+      this.loadTableFromSearch();
     } else {
       this.loadTable();
     }
@@ -32,7 +32,7 @@ export class ProductosComponent implements OnInit {
   linkProductoSolo() {
     this.router.navigate(['productSolo']);
   }
-  loadTableFormSearch() {
+  loadTableFromSearch() {
     this.busqueda = false;
     this.value = this._dataService.messageSource;
     this.productos = history.state.result;

@@ -1,6 +1,9 @@
 div.footr{
     background-color:#1e1e1e;
     margin:0;
+    margin-top: 7%;
+    bottom: 0;
+    width: 100%;
 }
 
 h5.h5w{
