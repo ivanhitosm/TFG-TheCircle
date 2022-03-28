@@ -47,6 +47,11 @@ public class ProductoModel {
     @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH },fetch = FetchType.LAZY)
     @JoinColumn(name = "id_variacionPedido", foreignKey = @ForeignKey(name = "id_variacionPedido" ,value =ConstraintMode.CONSTRAINT))
     private List<VariacionModel> variacion;
+
+    @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH }, fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_imagenPedido", foreignKey = @ForeignKey(name = "id_imagenPedido", value = ConstraintMode.CONSTRAINT))
+    private List<ImageModel> imagen;
+
     
     private String nombre;
     private String descripcion;
@@ -54,7 +59,7 @@ public class ProductoModel {
     private Integer cantidad;
     private Boolean visible;
 
-    public ProductoModel( String nombre, String descripcion, Integer precio, Integer cantidad,Boolean visible,MarcaModel marca,Set<CategoriaModel> categoria
+    public ProductoModel( String nombre, String descripcion, Integer precio, Integer cantidad,Boolean visible,MarcaModel marca,Set<CategoriaModel> categoria,List<ImageModel> imagen
     ) {
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -63,6 +68,7 @@ public class ProductoModel {
         this.visible = visible;
         this.marca = marca;
         this.categoria = categoria;
+        this.imagen=imagen;
     }
     public String getNombre() {
         return this.nombre;
@@ -154,6 +160,13 @@ public class ProductoModel {
     }
     public void setCategoria(Set<CategoriaModel> categoria) {
         this.categoria = categoria;
+    }
+    public List<ImageModel> getImagen() {
+        return this.imagen;
+    }
+
+    public void setImagen(List<ImageModel> imagen) {
+        this.imagen = imagen;
     }
 
 }
