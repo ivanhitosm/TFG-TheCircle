@@ -10,6 +10,7 @@ import { PanelAdmComponent } from './area-admin/panel-adm/panel-adm.component';
 import { FaqComponent } from './area-lounge/pages/faq/faq.component';
 import { ProductosComponent } from './area-lounge/pages/productos/productos.component';
 import { ProductSoloComponent } from './area-lounge/pages/product-solo/product-solo.component';
+import { ShoppingCartComponent } from './area-lounge/pages/shopping-cart/shopping-cart.component';
 
 const routes: Routes=[
   {
@@ -48,6 +49,10 @@ const routes: Routes=[
   {
     path: 'productSolo/:id',
     component: ProductSoloComponent,
+  },
+  {
+    path: 'shoppingCart',
+    component:   ShoppingCartComponent,
   },
   {
     path: '**',

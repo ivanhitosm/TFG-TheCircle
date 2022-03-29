@@ -11,6 +11,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { ProductosComponent } from './productos/productos.component';
 import { ProductSoloComponent } from './product-solo/product-solo.component';
 import { RegistroComponent } from './registro/registro.component';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 
 
 
@@ -24,7 +25,8 @@ import { RegistroComponent } from './registro/registro.component';
     SubsComponent,
     ProductosComponent,
     ProductSoloComponent,
-    RegistroComponent
+    RegistroComponent,
+    ShoppingCartComponent
   ],
   exports:[
     ArticlesComponent,
@@ -33,7 +35,8 @@ import { RegistroComponent } from './registro/registro.component';
     LoginComponent,
     MainComponent,
     SubsComponent,
-    ProductSoloComponent
+    ProductSoloComponent,
+    ShoppingCartComponent
   ],
   imports: [
     CommonModule,
