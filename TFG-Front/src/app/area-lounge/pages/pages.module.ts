@@ -10,6 +10,7 @@ import { ComponentesModule } from '../componentes/componentes.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ProductosComponent } from './productos/productos.component';
 import { ProductSoloComponent } from './product-solo/product-solo.component';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 
 
 
@@ -22,7 +23,8 @@ import { ProductSoloComponent } from './product-solo/product-solo.component';
     MainComponent,
     SubsComponent,
     ProductosComponent,
-    ProductSoloComponent
+    ProductSoloComponent,
+    ShoppingCartComponent
   ],
   exports:[
     ArticlesComponent,
@@ -31,7 +33,8 @@ import { ProductSoloComponent } from './product-solo/product-solo.component';
     LoginComponent,
     MainComponent,
     SubsComponent,
-    ProductSoloComponent
+    ProductSoloComponent,
+    ShoppingCartComponent
   ],
   imports: [
     CommonModule,

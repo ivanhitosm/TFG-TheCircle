@@ -86,7 +86,8 @@ export class MenuComponent implements OnInit {
       },
       {
         icon: 'pi pi-shopping-cart',
-        style: {'margin-left': 'auto'}
+        style: {'margin-left': 'auto'},
+        routerLink: 'shoppingCart'
       },
       {
         icon: 'pi pi-user',
@@ -114,33 +115,25 @@ export class MenuComponent implements OnInit {
         routerLink: 'main'
       },
       {
-        // label: 'CARTA',
+        label: 'CARTA',
         icon: 'pi pi-list',
         items:[
           {
-            label: 'MOVILLLLL',
-            routerLink: 'articles'
-          },
-          {
-            label: 'HOLAAAAAA',
-            routerLink: 'articles'
-          },
-          {
-            label: 'ADIOOOOOOSSS',
-            routerLink: 'articles'
+            label: 'Para Picar',
+            routerLink: 'carta'
           }]
       },
       {
-        // label: 'TIENDA',
+        label: 'TIENDA',
         icon: 'pi pi-shopping-bag',
         items:[
           {
             label: 'SiSHAS',
-            routerLink: 'articles'
+            routerLink: 'product'
           },
           {
             label: 'TABACOS',
-            routerLink: 'articles'
+            routerLink: 'product'
           },
           {
             label: 'MANGUERAS',
@@ -148,11 +141,24 @@ export class MenuComponent implements OnInit {
           }]
       },
       {
-        // label: 'FAQs',
+        label:'SUBSCRIPCIONES',
+        icon: 'pi pi-user-plus',
+        routerLink: 'subs'
+      },
+      {
+        label:'ADM',
+        icon: 'pi pi-user-plus',
+        routerLink: 'paneladm'
+      },
+      {
+        label: 'FAQs',
         icon: 'pi pi-comment',
+        routerLink: 'faq'
       },
       {
         icon: 'pi pi-shopping-cart',
+        style: {'margin-left': 'auto'},
+        routerLink: 'paneladm'
       },
       {
         icon: 'pi pi-user',
@@ -160,14 +166,16 @@ export class MenuComponent implements OnInit {
           {
             label: 'Iniciar Sesion',
             icon: 'pi pi-sign-in',
-            routerLink: 'basicas'
+            routerLink: 'login'
           },
           {
             label: 'Registrarse',
             icon: 'pi pi-user-plus',
             routerLink: 'articles',
 
-          }]
+
+          }],
+
       }
     ];
   }
