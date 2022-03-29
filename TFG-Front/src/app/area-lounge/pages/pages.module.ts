@@ -10,6 +10,7 @@ import { ComponentesModule } from '../componentes/componentes.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ProductosComponent } from './productos/productos.component';
 import { ProductSoloComponent } from './product-solo/product-solo.component';
+import { RegistroComponent } from './registro/registro.component';
 
 
 
@@ -22,7 +23,8 @@ import { ProductSoloComponent } from './product-solo/product-solo.component';
     MainComponent,
     SubsComponent,
     ProductosComponent,
-    ProductSoloComponent
+    ProductSoloComponent,
+    RegistroComponent
   ],
   exports:[
     ArticlesComponent,
