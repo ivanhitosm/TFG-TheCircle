@@ -45,7 +45,8 @@ public class ProductoService {
         
         ProductoModel productoExistente=repository.findById(producto.getId()).orElseThrow(()-> new IllegalStateException("id not found"));
         productoExistente.setNombre(producto.getNombre());
-        productoExistente.setDescripcion(producto.getDescripcion());
+        productoExistente.setDescripcionLarga(producto.getDescripcionLarga());
+        productoExistente.setDescripcionCorta(producto.getDescripcionCorta());
         productoExistente.setPrecio(producto.getPrecio());
         productoExistente.setCantidad(producto.getCantidad());
         productoExistente.setVisible(producto.getVisible());

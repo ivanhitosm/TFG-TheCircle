@@ -54,15 +54,17 @@ public class ProductoModel {
 
     
     private String nombre;
-    private String descripcion;
+    private String descripcionCorta;
+    private String descripcionLarga;
     private Integer precio;
     private Integer cantidad;
     private Boolean visible;
 
-    public ProductoModel( String nombre, String descripcion, Integer precio, Integer cantidad,Boolean visible,MarcaModel marca,Set<CategoriaModel> categoria,List<ImageModel> imagen
+    public ProductoModel( String nombre, String descripcionCorta, String descripcionLarga, Integer precio, Integer cantidad,Boolean visible,MarcaModel marca,Set<CategoriaModel> categoria,List<ImageModel> imagen
     ) {
         this.nombre = nombre;
-        this.descripcion = descripcion;
+        this.descripcionCorta = descripcionCorta;
+        this.descripcionLarga = descripcionLarga;
         this.precio = precio;
         this.cantidad = cantidad;
         this.visible = visible;
@@ -78,12 +80,19 @@ public class ProductoModel {
         this.nombre = nombre;
     }
 
-    public String getDescripcion() {
-        return this.descripcion;
+    public String getDescripcionLarga() {
+        return descripcionLarga;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setDescripcionLarga(String descripcionLarga) {
+        this.descripcionLarga = descripcionLarga;
+    }
+
+    public String getDescripcionCorta() {
+        return descripcionCorta;
+    }
+    public void setDescripcionCorta(String descripcionCorta) {
+        this.descripcionCorta = descripcionCorta;
     }
 
     public Integer getPrecio() {
