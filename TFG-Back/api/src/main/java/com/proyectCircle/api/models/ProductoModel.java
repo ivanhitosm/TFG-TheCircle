@@ -47,22 +47,30 @@ public class ProductoModel {
     @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH },fetch = FetchType.LAZY)
     @JoinColumn(name = "id_variacionPedido", foreignKey = @ForeignKey(name = "id_variacionPedido" ,value =ConstraintMode.CONSTRAINT))
     private List<VariacionModel> variacion;
+
+    @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH }, fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_imagenPedido", foreignKey = @ForeignKey(name = "id_imagenPedido", value = ConstraintMode.CONSTRAINT))
+    private List<ImageModel> imagen;
+
     
     private String nombre;
-    private String descripcion;
+    private String descripcionCorta;
+    private String descripcionLarga;
     private Integer precio;
     private Integer cantidad;
     private Boolean visible;
 
-    public ProductoModel( String nombre, String descripcion, Integer precio, Integer cantidad,Boolean visible,MarcaModel marca,Set<CategoriaModel> categoria
+    public ProductoModel( String nombre, String descripcionCorta, String descripcionLarga, Integer precio, Integer cantidad,Boolean visible,MarcaModel marca,Set<CategoriaModel> categoria,List<ImageModel> imagen
     ) {
         this.nombre = nombre;
-        this.descripcion = descripcion;
+        this.descripcionCorta = descripcionCorta;
+        this.descripcionLarga = descripcionLarga;
         this.precio = precio;
         this.cantidad = cantidad;
         this.visible = visible;
         this.marca = marca;
         this.categoria = categoria;
+        this.imagen=imagen;
     }
     public String getNombre() {
         return this.nombre;
@@ -72,12 +80,19 @@ public class ProductoModel {
         this.nombre = nombre;
     }
 
-    public String getDescripcion() {
-        return this.descripcion;
+    public String getDescripcionLarga() {
+        return descripcionLarga;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setDescripcionLarga(String descripcionLarga) {
+        this.descripcionLarga = descripcionLarga;
+    }
+
+    public String getDescripcionCorta() {
+        return descripcionCorta;
+    }
+    public void setDescripcionCorta(String descripcionCorta) {
+        this.descripcionCorta = descripcionCorta;
     }
 
     public Integer getPrecio() {
@@ -154,6 +169,13 @@ public class ProductoModel {
     }
     public void setCategoria(Set<CategoriaModel> categoria) {
         this.categoria = categoria;
+    }
+    public List<ImageModel> getImagen() {
+        return this.imagen;
+    }
+
+    public void setImagen(List<ImageModel> imagen) {
+        this.imagen = imagen;
     }
 
 }

@@ -30,7 +30,7 @@ export class ProductosComponent implements OnInit {
   }
 
   linkProductoSolo(id: any) {
-    this.router.navigate(['productSolo'], {state: {id}});
+    this.router.navigate(['productSolo',id]);
   }
   loadTableFromSearch() {
     this.busqueda = false;

@@ -1,6 +1,7 @@
 package com.proyectCircle.api.models;
 
 import javax.persistence.*;
+
 @Entity
 @Table(name = "image_table")
 public class ImageModel {
@@ -25,6 +26,11 @@ public class ImageModel {
     // which is more than the default length for picByte column
     @Column(name = "picByte", length = 1000)
     private byte[] picByte;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_imagenPedido", foreignKey = @ForeignKey(name = "producto_Id"))
+    private ProductoModel producto;
+    
     public String getName() {
         return name;
     }

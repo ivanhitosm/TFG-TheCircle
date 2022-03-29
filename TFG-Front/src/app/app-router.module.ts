@@ -47,7 +47,7 @@ const routes: Routes=[
     component: ProductosComponent,
   },
   {
-    path: 'productSolo',
+    path: 'productSolo/:id',
     component: ProductSoloComponent,
   },
   {
