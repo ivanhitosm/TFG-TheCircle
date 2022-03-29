@@ -100,7 +100,7 @@ export class MenuComponent implements OnInit {
           {
             label: 'Registrarse',
             icon: 'pi pi-user-plus',
-            routerLink: 'articles',
+            routerLink: 'registro',
 
 
           }],

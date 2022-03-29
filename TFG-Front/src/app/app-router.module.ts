@@ -11,6 +11,7 @@ import { FaqComponent } from './area-lounge/pages/faq/faq.component';
 import { ProductosComponent } from './area-lounge/pages/productos/productos.component';
 import { ProductSoloComponent } from './area-lounge/pages/product-solo/product-solo.component';
 import { ShoppingCartComponent } from './area-lounge/pages/shopping-cart/shopping-cart.component';
+import { RegistroComponent } from './area-lounge/pages/registro/registro.component';
 
 const routes: Routes=[
   {
@@ -25,6 +26,10 @@ const routes: Routes=[
   {
     path: 'login',
     component: LoginComponent,
+  },
+  {
+    path: 'registro',
+    component: RegistroComponent,
   },
   {
     path: 'articles',
