@@ -56,11 +56,11 @@ public class ProductoModel {
     private String nombre;
     private String descripcionCorta;
     private String descripcionLarga;
-    private Integer precio;
+    private Float precio;
     private Integer cantidad;
     private Boolean visible;
 
-    public ProductoModel( String nombre, String descripcionCorta, String descripcionLarga, Integer precio, Integer cantidad,Boolean visible,MarcaModel marca,Set<CategoriaModel> categoria,List<ImageModel> imagen
+    public ProductoModel( String nombre, String descripcionCorta, String descripcionLarga, Float precio, Integer cantidad,Boolean visible,MarcaModel marca,Set<CategoriaModel> categoria,List<ImageModel> imagen
     ) {
         this.nombre = nombre;
         this.descripcionCorta = descripcionCorta;
@@ -95,11 +95,11 @@ public class ProductoModel {
         this.descripcionCorta = descripcionCorta;
     }
 
-    public Integer getPrecio() {
+    public Float getPrecio() {
         return this.precio;
     }
 
-    public void setPrecio(Integer precio) {
+    public void setPrecio(Float precio) {
         this.precio = precio;
     }
 
