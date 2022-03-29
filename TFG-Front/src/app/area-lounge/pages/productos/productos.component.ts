@@ -11,7 +11,7 @@ export class ProductosComponent implements OnInit {
   productos: any = [];
 
   offset = 0;
-  pageSize = 3;
+  pageSize = 6;
   field = 'id';
   infoPag: any = [];
   raw: any = [];

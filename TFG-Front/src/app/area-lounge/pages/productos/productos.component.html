@@ -64,14 +64,14 @@
                             <div  *ngFor="let producto of productos; let id = index">
                                     <div class="col column-center">
                                         <div class="m-2 p-2" style="border-radius: 15px;border: 4.5px solid rgb(238,238,238) ;">
-                                            <div class="view-product"><img src="assets/img/comprar-nuevo-iphone-13-pro-max-color-plata-128gb.jpg">
+                                            <div class="view-product"><img src="assets/img/comprar-nuevo-iphone-13-pro-max-color-plata-128gb.jpg"  (click)="linkProductoSolo(producto.id)">
                                                 <a ></a>
                                             </div>
                                             <div class="p-2">
                                                 <p class="text-start fw-bold mb-1">{{producto.nombre}}</p>
                                                 <p class="mb-0" style="text-align: justify;">{{producto.descripcion}}</p>
                                                 <p class="text-center fw-bold m-0 fs-4">{{producto.precio}}€</p>
-                                                <button class="btn btn-dark" (click)="linkProductoSolo(producto.id)">Product</button>
+                                               
                                             </div>
                                         </div>
                                     </div>
@@ -104,7 +104,6 @@
                             <div class="dropup-content">
                                 <a (click)="cambiarPageSize(12)">12</a>
                                 <a (click)="cambiarPageSize(6)">6</a>
-                                <a (click)="cambiarPageSize(3)">3</a>
                                 <a (click)="cambiarPageSize(raw.totalElements)">max</a>
                              
                             </div>
