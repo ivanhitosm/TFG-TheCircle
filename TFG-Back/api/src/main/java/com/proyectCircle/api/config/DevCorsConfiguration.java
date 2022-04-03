@@ -10,6 +10,6 @@ public class DevCorsConfiguration implements WebMvcConfigurer {
  
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("http://localhost:4200/**").allowedMethods("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS");
+        registry.addMapping("/**");
     }
 }

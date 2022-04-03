@@ -68,9 +68,14 @@ public class ProductoService {
         return repository.findAll(PageRequest.of(offset, pageSize));
     }
 
-    public Page<ProductoModel> findProductsWithPaginationAndSorting(int offset,int pageSize,String field){
+    public Page<ProductoModel> findProductsWithPaginationAndSortingVisible(int offset,int pageSize,String field){
          return repository.findAllVisible(PageRequest.of(offset, pageSize).withSort(Sort.by(field)));
        
         //return repository.findAll(PageRequest.of(offset, pageSize).withSort(Sort.by(field)));
     }
+    public Page<ProductoModel> findProductsWithPaginationAndSorting(int offset,int pageSize,String field){
+       // return repository.findAllVisible(PageRequest.of(offset, pageSize).withSort(Sort.by(field)));
+      
+       return repository.findAll(PageRequest.of(offset, pageSize).withSort(Sort.by(field)));
+   }
 }

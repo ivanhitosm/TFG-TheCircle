@@ -10,7 +10,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 
-@CrossOrigin(origins = "http://localhost:4200")
+
 @RestController
 public class ProductoController {
 
@@ -54,6 +54,13 @@ public class ProductoController {
   }
 
   @GetMapping("/Productos/pagina/")
+    public Page<ProductoModel> findProductsWithPaginationAndSortingVisible(
+            @RequestParam(value="offset", defaultValue = "0") Integer offset,
+            @RequestParam(value="pageSize",defaultValue = "10") Integer pageSize,
+            @RequestParam(value="field",defaultValue = "id") String field)  {
+     return service.findProductsWithPaginationAndSortingVisible(offset,pageSize,field);
+  }
+  @GetMapping("/Productos/paginaAll/")
     public Page<ProductoModel> findProductsWithPaginationAndSorting(
             @RequestParam(value="offset", defaultValue = "0") Integer offset,
             @RequestParam(value="pageSize",defaultValue = "10") Integer pageSize,
