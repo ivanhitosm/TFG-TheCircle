@@ -9,5 +9,5 @@ export interface Productos{
     marca:string 
     categoria:string 
     distribuidor:string 
-    Tag:string
+    Tag:string 
 }

@@ -1,20 +1,42 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PanelAdmComponent } from './panel-adm/panel-adm.component';
-import { EdicionProductoComponent } from './edicion-producto/edicion-producto.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTableModule} from '@angular/material/table';
+import { NgModule } from '@angular/core';
+import { ReactiveFormsModule,FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
+import { AppRouterModule } from '../app-router.module';
 
+
+import { PanelAdmComponent } from './panel-adm.component';
+
+import { AreaAdmComponent } from "./area-adm.component";
 
 
 @NgModule({
   declarations: [
     PanelAdmComponent,
-    EdicionProductoComponent
+
+    AreaAdmComponent
   ],
   exports:[
     PanelAdmComponent,
+
+    AreaAdmComponent
+    
   ],
   imports: [
-    CommonModule
+    AppRouterModule,
+    RouterModule,
+    CommonModule,
+    MatTableModule,    
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    BrowserModule,
+    
+    
+    
   ]
 })
 export class AreaAdminModule { }

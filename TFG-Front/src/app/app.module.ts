@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { PagesModule } from './area-lounge/pages/pages.module';
 import { ComponentesModule } from './area-lounge/componentes/componentes.module';
 import { SharedModule } from './shared/shared.module';
+import { AreaAdminModule } from "./area-admin/area-admin.module";
 
 //Cambiar el locale de la app
 import localeES from '@angular/common/locales/es';
@@ -21,7 +22,7 @@ registerLocaleData(localeES);
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,7 +33,9 @@ registerLocaleData(localeES);
     NgbModule,
     HttpClientModule,
     SharedModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AreaAdminModule,
+    
     
   ],
   providers: [

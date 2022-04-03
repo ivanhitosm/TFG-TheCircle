@@ -12,7 +12,6 @@ export class DataService {
   messageSource: any;
  
   constructor(
-    private http: HttpClient,
     public _http:HttpClient
     
     ) { }
@@ -22,14 +21,14 @@ export class DataService {
   productos:Productos[]=[];
  /*PETICIONES Productos */
   public getProductos(){
-    return this.http.get(this.REST_API_SERVER+"Productos");
+    return this._http.get(this.REST_API_SERVER+"Productos");
   }
   public getProductosPag(offset:number,pageSize:number,field:string ):Observable<any>{
-    return this.http.get(this.REST_API_SERVER+"Productos/pagina/?offset="+offset+"&pageSize="+pageSize+"&field="+field)
+    return this._http.get(this.REST_API_SERVER+"Productos/pagina/?offset="+offset+"&pageSize="+pageSize+"&field="+field)
     
   }
   public getPag(offset:number,pageSize:number ){
-    return this.http.get(this.REST_API_SERVER+"Productos/pagina/?offset="+offset+"&pageSize="+pageSize)
+    return this._http.get(this.REST_API_SERVER+"Productos/pagina/?offset="+offset+"&pageSize="+pageSize)
   }
 
   public getProductoID(id: number):Observable<any>{
@@ -44,7 +43,15 @@ public busqueda(nombre: string){
 busquedaMensaje(message: string) {
   this.messageSource.next(message)
 }
+/*-------------------listaproductos------------------------------ */
+public getProductosPagAll(offset:number,pageSize:number,field:string ):Observable<any>{
+  return this._http.get(this.REST_API_SERVER+"Productos/paginaAll/?offset="+offset+"&pageSize="+pageSize+"&field="+field)
   
+}
+
+
+
+
 }
 /*
 implementacion
