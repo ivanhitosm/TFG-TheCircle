@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component } from '@angular/core';
+
+import { LoginService } from 'src/app/servicios/login.service';
 
 @Component({
   selector: 'app-login',
@@ -8,10 +9,15 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent{
 
-  constructor(private router: Router) { }
+  constructor(private loginService:LoginService) { }
 
   
-  link() {
-    this.router.navigate(['registro']);
+  
+  login(){
+    this.loginService.toggleLogin();
+
   }
+  check(){
+    this.loginService.setlogged();
+}
 }

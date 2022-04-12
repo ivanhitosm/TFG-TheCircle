@@ -4,6 +4,7 @@ import {Router} from "@angular/router"
 
 
 import { DataService } from 'src/app/servicios/Data.service';
+import { LoginService } from 'src/app/servicios/login.service';
 
 @Component({
   selector: 'app-menu',
@@ -11,17 +12,19 @@ import { DataService } from 'src/app/servicios/Data.service';
   styleUrls: ['./menu.component.css'],
 
 })
-export class MenuComponent implements OnInit {
+export class MenuComponent implements OnInit{
 
   items: MenuItem[]=[];
   itemsM: MenuItem[]=[];
   productos:any = [];
+  login:boolean | undefined;
  
   constructor( 
     private _dataService: DataService ,
-    private router: Router
-    ) {   }
-
+    private router: Router,
+    private _logingService:LoginService,
+    ) {
+    }
   
   busqueda(value: string){
     this._dataService.busqueda(value).subscribe(
@@ -34,10 +37,154 @@ export class MenuComponent implements OnInit {
         console.log(error);
       }
     );
-   
   }
-  
+     
       ngOnInit() {
+        this._logingService.logged.subscribe((islogged) => {
+          this.login = islogged;
+           console.log('logged', this.login);
+           if(this.login){
+            this.loginOn();
+          }else{
+            this.loginOff();
+          }
+       });
+      }
+      
+      loginOff(){
+        this.items = [
+          {
+            icon: 'pi pi-home',
+            routerLink: 'main'
+          },
+          {
+            label: 'CARTA',
+            icon: 'pi pi-list',
+            items:[
+              {
+                label: 'Para Picar',
+                routerLink: 'carta'
+              }]
+          },
+          {
+            label: 'TIENDA',
+            icon: 'pi pi-shopping-bag',
+            items:[
+              {
+                label: 'SiSHAS',
+                routerLink: 'product'
+              },
+              {
+                label: 'TABACOS',
+                routerLink: 'product'
+              },
+              {
+                label: 'MANGUERAS',
+                routerLink: 'articles'
+              }]
+          },
+          {
+            label:'SUBSCRIPCIONES',
+            icon: 'pi pi-user-plus',
+            routerLink: 'subs'
+          },
+                    
+          {
+            label: 'FAQs',
+            icon: 'pi pi-comment',
+            routerLink: 'faq'
+          },
+          {
+            icon: 'pi pi-shopping-cart',
+            style: {'margin-left': 'auto'},
+            routerLink: 'shoppingCart'
+          },
+          {
+            icon: 'pi pi-user',
+            items:[
+              {
+                label: 'Iniciar Sesion',
+                icon: 'pi pi-sign-in',
+                routerLink: 'login'
+              },
+              {
+                label: 'Registrarse',
+                icon: 'pi pi-user-plus',
+                routerLink: 'registro',
+    
+    
+              }],
+    
+          }
+        ];
+    
+        this.itemsM = [
+          {
+            // label:'INICIO',
+            icon: 'pi pi-home',
+            routerLink: 'main'
+          },
+          {
+            label: 'CARTA',
+            icon: 'pi pi-list',
+            items:[
+              {
+                label: 'Para Picar',
+                routerLink: 'carta'
+              }]
+          },
+          {
+            label: 'TIENDA',
+            icon: 'pi pi-shopping-bag',
+            items:[
+              {
+                label: 'SiSHAS',
+                routerLink: 'product'
+              },
+              {
+                label: 'TABACOS',
+                routerLink: 'product'
+              },
+              {
+                label: 'MANGUERAS',
+                routerLink: 'articles'
+              }]
+          },
+          {
+            label:'SUBSCRIPCIONES',
+            icon: 'pi pi-user-plus',
+            routerLink: 'subs'
+          },
+          {
+            label: 'FAQs',
+            icon: 'pi pi-comment',
+            routerLink: 'faq'
+          },
+          {
+            icon: 'pi pi-shopping-cart',
+            style: {'margin-left': 'auto'},
+            routerLink: 'areaAdm'
+          },
+          {
+            icon: 'pi pi-user',
+            items:[
+              {
+                label: 'Iniciar Sesion',
+                icon: 'pi pi-sign-in',
+                routerLink: 'login'
+              },
+              {
+                label: 'Registrarse',
+                icon: 'pi pi-user-plus',
+                routerLink: 'articles',
+    
+    
+              }],
+    
+          }
+        ];
+      }
+      loginOn(){
     this.items = [
       {
         icon: 'pi pi-home',
@@ -77,8 +224,23 @@ export class MenuComponent implements OnInit {
       {
         label:'ADM',
         icon: 'pi pi-user-plus',
-        routerLink: 'paneladm'
+        routerLink: 'areaAdm',
+        items:[
+          {
+            label: 'SiSHAS',
+            routerLink: 'add'
+          },
+          {
+            label: 'TABACOS',
+            routerLink: 'edit/:id'
+          },
+          {
+            label: 'MANGUERAS',
+            routerLink: 'articles'
+          }]
+        
       },
+      
       {
         label: 'FAQs',
         icon: 'pi pi-comment',
@@ -148,7 +310,7 @@ export class MenuComponent implements OnInit {
       {
         label:'ADM',
         icon: 'pi pi-user-plus',
-        routerLink: 'paneladm'
+        routerLink: 'areaAdm'
       },
       {
         label: 'FAQs',
@@ -158,7 +320,7 @@ export class MenuComponent implements OnInit {
       {
         icon: 'pi pi-shopping-cart',
         style: {'margin-left': 'auto'},
-        routerLink: 'paneladm'
+        routerLink: 'areaAdm'
       },
       {
         icon: 'pi pi-user',
