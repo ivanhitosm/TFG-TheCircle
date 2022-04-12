@@ -1,16 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ProductosComponent } from 'src/app/area-lounge/pages/productos/productos.component';
 import { DataService } from 'src/app/servicios/Data.service';
 
 // import { Productos } from "../../models/productos.models";
 
 @Component({
-  selector: 'panel-adm',
-  templateUrl: './panel-adm.component.html',
-  styleUrls: ['./panel-adm.component.css','../../assets/fonts/font-awesome.min.css']
+  selector: 'app-tabla-adm',
+  templateUrl: './tabla-adm.component.html',
+  styleUrls: [
+    './tabla-adm.component.css',
+    '../../../../assets/fonts/font-awesome.min.css',
+  ],
 })
-export class PanelAdmComponent implements OnInit {
+export class TablaAdmComponent implements OnInit {
   productos: any[] | undefined;
 
   offset = 0;
@@ -20,12 +23,16 @@ export class PanelAdmComponent implements OnInit {
   raw: any = [];
   busqueda: boolean = true;
   value = '';
-  dataSource =ProductosComponent;
-  constructor(private _dataService: DataService, private router: Router) {}
+  dataSource = ProductosComponent;
+  constructor(
+    private _dataService: DataService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     //console.log(history.state.result)
-      this.loadTable();
+    this.loadTable();
   }
   loadTable() {
     this._dataService
@@ -73,10 +80,17 @@ export class PanelAdmComponent implements OnInit {
     this.offset = 0;
     this.loadTable();
   }
-  link(id: any) {
-   
-    this.router.navigate(['EdicionProducto/'+id]);
+  link(id?: number) {
+    if (id) {
+      this.router.navigate(['./edit/' + id], {
+        relativeTo: this.activatedRoute,
+      });
+      console.log('navegar con id:'+id);
+    } else {
+      this.router.navigate(['./add'], {
+         relativeTo: this.activatedRoute 
+        });
+      console.log('navegar sin id');
+    }
   }
- 
-
 }

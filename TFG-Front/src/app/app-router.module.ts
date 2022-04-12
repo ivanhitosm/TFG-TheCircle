@@ -11,11 +11,12 @@ import { ProductosComponent } from './area-lounge/pages/productos/productos.comp
 import { ProductSoloComponent } from './area-lounge/pages/product-solo/product-solo.component';
 import { ShoppingCartComponent } from './area-lounge/pages/shopping-cart/shopping-cart.component';
 import { RegistroComponent } from './area-lounge/pages/registro/registro.component';
-// import { AddEditComponent } from './area-admin/add-edit.component';
-
 import { AreaAdmComponent } from "./area-admin/area-adm.component";
 import { CommonModule } from "@angular/common";
-import { PanelAdmComponent } from './area-admin/panel-adm.component';
+import { TablaAdmComponent } from './area-admin/pages/tabla-admin/tabla-adm.component';
+import { EdicionProductoComponent } from './area-admin/pages/edicion-producto/edicion-producto.component';
+
+
 const routes: Routes=[
   {
     path: '',
@@ -43,13 +44,13 @@ const routes: Routes=[
     component: SubsComponent,
   },
   {
-    path: 'paneladm',
+    path: 'areaAdm',
     component: AreaAdmComponent,
     children: [
-      { path: '',
-       component: PanelAdmComponent },
-      // { path: 'item/:id',
-      //  component: AddEditComponent }
+        { path: '', component: TablaAdmComponent , pathMatch: 'full'},
+        { path: 'add', component: EdicionProductoComponent },
+        { path: 'edit/:id', component: EdicionProductoComponent },
+        { path: 'view/:id', component: EdicionProductoComponent }
     ]
   },
   {

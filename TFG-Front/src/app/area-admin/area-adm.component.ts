@@ -31,7 +31,6 @@ export class AreaAdmComponent implements OnInit {
      ) {}
 
   ngOnInit() {
-    //console.log(history.state.result)
       this.loadTable();
   }
   loadTable() {

@@ -3,7 +3,7 @@
             <div class="card shadow mt-2 mb-2">
                 <div class="card-header py-3 d-flex justify-content-between">
                     <p class="text-secondary m-0 fw-bold">Productos</p>
-                    <button class="btn btn-warning " type="button"><i class="fa fa-plus"></i></button>
+                    <button class="btn btn-warning " type="button" (click)="link()"><i class="fa fa-plus"></i></button>
                 </div>
                 <div class="card-body">
                     <div class="row">
@@ -42,8 +42,8 @@
                                     <td><span>{{ producto.visible == true ? 'Visible' : 'No Visible' }}</span></td>
                                     <td class="text-center">
                                         <div class="btn-group" role="group">
-                                            <button class="btn btn-success" type="button"><i class="fa fa-eye"  (click)="link(producto.id)"></i></button>
-                                            <button class="btn btn-warning" type="button"><i class="fa fa-edit" style="color: rgb(255,255,255);"></i></button>
+                                            <button class="btn btn-success" type="button"><i class="fa fa-eye" routerLink="./view/{{producto.id}}"></i></button>
+                                            <button class="btn btn-warning" type="button"><i class="fa fa-edit" style="color: rgb(255,255,255);" routerLink="./edit/{{producto.id}}"></i></button>
                                             <button class="btn btn-danger" type="button"><i class="fa fa-trash"></i></button>
                                         </div>
                                     </td>

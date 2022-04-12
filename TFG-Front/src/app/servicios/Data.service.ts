@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Productos } from "../models/productos.models";
 import { Observable } from 'rxjs';
 
@@ -17,7 +17,6 @@ export class DataService {
     ) { }
   
   private REST_API_SERVER = "http://localhost:6868/";
-  private params = new HttpParams({fromString: 'orderBy="$key"&limitToFirst=1'});
   productos:Productos[]=[];
  /*PETICIONES Productos */
   public getProductos(){
@@ -48,8 +47,12 @@ public getProductosPagAll(offset:number,pageSize:number,field:string ):Observabl
   return this._http.get(this.REST_API_SERVER+"Productos/paginaAll/?offset="+offset+"&pageSize="+pageSize+"&field="+field)
   
 }
-
-
+public postProducto(form: any){
+  return this._http.post(this.REST_API_SERVER+"addProducto",form)
+}
+public updateProducto(id: any, form: any){
+  return this._http.put(this.REST_API_SERVER+"updateProducto",id,form)
+}
 
 
 }
