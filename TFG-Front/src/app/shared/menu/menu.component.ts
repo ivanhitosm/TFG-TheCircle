@@ -30,8 +30,9 @@ export class MenuComponent implements OnInit{
     this._dataService.busqueda(value).subscribe(
       result=>{
         this.productos=result;      
-      this.router.navigate(['product'],{state: {result}})
       this._dataService.messageSource=value;
+      this.router.navigate(['product'],{state: {result}})
+      console.log("busqueda")
       },
       error=>{
         console.log(error);

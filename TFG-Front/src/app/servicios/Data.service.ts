@@ -34,14 +34,6 @@ export class DataService {
     return this._http.get(this.REST_API_SERVER+"ProductoId/"+ id)
   }
 
-/*-------------Barra de busqueda------------------------- */
-public busqueda(nombre: string){
-  return this._http.get(this.REST_API_SERVER+"ProductoNombre/"+nombre)
-}
-
-busquedaMensaje(message: string) {
-  this.messageSource.next(message)
-}
 /*-------------------listaproductos------------------------------ */
 public getProductosPagAll(offset:number,pageSize:number,field:string ):Observable<any>{
   return this._http.get(this.REST_API_SERVER+"Productos/paginaAll/?offset="+offset+"&pageSize="+pageSize+"&field="+field)
@@ -50,9 +42,22 @@ public getProductosPagAll(offset:number,pageSize:number,field:string ):Observabl
 public postProducto(form: any){
   return this._http.post(this.REST_API_SERVER+"addProducto",form)
 }
-public updateProducto(id: any, form: any){
-  return this._http.put(this.REST_API_SERVER+"updateProducto",id,form)
+public updateProducto(form: any){
+  return this._http.put(this.REST_API_SERVER+"updateProducto",form)
 }
+public deleteProducto(id: number){
+  return this._http.delete(this.REST_API_SERVER+"delete/"+ id)
+}
+/*-------------Barra de busqueda------------------------- */
+public busqueda(nombre: string){
+  return this._http.get(this.REST_API_SERVER+"ProductoNombre/"+nombre)
+}
+
+busquedaMensaje(message: string) {
+  this.messageSource.next(message)
+}
+
+
 
 
 }

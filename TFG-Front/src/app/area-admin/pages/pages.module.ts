@@ -4,7 +4,7 @@ import { SharedModule } from "primeng/api";
 import { ComponentesModule } from "src/app/area-lounge/componentes/componentes.module";
 import { EdicionProductoComponent } from "./edicion-producto/edicion-producto.component";
 import { TablaAdmComponent } from "./tabla-admin/tabla-adm.component";
-
+import {ConfirmPopupModule} from 'primeng/confirmpopup';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule} from '@angular/material/table';
 
@@ -25,6 +25,7 @@ import { RouterModule } from '@angular/router';
     EdicionProductoComponent
   ],
   imports: [
+    ConfirmPopupModule,
     CommonModule,
     ComponentesModule,
     SharedModule,

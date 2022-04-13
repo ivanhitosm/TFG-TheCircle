@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ProductosComponent } from 'src/app/area-lounge/pages/productos/productos.component';
+import { AlertService } from 'src/app/servicios/alert.service';
 import { DataService } from 'src/app/servicios/Data.service';
 
 // import { Productos } from "../../models/productos.models";
@@ -17,22 +18,51 @@ export class TablaAdmComponent implements OnInit {
   productos: any[] | undefined;
 
   offset = 0;
-  pageSize = 6;
+  pageSize = 10;
   field = 'id';
   infoPag: any = [];
   raw: any = [];
   busqueda: boolean = true;
   value = '';
+  page=0;
+  totalPages=0;
   dataSource = ProductosComponent;
   constructor(
     private _dataService: DataService,
     private activatedRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private alertService: AlertService
   ) {}
 
   ngOnInit() {
     //console.log(history.state.result)
     this.loadTable();
+  }
+  borrarProducto(id:number){
+    if (window.confirm('Estas seguro?')) {
+       this._dataService.deleteProducto(id).subscribe({
+        next: (result) => {
+          this.alertService.success('Producto '+result+' deleted', {
+            keepAfterRouteChange: true,
+          });
+          //this.router.navigate(['../'], { relativeTo: this.activatedRoute });
+          this.loadTable();
+        },
+        error: (error: any) => {
+          this.alertService.error(error);
+          
+        },
+      });
+      
+      //.subscribe(
+      //   (result) => {
+      //     console.log(result)
+      //     this.loadTable();
+      //   }
+      // );
+      // console.log("producto con id: "+id+" borrado");
+     
+    }
   }
   loadTable() {
     this._dataService
@@ -53,6 +83,8 @@ export class TablaAdmComponent implements OnInit {
           this.productos = result.content;
           this.infoPag = result.pageable;
           this.raw = result;
+          this.totalPages=result.totalPages
+          this.page=result.number+1;
         },
         (error) => {
           console.log(error);
@@ -80,17 +112,6 @@ export class TablaAdmComponent implements OnInit {
     this.offset = 0;
     this.loadTable();
   }
-  link(id?: number) {
-    if (id) {
-      this.router.navigate(['./edit/' + id], {
-        relativeTo: this.activatedRoute,
-      });
-      console.log('navegar con id:'+id);
-    } else {
-      this.router.navigate(['./add'], {
-         relativeTo: this.activatedRoute 
-        });
-      console.log('navegar sin id');
-    }
-  }
+  
+ 
 }

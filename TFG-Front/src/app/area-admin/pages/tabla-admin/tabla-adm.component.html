@@ -3,16 +3,18 @@
             <div class="card shadow mt-2 mb-2">
                 <div class="card-header py-3 d-flex justify-content-between">
                     <p class="text-secondary m-0 fw-bold">Productos</p>
-                    <button class="btn btn-warning " type="button" (click)="link()"><i class="fa fa-plus"></i></button>
+                    <button class="btn btn-warning " type="button" routerLink="./add"><i class="fa fa-plus"></i></button>
+                   
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-md-6 text-nowrap">
+                        <div class="col-md-6 text-nowrap"> 
                             <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"><label class="form-label">Ver&nbsp;<select class="d-inline-block form-select form-select-sm">
-                                        <option value="10" selected="">10</option>
-                                        <option value="25">25</option>
-                                        <option value="50">50</option>
-                                        <option value="100">100</option>
+                                        <option (click)="cambiarPageSize(10)">10 </option>
+                                        <option (click)="cambiarPageSize(20)">20 </option>
+                                        <option (click)="cambiarPageSize(40)">40 </option>
+                                        <option (click)="cambiarPageSize(100)">100 </option>
+                                        
                                     </select>&nbsp;</label></div>
                         </div>
                         <div class="col-md-6">
@@ -44,7 +46,7 @@
                                         <div class="btn-group" role="group">
                                             <button class="btn btn-success" type="button"><i class="fa fa-eye" routerLink="./view/{{producto.id}}"></i></button>
                                             <button class="btn btn-warning" type="button"><i class="fa fa-edit" style="color: rgb(255,255,255);" routerLink="./edit/{{producto.id}}"></i></button>
-                                            <button class="btn btn-danger" type="button"><i class="fa fa-trash"></i></button>
+                                            <button class="btn btn-danger" type="button"(click)="borrarProducto(producto.id)"><i class="fa fa-trash" ></i></button>
                                         </div>
                                     </td>
                                 </tr>
@@ -63,16 +65,24 @@
                     </div>
                     <div class="row">
                         <div class="col-md-6 align-self-center">
-                            <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">Pagina1 de 10</p>
+                            <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">Pagina {{page}} de {{totalPages}}</p>
                         </div>
                         <div class="col-md-6">
                             <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
+                                
                                 <ul class="pagination">
-                                    <li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-                                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                                    <li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous" (click)="previousPage()"><span aria-hidden="true">«</span></a></li>
+                                    <div *ngFor="let pagina of [].constructor(raw.totalPages); let num = index">
+                                        <li *ngIf="offset==num; else elseBlock" class="page-item active">
+                                          <a class="page-link" (click)="specificPage(num)">{{num+1}}</a>
+                                        </li>
+                                        <ng-template #elseBlock>
+                                            <li  class="page-item ">
+                                             <a class="page-link" (click)="specificPage(num)">{{num+1}}</a>
+                                            </li>
+                                        </ng-template>
+                                      </div>
+                                    <li class="page-item"><a class="page-link"  (click)="nextPage()" aria-label="Next"><span aria-hidden="true">»</span></a></li>
                                 </ul>
                             </nav>
                         </div>

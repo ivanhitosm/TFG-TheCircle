@@ -3,17 +3,20 @@ import { CommonModule } from '@angular/common';
 import { FooterComponent } from './footer/footer.component';
 import { MenuComponent } from './menu/menu.component';
 import { PrimeNgModule } from '../prime-ng/prime-ng.module';
+import { AlertComponent } from './alert/alert.component';
 
 
 
 @NgModule({
   declarations: [
     FooterComponent,
-    MenuComponent
+    MenuComponent,
+    AlertComponent
   ],
   exports:[
     FooterComponent,
-    MenuComponent
+    MenuComponent,
+    AlertComponent
   ],
   imports: [
     CommonModule,

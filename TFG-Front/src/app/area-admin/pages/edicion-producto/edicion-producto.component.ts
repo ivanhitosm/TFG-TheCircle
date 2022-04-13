@@ -15,43 +15,42 @@ export class EdicionProductoComponent {
     private router: Router,
     private fb: FormBuilder,
     private dataService: DataService,
-    private route:ActivatedRoute,
-    private alertService:AlertService
+    private route: ActivatedRoute,
+    private alertService: AlertService
   ) {}
   id!: number;
   isAddMode: boolean = false;
-  isViewMode:boolean=false;
   loading = false;
   submitted = false;
+  public imagePath: any;
+  imgURL: any;
+  public message: string | undefined;
+  tags = ['Producto', 'Camisa', 'Pantalon', 'Complemento'];
 
   productoForm = this.fb.group({
+    id:[''],
     nombre: ['', Validators.required],
     descripcionCorta: [''],
     descripcionLarga: [''],
     precio: [''],
     cantidad: [''],
-    marca: [''],
-    categoria: [''],
-    distribuidor: [''],
-    tag: [''],
-    visible:['']
-
+    marca: [null],
+    categoria: [null],
+    distribuidor: [null],
+    tag: [null],
+    visible: [''],
+    image: [null],
   });
 
-  tags = ['Producto', 'Camisa', 'Pantalon', 'Complemento'];
-
-  link() {
-    this.router.navigate(['paneladm']);
-  }
-
- 
   ngOnInit() {
     this.id = this.route.snapshot.params['id'];
     this.isAddMode = !this.id;
-    var url =this.route.url.toString();
-    
-   console.log(url);
+    var urlMode = window.location.pathname.split('/')[2];
 
+    if (urlMode == 'view') {
+      this.productoForm.disable();
+    }
+   // console.log('viewMode=' + this.isViewMode + ' ' + urlMode);
     if (!this.isAddMode) {
       this.dataService
         .getProductoID(this.id)
@@ -60,53 +59,80 @@ export class EdicionProductoComponent {
           this.productoForm.patchValue(x)
         );
     }
-    
   }
+
   onSubmit() {
-    console.warn(this.productoForm.value);
-    this.submitted = true;
-    // reset alerts on submit
-    this.alertService.clear();
+    if (window.confirm('Estas seguro?')) {
+      //console.warn(this.productoForm.value);
+      this.submitted = true;
+      // reset alerts on submit
+      this.alertService.clear();
 
-    // stop here if form is invalid
-    if (this.productoForm.invalid) {
+      // stop here if form is invalid
+      if (this.productoForm.invalid) {
         return;
-    }
-    this.loading = true;
-    if (this.isAddMode) {
+      }
+      this.loading = true;
+      if (this.isAddMode) {
         this.createUser();
-    } else {
+      } else {
         this.updateUser();
+      }
     }
-}
+  }
+  preview(files: any) {
+    if (files.length === 0) return;
 
-private createUser() {
-    this.dataService.postProducto(this.productoForm.value)
-        .pipe(first())
-        .subscribe({
-            next: () => {
-                this.alertService.success('User added', { keepAfterRouteChange: true });
-                this.router.navigate(['../'], { relativeTo: this.route });
-            },
-            error: (error: any) => {
-                this.alertService.error(error);
-                this.loading = false;
-            }
-        });
-}
+    var mimeType = files[0].type;
+    if (mimeType.match(/image\/*/) == null) {
+      this.message = 'Solo subir Imagenes';
+      return;
+    }
 
-private updateUser() {
-    this.dataService.updateProducto(this.id, this.productoForm.value)
-        .pipe(first())
-        .subscribe({
-            next: () => {
-                this.alertService.success('User updated', { keepAfterRouteChange: true });
-                this.router.navigate(['../../'], { relativeTo: this.route });
-            },
-            error: (error: any) => {
-                this.alertService.error(error);
-                this.loading = false;
-            }
-        });
-}
+    var reader = new FileReader();
+    this.imagePath = files;
+    reader.readAsDataURL(files[0]);
+    reader.onload = (_event) => {
+      this.imgURL = reader.result;
+    };
+  }
+
+  private createUser() {
+    this.productoForm.removeControl("id");
+    this.dataService
+      .postProducto(this.productoForm.value)
+      .pipe(first())
+      .subscribe({
+        next: () => {
+          this.alertService.success('Productos added', {
+            keepAfterRouteChange: true,
+          });
+          this.router.navigate(['../'], { relativeTo: this.route });
+        },
+        error: (error: any) => {
+          this.alertService.error(error);
+          this.loading = false;
+        },
+      });
+  }
+
+  private updateUser() {
+    //console.log(this.productoForm.value)
+    this.productoForm.patchValue({id:this.id});
+    this.dataService
+      .updateProducto(this.productoForm.value)
+      .pipe(first())
+      .subscribe({
+        next: () => {
+          this.alertService.success('Productos updated', {
+            keepAfterRouteChange: true,
+          });
+          this.router.navigate(['../../'], { relativeTo: this.route });
+        },
+        error: (error: any) => {
+          this.alertService.error(error);
+          this.loading = false;
+        },
+      });
+  }
 }
