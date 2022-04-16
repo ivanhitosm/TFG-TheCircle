@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ConfirmationService ,Message} from 'primeng/api';
+import { ConfirmationService} from 'primeng/api';
 import { first } from 'rxjs/operators';
-import { AlertService } from 'src/app/servicios/alert.service';
+
 import { DataService } from 'src/app/servicios/Data.service';
+import { AreaAdmComponent } from '../../area-adm.component';
 
 @Component({
   selector: 'app-edicion-producto',
@@ -17,19 +18,17 @@ export class EdicionProductoComponent {
     private fb: FormBuilder,
     private dataService: DataService,
     private route: ActivatedRoute,
-    private alertService: AlertService,
+    private adminMsg:AreaAdmComponent,
     private confirmationService: ConfirmationService,
 
   ) {}
   id!: number;
   isAddMode: boolean = false;
   loading = false;
-  submitted = false;
   public imagePath: any;
   imgURL: any;
   public message: string | undefined;
   tags = ['Producto', 'Camisa', 'Pantalon', 'Complemento'];
-  msgs: Message[] = [];
   
   productoForm = this.fb.group({
     id:[''],
@@ -65,55 +64,36 @@ export class EdicionProductoComponent {
     }
   }
 
+
   onSubmit() {
-    if (window.confirm('Estas seguro?')) {
-      //console.warn(this.productoForm.value);
-      this.submitted = true;
-      // reset alerts on submit
-      this.alertService.clear();
-
-      // stop here if form is invalid
-      if (this.productoForm.invalid) {
-        return;
-      }
-      this.loading = true;
-      if (this.isAddMode) {
-        this.createUser();
-      } else {
-        this.updateUser();
-      }
-    }
-  } 
-  // onSubmit2() {
-  //   this.confirmationService.confirm({
-  //     message: 'Are you sure that you want to proceed?',
-  //     header: 'Confirmation',
-  //     icon: 'pi pi-exclamation-triangle',
-  //     accept: () => {
-  //         this.msgs=[{severity:'Info', summary:'Loading', detail:'Producto Borrando'}];
-  //             //console.warn(this.productoForm.value);
-  //         this.submitted = true;
-  //         // reset alerts on submit
-  //         this.alertService.clear();
-
-  //         // stop here if form is invalid
-  //         if (this.productoForm.invalid) {
-  //           return;
-  //         }
-  //         this.loading = true;
-  //         if (this.isAddMode) {
-  //           this.createUser();
-  //         } else {
-  //           this.updateUser();
-  //         }
-  //     },
-  //     reject: () => {
-  //       this.msgs=[{severity:'Info', summary:'Reject', detail:'Producto No Borrado'}];
-       
-  //     },
-  //   });
+    this.confirmationService.confirm({
+      message: 'Are you sure that you want to proceed?',
+      header: 'Confirmation',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        this.adminMsg.UpdateMsg('Info','Loading','Producto Borrando');
+        
+              //console.warn(this.productoForm.value);
+         
+        
+          // stop here if form is invalid
+          if (this.productoForm.invalid) {
+            this.adminMsg.UpdateMsg('Warn','Loading','Producto Invalido');
+                     return;
+          }
+          this.loading = true;
+          if (this.isAddMode) {
+            this.createUser();
+          } else {
+            this.updateUser();
+          }
+      },
+      reject: () => {
+        this.adminMsg.UpdateMsg('Info','Reject','Producto No modificado');  
+      },
+    });
    
-  // }
+  }
   preview(files: any) {
     if (files.length === 0) return;
 
@@ -138,13 +118,11 @@ export class EdicionProductoComponent {
       .pipe(first())
       .subscribe({
         next: () => {
-          this.alertService.success('Productos added', {
-            keepAfterRouteChange: true,
-          });
+          this.adminMsg.UpdateMsg('Info','Reject','Producto Añadido');
           this.router.navigate(['../'], { relativeTo: this.route });
         },
         error: (error: any) => {
-          this.alertService.error(error);
+          this.adminMsg.UpdateMsg('Info','Reject',error);
           this.loading = false;
         },
       });
@@ -158,13 +136,11 @@ export class EdicionProductoComponent {
       .pipe(first())
       .subscribe({
         next: () => {
-          this.alertService.success('Productos updated', {
-            keepAfterRouteChange: true,
-          });
+          this.adminMsg.UpdateMsg('Info','Reject','Producto modificado');
           this.router.navigate(['../../'], { relativeTo: this.route });
         },
         error: (error: any) => {
-          this.alertService.error(error);
+          this.adminMsg.UpdateMsg('Info','Reject',error);
           this.loading = false;
         },
       });

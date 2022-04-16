@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { AppRouterModule } from '../app-router.module';
 import { AreaAdmComponent } from "./area-adm.component";
 import { PagesModule } from './pages/pages.module';
-
+import { MessagesModule } from 'primeng/messages';
 
 
 
@@ -18,7 +18,8 @@ import { PagesModule } from './pages/pages.module';
   ],
   imports: [
     PagesModule,
-    AppRouterModule
+    AppRouterModule,
+    MessagesModule,
     
   ],
   providers:[

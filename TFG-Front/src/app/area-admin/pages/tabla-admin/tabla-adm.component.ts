@@ -3,7 +3,7 @@ import { ConfirmationService ,Message} from 'primeng/api';
 
 
 import { DataService } from 'src/app/servicios/Data.service';
-
+import { AreaAdmComponent } from "../../area-adm.component";
 // import { Productos } from "../../models/productos.models";
 
 @Component({
@@ -30,7 +30,7 @@ export class TablaAdmComponent implements OnInit {
   
   constructor(
     private _dataService: DataService,
-   
+   private adminMsg:AreaAdmComponent,
     private confirmationService: ConfirmationService,
   
   ) {}
@@ -46,14 +46,11 @@ export class TablaAdmComponent implements OnInit {
       header: 'Confirmation',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
-          this.msgs=[{severity:'Info', summary:'Loading', detail:'Producto Borrando'}];
-          this.deleteProducto(_id);
-          
-           
+          this.adminMsg.UpdateMsg('Info','Loading','Producto Borrando');
+          this.deleteProducto(_id);           
       },
       reject: () => {
-        this.msgs=[{severity:'Info', summary:'Reject', detail:'Producto No Borrado'}];
-       
+        this.adminMsg.UpdateMsg('Info','Reject','Producto No Borrando');       
       },
     });
     
@@ -64,18 +61,14 @@ export class TablaAdmComponent implements OnInit {
         .subscribe(result=>{
           console.log(result);
             this.loadTable();
-            this.msgs=[{severity:'Info', summary:'Confirmed', detail:'Producto Borrado'}];
-          
+            this.adminMsg.UpdateMsg('Info','Confirmed','Producto Borrando');
         },
         (error: any) => {
-          console.warn(error);
+          this.adminMsg.UpdateMsg('Warn','Loading',error);
         }
     );
   }
-  clear() {
-    this.msgs=[];
-}
- 
+
   loadTable() {
     this._dataService
       .getProductosPagAll(this.offset, this.pageSize, this.field)

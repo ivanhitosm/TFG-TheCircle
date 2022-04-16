@@ -1,3 +1,13 @@
+<p-confirmDialog #cd [style]="{width: '50vw'}" [breakpoints]="{'960px': '75vw', '640px': '100vw'}" [baseZIndex]="10000" oncomplete="deleteDialog()">
+  <ng-template pTemplate="header">
+      <h3>Header Content</h3>
+  </ng-template>
+  <ng-template pTemplate="footer">
+      <button type="button" pButton icon="pi pi-times" label="No" (click)="cd.reject()"></button>
+      <button type="button" pButton icon="pi pi-check" label="Yes" (click)="cd.accept()"></button>
+  </ng-template>
+</p-confirmDialog>
+
 <div class="card shadow mt-2 mb-2">
   <div class="card-header py-3 d-flex justify-content-between">
     <p class="text-secondary m-0 fw-bold">Producto</p>
