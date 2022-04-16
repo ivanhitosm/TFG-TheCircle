@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { ProductosComponent } from 'src/app/area-lounge/pages/productos/productos.component';
-import { AlertService } from 'src/app/servicios/alert.service';
+import { ConfirmationService ,Message} from 'primeng/api';
+
+
 import { DataService } from 'src/app/servicios/Data.service';
 
 // import { Productos } from "../../models/productos.models";
@@ -26,59 +26,71 @@ export class TablaAdmComponent implements OnInit {
   value = '';
   page=0;
   totalPages=0;
-  dataSource = ProductosComponent;
+  msgs: Message[] = [];
+  
   constructor(
     private _dataService: DataService,
-    private activatedRoute: ActivatedRoute,
-    private router: Router,
-    private alertService: AlertService
+   
+    private confirmationService: ConfirmationService,
+  
   ) {}
 
   ngOnInit() {
     //console.log(history.state.result)
     this.loadTable();
   }
-  borrarProducto(id:number){
-    if (window.confirm('Estas seguro?')) {
-       this._dataService.deleteProducto(id).subscribe({
-        next: (result) => {
-          this.alertService.success('Producto '+result+' deleted', {
-            keepAfterRouteChange: true,
-          });
-          //this.router.navigate(['../'], { relativeTo: this.activatedRoute });
-          this.loadTable();
-        },
-        error: (error: any) => {
-          this.alertService.error(error);
+
+  confirm(_id:number) {console.log("confim "+_id)
+    this.confirmationService.confirm({
+      message: 'Are you sure that you want to proceed?',
+      header: 'Confirmation',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+          this.msgs=[{severity:'Info', summary:'Loading', detail:'Producto Borrando'}];
+          this.deleteProducto(_id);
+          
+           
+      },
+      reject: () => {
+        this.msgs=[{severity:'Info', summary:'Reject', detail:'Producto No Borrado'}];
+       
+      },
+    });
+    
+}
+  deleteProducto(_id: number){
+    this._dataService
+      .deleteProducto(_id)
+        .subscribe(result=>{
+          console.log(result);
+            this.loadTable();
+            this.msgs=[{severity:'Info', summary:'Confirmed', detail:'Producto Borrado'}];
           
         },
-      });
-      
-      //.subscribe(
-      //   (result) => {
-      //     console.log(result)
-      //     this.loadTable();
-      //   }
-      // );
-      // console.log("producto con id: "+id+" borrado");
-     
-    }
+        (error: any) => {
+          console.warn(error);
+        }
+    );
   }
+  clear() {
+    this.msgs=[];
+}
+ 
   loadTable() {
     this._dataService
       .getProductosPagAll(this.offset, this.pageSize, this.field)
       .subscribe(
         (result) => {
-          // console.log(
-          //   "totalpages"+" "+result.totalPages+"\n "+
-          //   "totalelements"+" "+result.totalElements+"\n "+
-          //   "size"+" "+result.size+"\n "+
-          //   "number"+" "+result.number+"\n "+
-          //   "offset"+" "+this.offset+"\n "+
-          //   "pageSize"+" "+this.pageSize+"\n "+
-          //   "field:"+" "+this.field+"\n "+
-          //   this.raw.totalPages
-          // );
+          console.log(
+            "totalpages"+" "+result.totalPages+"\n "+
+            "totalelements"+" "+result.totalElements+"\n "+
+           
+            
+            "offset"+" "+this.offset+"\n "+
+            "pageSize"+" "+this.pageSize+"\n "+
+            "field:"+" "+this.field+"\n "+
+            this.raw.totalPages
+          );
 
           this.productos = result.content;
           this.infoPag = result.pageable;

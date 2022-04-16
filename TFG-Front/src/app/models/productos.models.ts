@@ -6,8 +6,8 @@ export interface Productos{
     precio:BigInteger;
     cantidad:BigInteger;
     visible:boolean;
-    marca:string 
-    categoria:string 
-    distribuidor:string 
-    Tag:string 
+    marca?:string 
+    categoria?:string 
+    distribuidor?:string 
+    Tag?:string 
 }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ConfirmationService ,Message} from 'primeng/api';
 import { first } from 'rxjs/operators';
 import { AlertService } from 'src/app/servicios/alert.service';
 import { DataService } from 'src/app/servicios/Data.service';
@@ -16,7 +17,9 @@ export class EdicionProductoComponent {
     private fb: FormBuilder,
     private dataService: DataService,
     private route: ActivatedRoute,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private confirmationService: ConfirmationService,
+
   ) {}
   id!: number;
   isAddMode: boolean = false;
@@ -26,7 +29,8 @@ export class EdicionProductoComponent {
   imgURL: any;
   public message: string | undefined;
   tags = ['Producto', 'Camisa', 'Pantalon', 'Complemento'];
-
+  msgs: Message[] = [];
+  
   productoForm = this.fb.group({
     id:[''],
     nombre: ['', Validators.required],
@@ -79,7 +83,37 @@ export class EdicionProductoComponent {
         this.updateUser();
       }
     }
-  }
+  } 
+  // onSubmit2() {
+  //   this.confirmationService.confirm({
+  //     message: 'Are you sure that you want to proceed?',
+  //     header: 'Confirmation',
+  //     icon: 'pi pi-exclamation-triangle',
+  //     accept: () => {
+  //         this.msgs=[{severity:'Info', summary:'Loading', detail:'Producto Borrando'}];
+  //             //console.warn(this.productoForm.value);
+  //         this.submitted = true;
+  //         // reset alerts on submit
+  //         this.alertService.clear();
+
+  //         // stop here if form is invalid
+  //         if (this.productoForm.invalid) {
+  //           return;
+  //         }
+  //         this.loading = true;
+  //         if (this.isAddMode) {
+  //           this.createUser();
+  //         } else {
+  //           this.updateUser();
+  //         }
+  //     },
+  //     reject: () => {
+  //       this.msgs=[{severity:'Info', summary:'Reject', detail:'Producto No Borrado'}];
+       
+  //     },
+  //   });
+   
+  // }
   preview(files: any) {
     if (files.length === 0) return;
 

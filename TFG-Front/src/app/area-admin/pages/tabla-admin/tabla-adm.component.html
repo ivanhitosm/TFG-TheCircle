@@ -1,6 +1,7 @@
 
- 
+
             <div class="card shadow mt-2 mb-2">
+                
                 <div class="card-header py-3 d-flex justify-content-between">
                     <p class="text-secondary m-0 fw-bold">Productos</p>
                     <button class="btn btn-warning " type="button" routerLink="./add"><i class="fa fa-plus"></i></button>
@@ -22,10 +23,11 @@
                         </div>
                     </div>
                     <div class="table-responsive d-xxl-flex table mt-2" id="dataTable-1" role="grid" aria-describedby="dataTable_info">
-                        <table class="table my-0" id="dataTable">
+                        <table class="table my-0" id="dataTable" >
                             <caption>Tabla de productos</caption>
                             <thead class="text-center">
                                 <tr>
+                                    <th>Id</th>
                                     <th>Producto</th>
                                     <th>Cantidad</th>
                                     <th>Precio</th>
@@ -37,6 +39,7 @@
                             </thead>
                             <tbody class="text-center">
                                 <tr *ngFor="let producto of productos">
+                                    <td><span>{{producto.id}}</span></td>
                                     <td><span>{{producto.nombre}}</span></td>
                                     <td><span>{{producto.cantidad}}</span></td>
                                     <td><span>{{producto.precio}}</span></td>
@@ -46,13 +49,17 @@
                                         <div class="btn-group" role="group">
                                             <button class="btn btn-success" type="button"><i class="fa fa-eye" routerLink="./view/{{producto.id}}"></i></button>
                                             <button class="btn btn-warning" type="button"><i class="fa fa-edit" style="color: rgb(255,255,255);" routerLink="./edit/{{producto.id}}"></i></button>
-                                            <button class="btn btn-danger" type="button"(click)="borrarProducto(producto.id)"><i class="fa fa-trash" ></i></button>
+                                            <p-button styleClass="p-button-help" type="button"  icon="pi pi-trash" (click)="confirm(producto.id)" ></p-button>
+
+                                            
+                                            
                                         </div>
                                     </td>
                                 </tr>
                             </tbody>
                             <tfoot class="text-center">
                                 <tr>
+                                    <td><strong>Id</strong></td>
                                     <td><strong>Producto</strong></td>
                                     <td><strong>Cantidad</strong></td>
                                     <td><strong>Precio</strong></td>
@@ -89,4 +96,13 @@
                     </div>
                 </div>
             </div>
-      
+            <p-confirmDialog #cd [style]="{width: '50vw'}" [breakpoints]="{'960px': '75vw', '640px': '100vw'}" [baseZIndex]="10000" oncomplete="deleteDialog()">
+                <ng-template pTemplate="header">
+                    <h3>Header Content</h3>
+                </ng-template>
+                <ng-template pTemplate="footer">
+                    <button type="button" pButton icon="pi pi-times" label="No" (click)="cd.reject()"></button>
+                    <button type="button" pButton icon="pi pi-check" label="Yes" (click)="cd.accept()"></button>
+                </ng-template>
+            </p-confirmDialog>
+<p-messages [value]="msgs"></p-messages>

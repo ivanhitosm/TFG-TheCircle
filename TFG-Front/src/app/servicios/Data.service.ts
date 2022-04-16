@@ -46,7 +46,7 @@ public updateProducto(form: any){
   return this._http.put(this.REST_API_SERVER+"updateProducto",form)
 }
 public deleteProducto(id: number){
-  return this._http.delete(this.REST_API_SERVER+"delete/"+ id)
+  return this._http.delete(this.REST_API_SERVER+"delete/"+ id,{responseType: 'text'})
 }
 /*-------------Barra de busqueda------------------------- */
 public busqueda(nombre: string){
