@@ -29,6 +29,7 @@ export class EdicionProductoComponent {
   imgURL: any;
   public message: string | undefined;
   tags = ['Producto', 'Camisa', 'Pantalon', 'Complemento'];
+  completo=false;
   
   productoForm = this.fb.group({
     id:[''],
@@ -64,6 +65,26 @@ export class EdicionProductoComponent {
     }
   }
 
+  checkBoxClicked(){
+    if (!this.completo) {
+      this.productoForm.controls.marca.disable();
+      this.productoForm.controls.categoria.disable();
+      this.productoForm.controls.distribuidor.disable();
+      this.productoForm.controls.tag.disable();
+      this.productoForm.controls.image.disable();
+
+      this.completo=!this.completo
+    } else {
+      this.productoForm.controls.marca.enable();
+      this.productoForm.controls.categoria.enable();
+      this.productoForm.controls.distribuidor.enable();
+      this.productoForm.controls.tag.enable();
+      this.productoForm.controls.image.enable();
+      this.completo=!this.completo
+    }
+    
+  }
+
 
   onSubmit() {
     this.confirmationService.confirm({
@@ -71,11 +92,7 @@ export class EdicionProductoComponent {
       header: 'Confirmation',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
-        this.adminMsg.UpdateMsg('Info','Loading','Producto Borrando');
-        
-              //console.warn(this.productoForm.value);
-         
-        
+        this.adminMsg.UpdateMsg('Info','Loading','Cargando');
           // stop here if form is invalid
           if (this.productoForm.invalid) {
             this.adminMsg.UpdateMsg('Warn','Loading','Producto Invalido');
@@ -118,7 +135,7 @@ export class EdicionProductoComponent {
       .pipe(first())
       .subscribe({
         next: () => {
-          this.adminMsg.UpdateMsg('Info','Reject','Producto Añadido');
+          this.adminMsg.UpdateMsg('Info','Confimed','Producto Añadido');
           this.router.navigate(['../'], { relativeTo: this.route });
         },
         error: (error: any) => {
@@ -136,7 +153,7 @@ export class EdicionProductoComponent {
       .pipe(first())
       .subscribe({
         next: () => {
-          this.adminMsg.UpdateMsg('Info','Reject','Producto modificado');
+          this.adminMsg.UpdateMsg('Info','Confimed','Producto modificado');
           this.router.navigate(['../../'], { relativeTo: this.route });
         },
         error: (error: any) => {
