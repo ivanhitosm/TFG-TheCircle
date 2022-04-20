@@ -225,21 +225,7 @@ export class MenuComponent implements OnInit{
       {
         label:'ADM',
         icon: 'pi pi-user-plus',
-        routerLink: 'areaAdm',
-        items:[
-          {
-            label: 'SiSHAS',
-            routerLink: 'add'
-          },
-          {
-            label: 'TABACOS',
-            routerLink: 'edit/:id'
-          },
-          {
-            label: 'MANGUERAS',
-            routerLink: 'articles'
-          }]
-        
+        routerLink: 'areaAdm'       
       },
       
       {
