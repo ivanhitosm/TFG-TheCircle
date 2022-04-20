@@ -55,10 +55,6 @@ export class MenuComponent implements OnInit{
       loginOff(){
         this.items = [
           {
-            icon: 'pi pi-home',
-            routerLink: 'main'
-          },
-          {
             label: 'CARTA',
             icon: 'pi pi-list',
             items:[
@@ -121,11 +117,6 @@ export class MenuComponent implements OnInit{
     
         this.itemsM = [
           {
-            // label:'INICIO',
-            icon: 'pi pi-home',
-            routerLink: 'main'
-          },
-          {
             label: 'CARTA',
             icon: 'pi pi-list',
             items:[
@@ -187,10 +178,6 @@ export class MenuComponent implements OnInit{
       }
       loginOn(){
     this.items = [
-      {
-        icon: 'pi pi-home',
-        routerLink: 'main'
-      },
       {
         label: 'CARTA',
         icon: 'pi pi-list',
@@ -258,11 +245,6 @@ export class MenuComponent implements OnInit{
     ];
 
     this.itemsM = [
-      {
-        // label:'INICIO',
-        icon: 'pi pi-home',
-        routerLink: 'main'
-      },
       {
         label: 'CARTA',
         icon: 'pi pi-list',
