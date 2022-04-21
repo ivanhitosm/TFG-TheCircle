@@ -1,119 +1,162 @@
-
 <div style="width: 100%">
-    <div class="pt-3" style="opacity: 0.80;background: #ffffff;width: 100%;height: 100%;">
-        <div class="container" style="background: #ffffff;box-shadow: 0px 0px 14px 3px rgb(220,220,220);">
-            <div class="row">
-                <div class="col-md-3 d-md-none" style="padding-top: 20px;">
-                    <div class="d-none d-md-block"></div>
-                    <div class="accordion" role="tablist" id="accordion-1">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" role="tab"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#accordion-1 .item-1" aria-expanded="false" aria-controls="accordion-1 .item-1">Filtro</button></h2>
-                            <div class="accordion-collapse collapse item-1" role="tabpanel" data-bs-parent="#accordion-1">
-                                <div class="accordion-body">
-                                    <div>
-                                        <div class="p-2">
-                                            <h4>CATEGORIAS</h4>
-                                            <div class="form-check ms-4"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label" for="formCheck-1">Pantalones</label></div>
-                                            <div class="form-check ms-4"><input class="form-check-input" type="checkbox" id="formCheck-2"><label class="form-check-label" for="formCheck-2">Camisetas</label></div>
-                                            <div class="form-check ms-4"><input class="form-check-input" type="checkbox" id="formCheck-3"><label class="form-check-label" for="formCheck-3">Videojuegos</label></div>
-                                        </div>
-                                        <div class="p-2">
-                                            <h4>MARCAS</h4>
-                                            <div class="form-check ms-4"><input class="form-check-input" type="checkbox" id="formCheck-4"><label class="form-check-label" for="formCheck-1">Nike</label></div>
-                                            <div class="form-check ms-4"><input class="form-check-input" type="checkbox" id="formCheck-5"><label class="form-check-label" for="formCheck-2">Apple</label></div>
-                                            <div class="form-check ms-4"><input class="form-check-input" type="checkbox" id="formCheck-6"><label class="form-check-label" for="formCheck-3">Microsoft</label></div>
-                                        </div>
-                                        <div class="p-2">
-                                            <h4>COLORES</h4>
-                                            <div class="form-check ms-4"><input class="form-check-input" type="checkbox" id="formCheck-7"><label class="form-check-label" for="formCheck-1">Rojo</label></div>
-                                            <div class="form-check ms-4"><input class="form-check-input" type="checkbox" id="formCheck-8"><label class="form-check-label" for="formCheck-2">Negro</label></div>
-                                            <div class="form-check ms-4"><input class="form-check-input" type="checkbox" id="formCheck-9"><label class="form-check-label" for="formCheck-3">Azul</label></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+  <div class="pt-3" style="opacity: 0.80;background: #ffffff;width: 100%;height: 100%;">
+    <div class="container" style="background: #ffffff;box-shadow: 0px 0px 14px 3px rgb(220,220,220);">
+      <div class="row">
+        <div class="col-md-4 d-md-none" style="padding-top: 20px;">
+          <div class="accordion" role="tablist" id="accordion-1">
+            <div class="accordion-item">
+              <h2 class="accordion-header" role="tab"><button class="accordion-button collapsed"
+                  data-bs-toggle="collapse" data-bs-target="#accordion-1 .item-1" aria-expanded="false"
+                  aria-controls="accordion-1 .item-1">Filtro</button></h2>
+              <div class="accordion-collapse collapse item-1" role="tabpanel" data-bs-parent="#accordion-1">
+                <div class="accordion-body">
+                  <div>
+                    <div class="p-2">
+                      <h4>CATEGORIAS</h4>
+                      <div class="form-check ms-4"><input class="form-check-input" type="checkbox"
+                          id="formCheck-1"><label class="form-check-label" for="formCheck-1">Pantalones</label></div>
+                      <div class="form-check ms-4"><input class="form-check-input" type="checkbox"
+                          id="formCheck-2"><label class="form-check-label" for="formCheck-2">Camisetas</label></div>
+                      <div class="form-check ms-4"><input class="form-check-input" type="checkbox"
+                          id="formCheck-3"><label class="form-check-label" for="formCheck-3">Videojuegos</label></div>
                     </div>
-                </div>
-                <div class="col-md-3">
-                    <h1 [hidden]="busqueda">Busqueda {{value}}</h1>
-                    <div class="d-none d-md-block pt-4 px-3">
-                        <div>
-                            <h4>CATEGORIAS</h4>
-                            <div class="form-check ms-2"><input class="form-check-input" type="checkbox" id="formCheck-10"><label class="form-check-label" for="formCheck-1">Pantalones</label></div>
-                            <div class="form-check ms-2"><input class="form-check-input" type="checkbox" id="formCheck-11"><label class="form-check-label" for="formCheck-2">Camisetas</label></div>
-                            <div class="form-check ms-2"><input class="form-check-input" type="checkbox" id="formCheck-12"><label class="form-check-label" for="formCheck-3">Videojuegos</label></div>
-                        </div>
-                        <div>
-                            <h4>MARCAS</h4>
-                            <div class="form-check ms-2"><input class="form-check-input" type="checkbox" id="formCheck-13"><label class="form-check-label" for="formCheck-1">Nike</label></div>
-                            <div class="form-check ms-2"><input class="form-check-input" type="checkbox" id="formCheck-14"><label class="form-check-label" for="formCheck-2">Apple</label></div>
-                            <div class="form-check ms-2"><input class="form-check-input" type="checkbox" id="formCheck-15"><label class="form-check-label" for="formCheck-3">Microsoft</label></div>
-                        </div>
-                        <div>
-                            <h4>COLORES</h4>
-                            <div class="form-check ms-2"><input class="form-check-input" type="checkbox" id="formCheck-16"><label class="form-check-label" for="formCheck-1">Rojo</label></div>
-                            <div class="form-check ms-2"><input class="form-check-input" type="checkbox" id="formCheck-17"><label class="form-check-label" for="formCheck-2">Negro</label></div>
-                            <div class="form-check ms-2"><input class="form-check-input" type="checkbox" id="formCheck-18"><label class="form-check-label" for="formCheck-3">Azul</label></div>
-                        </div>
+                    <div class="p-2">
+                      <h4>MARCAS</h4>
+                      <div class="form-check ms-4"><input class="form-check-input" type="checkbox"
+                          id="formCheck-4"><label class="form-check-label" for="formCheck-1">Nike</label></div>
+                      <div class="form-check ms-4"><input class="form-check-input" type="checkbox"
+                          id="formCheck-5"><label class="form-check-label" for="formCheck-2">Apple</label></div>
+                      <div class="form-check ms-4"><input class="form-check-input" type="checkbox"
+                          id="formCheck-6"><label class="form-check-label" for="formCheck-3">Microsoft</label></div>
                     </div>
+                    <div class="p-2">
+                      <h4>COLORES</h4>
+                      <div class="form-check ms-4"><input class="form-check-input" type="checkbox"
+                          id="formCheck-7"><label class="form-check-label" for="formCheck-1">Rojo</label></div>
+                      <div class="form-check ms-4"><input class="form-check-input" type="checkbox"
+                          id="formCheck-8"><label class="form-check-label" for="formCheck-2">Negro</label></div>
+                      <div class="form-check ms-4"><input class="form-check-input" type="checkbox"
+                          id="formCheck-9"><label class="form-check-label" for="formCheck-3">Azul</label></div>
+                    </div>
+                  </div>
                 </div>
-                <div class="col-md-9 m-0 p-0 pt-3 pe-3 pb-3">
-                    <div>
-                        <div class="row g-0 row-cols-3">
-                            <div  *ngFor="let producto of productos; let id = index">
-                                    <div class="col column-center">
-                                        <div class="m-2 p-2" style="border-radius: 15px;border: 4.5px solid rgb(238,238,238) ;">
-                                            <div class="view-product"><img src="assets/img/comprar-nuevo-iphone-13-pro-max-color-plata-128gb.jpg"  (click)="linkProductoSolo(producto.id)">
-                                                <a ></a>
-                                            </div>
-                                            <div class="p-2">
-                                                <p class="text-start fw-bold mb-1">{{producto.nombre}}</p>
-                                                <p class="mb-0" style="text-align: justify;">{{producto.descripcion}}</p>
-                                                <p class="text-center fw-bold m-0 fs-4">{{producto.precio}}€</p>
-                                               
-                                            </div>
-                                        </div>
-                                    </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <h1 [hidden]="busqueda">Busqueda {{value}}</h1>
+          <div class="d-none d-md-block pt-4 px-3">
+            <div>
+              <h4>CATEGORIAS</h4>
+              <div class="form-check ms-2"><input class="form-check-input" type="checkbox" id="formCheck-10"><label
+                  class="form-check-label" for="formCheck-1">Pantalones</label></div>
+              <div class="form-check ms-2"><input class="form-check-input" type="checkbox" id="formCheck-11"><label
+                  class="form-check-label" for="formCheck-2">Camisetas</label></div>
+              <div class="form-check ms-2"><input class="form-check-input" type="checkbox" id="formCheck-12"><label
+                  class="form-check-label" for="formCheck-3">Videojuegos</label></div>
+            </div>
+            <div>
+              <h4>MARCAS</h4>
+              <div class="form-check ms-2"><input class="form-check-input" type="checkbox" id="formCheck-13"><label
+                  class="form-check-label" for="formCheck-1">Nike</label></div>
+              <div class="form-check ms-2"><input class="form-check-input" type="checkbox" id="formCheck-14"><label
+                  class="form-check-label" for="formCheck-2">Apple</label></div>
+              <div class="form-check ms-2"><input class="form-check-input" type="checkbox" id="formCheck-15"><label
+                  class="form-check-label" for="formCheck-3">Microsoft</label></div>
+            </div>
+            <div>
+              <h4>COLORES</h4>
+              <div class="form-check ms-2"><input class="form-check-input" type="checkbox" id="formCheck-16"><label
+                  class="form-check-label" for="formCheck-1">Rojo</label></div>
+              <div class="form-check ms-2"><input class="form-check-input" type="checkbox" id="formCheck-17"><label
+                  class="form-check-label" for="formCheck-2">Negro</label></div>
+              <div class="form-check ms-2"><input class="form-check-input" type="checkbox" id="formCheck-18"><label
+                  class="form-check-label" for="formCheck-3">Azul</label></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-9 m-0 p-0 pt-3 pe-3 pb-3 g-0 ">
+            <div class="SoloM">
+                <div class="row row-cols-3 row-cols-sm-1 row-cols-md-2 row-cols-lg-3">
+                    <div *ngFor="let producto of productos; let id = index">
+                        <div class="col column-center">
+                            <div class="m-2 p-2" style="border-radius: 15px;border: 4.5px solid rgb(238,238,238) ;">
+                            <div class="view-product"><img src="assets/img/comprar-nuevo-iphone-13-pro-max-color-plata-128gb.jpg"
+                                (click)="linkProductoSolo(producto.id)">
                             </div>
-                        </div>
-                    <nav class="d-flex float-end pt-4 pe-2">
-                        <ul class="pagination">
-                          <li class="page-item"> <a class="page-link" aria-label="Previous" (click)="previousPage()">
-                              <span aria-hidden="true">
-                                «
-                              </span>
-                            </a>
-                          </li>
-                          <div *ngFor="let pagina of [].constructor(raw.totalPages); let num = index">
-                            <li class="page-item active">
-                              <button class=" btn btn-white mx-1" (click)="specificPage(num)">{{num+1}}</button>
-                            </li>
-                          </div>
+                            <div class="p-2">
+                                <p class="text-start fw-bold mb-1">{{producto.nombre}}</p>
+                                <p class="mb-0" style="text-align: justify;">{{producto.descripcion}}</p>
+                                <p class="text-center fw-bold m-0 fs-4">{{producto.precio}}€</p>
 
-                          <li class="page-item">
-                            <a class="page-link" aria-label="Next" (click)="nextPage()">
-                              <span aria-hidden="true">
-                                »
-                              </span>
-                            </a>
-                          </li>
-                        </ul>
-                        <div class="dropup">
-                            <button class=" btn btn-white mx-2"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-boxes" viewBox="0 0 16 16">
-                                <path d="M7.752.066a.5.5 0 0 1 .496 0l3.75 2.143a.5.5 0 0 1 .252.434v3.995l3.498 2A.5.5 0 0 1 16 9.07v4.286a.5.5 0 0 1-.252.434l-3.75 2.143a.5.5 0 0 1-.496 0l-3.502-2-3.502 2.001a.5.5 0 0 1-.496 0l-3.75-2.143A.5.5 0 0 1 0 13.357V9.071a.5.5 0 0 1 .252-.434L3.75 6.638V2.643a.5.5 0 0 1 .252-.434L7.752.066ZM4.25 7.504 1.508 9.071l2.742 1.567 2.742-1.567L4.25 7.504ZM7.5 9.933l-2.75 1.571v3.134l2.75-1.571V9.933Zm1 3.134 2.75 1.571v-3.134L8.5 9.933v3.134Zm.508-3.996 2.742 1.567 2.742-1.567-2.742-1.567-2.742 1.567Zm2.242-2.433V3.504L8.5 5.076V8.21l2.75-1.572ZM7.5 8.21V5.076L4.75 3.504v3.134L7.5 8.21ZM5.258 2.643 8 4.21l2.742-1.567L8 1.076 5.258 2.643ZM15 9.933l-2.75 1.571v3.134L15 13.067V9.933ZM3.75 14.638v-3.134L1 9.933v3.134l2.75 1.571Z"/>
-                              </svg></button>
-                            <div class="dropup-content">
-                                <a (click)="cambiarPageSize(12)">12</a>
-                                <a (click)="cambiarPageSize(6)">6</a>
-                                <a (click)="cambiarPageSize(raw.totalElements)">max</a>
-                             
                             </div>
-                          </div> 
-                    </nav>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+          <!-- <div class="ColM">
+            <div class="row col-12">
+              <div *ngFor="let producto of productos; let id = index">
+                <div class="col column-center">
+                  <div class="m-2 p-2" style="border-radius: 15px;border: 4.5px solid rgb(238,238,238) ;">
+                    <div class="view-product"><img
+                        src="assets/img/comprar-nuevo-iphone-13-pro-max-color-plata-128gb.jpg"
+                        (click)="linkProductoSolo(producto.id)">
+                      <a></a>
+                    </div>
+                    <div class="p-2">
+                      <p class="text-start fw-bold mb-1">{{producto.nombre}}</p>
+                      <p class="mb-0" style="text-align: justify;">{{producto.descripcion}}</p>
+                      <p class="text-center fw-bold m-0 fs-4">{{producto.precio}}€</p>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> -->
+
+          <nav class="d-flex float-end pt-4 pe-2">
+            <ul class="pagination">
+              <li class="page-item"> <a class="page-link" aria-label="Previous" (click)="previousPage()">
+                  <span aria-hidden="true">
+                    «
+                  </span>
+                </a>
+              </li>
+              <div *ngFor="let pagina of [].constructor(raw.totalPages); let num = index">
+                <li class="page-item active">
+                  <button class=" btn btn-white mx-1" (click)="specificPage(num)">{{num+1}}</button>
+                </li>
+              </div>
+
+              <li class="page-item">
+                <a class="page-link" aria-label="Next" (click)="nextPage()">
+                  <span aria-hidden="true">
+                    »
+                  </span>
+                </a>
+              </li>
+            </ul>
+            <div class="dropup">
+              <button class=" btn btn-white mx-2"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                  fill="currentColor" class="bi bi-boxes" viewBox="0 0 16 16">
+                  <path
+                    d="M7.752.066a.5.5 0 0 1 .496 0l3.75 2.143a.5.5 0 0 1 .252.434v3.995l3.498 2A.5.5 0 0 1 16 9.07v4.286a.5.5 0 0 1-.252.434l-3.75 2.143a.5.5 0 0 1-.496 0l-3.502-2-3.502 2.001a.5.5 0 0 1-.496 0l-3.75-2.143A.5.5 0 0 1 0 13.357V9.071a.5.5 0 0 1 .252-.434L3.75 6.638V2.643a.5.5 0 0 1 .252-.434L7.752.066ZM4.25 7.504 1.508 9.071l2.742 1.567 2.742-1.567L4.25 7.504ZM7.5 9.933l-2.75 1.571v3.134l2.75-1.571V9.933Zm1 3.134 2.75 1.571v-3.134L8.5 9.933v3.134Zm.508-3.996 2.742 1.567 2.742-1.567-2.742-1.567-2.742 1.567Zm2.242-2.433V3.504L8.5 5.076V8.21l2.75-1.572ZM7.5 8.21V5.076L4.75 3.504v3.134L7.5 8.21ZM5.258 2.643 8 4.21l2.742-1.567L8 1.076 5.258 2.643ZM15 9.933l-2.75 1.571v3.134L15 13.067V9.933ZM3.75 14.638v-3.134L1 9.933v3.134l2.75 1.571Z" />
+                </svg></button>
+              <div class="dropup-content">
+                <a (click)="cambiarPageSize(12)">12</a>
+                <a (click)="cambiarPageSize(6)">6</a>
+                <a (click)="cambiarPageSize(raw.totalElements)">max</a>
+
+              </div>
+            </div>
+          </nav>
         </div>
+      </div>
     </div>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  </div>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 </div>

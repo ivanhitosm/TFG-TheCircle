@@ -101,3 +101,17 @@
   background-color: #e9ecef;
   border-color: #dee2e6;
 } 
+
+/* @media screen and (min-width: 767.98px) {
+  .ColM{
+    visibility: hidden;
+    position: absolute;
+    }
+}
+
+@media (max-width: 767.98px) {
+  .SoloM{
+    visibility: hidden;
+    height: 0px;
+  }
+} */
