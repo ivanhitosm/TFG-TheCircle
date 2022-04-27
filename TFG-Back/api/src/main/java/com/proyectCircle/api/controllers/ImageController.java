@@ -36,7 +36,7 @@ public class ImageController {
     }
 
     @GetMapping(path = {"/get/image/info/{name}"})
-    public ImageModel getImageDetails(@PathVariable("name") String name) throws IOException {
+    public ImageModel getImageDetails(@PathVariable("name") String name)  {
 
         final Optional<ImageModel> dbImage = imageRepository.findByName(name);
         if (dbImage.isPresent()) {
@@ -51,7 +51,7 @@ public class ImageController {
     }
 
     @GetMapping(path = {"/get/image/{name}"})
-    public ResponseEntity<byte[]> getImage(@PathVariable("name") String name) throws IOException {
+    public ResponseEntity<byte[]> getImage(@PathVariable("name") String name)  {
 
         final Optional<ImageModel> dbImage = imageRepository.findByName(name);
         if (dbImage.isPresent()) {
@@ -64,7 +64,7 @@ public class ImageController {
         }
     }
     @GetMapping(path = {"/get/imageProducto/{id}"})
-    public ResponseEntity<byte[]> getImageProducto(@PathVariable("id") Long id) throws IOException {
+    public ResponseEntity<byte[]> getImageProducto(@PathVariable("id") Long id)  {
 
         final Optional<ImageModel> dbImage = imageRepository.findByProducto(id);
         if (dbImage.isPresent()) {
