@@ -50,6 +50,7 @@ public class ProductoService {
         productoExistente.setPrecio(producto.getPrecio());
         productoExistente.setCantidad(producto.getCantidad());
         productoExistente.setVisible(producto.getVisible());
+        productoExistente.setImagen(producto.getImagen());
         
         return repository.save(productoExistente);
     }
