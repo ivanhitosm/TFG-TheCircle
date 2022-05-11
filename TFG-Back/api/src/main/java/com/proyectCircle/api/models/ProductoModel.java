@@ -6,16 +6,25 @@ import java.util.Set;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 
 
 
 @Entity
 @Table(name = "producto")
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class ProductoModel {
 
-    public ProductoModel(){
-        super();
-     }
+   
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,6 +32,7 @@ public class ProductoModel {
     private Long id;
 
     @ManyToMany(mappedBy = "producto")
+    @JsonIgnore
     private Set<PedidoModel> pedido;
 
     @ManyToMany(mappedBy = "producto")
@@ -40,17 +50,20 @@ public class ProductoModel {
     @JoinColumn(name = "id_marcaProducto", foreignKey = @ForeignKey(name = "id_marcaProducto"))
     private MarcaModel marca;
 
-    @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH },fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "id_valoracionPedido", foreignKey = @ForeignKey(name = "id_valoracionPedido" ,value =ConstraintMode.CONSTRAINT))
     private List<ValoracionModel> valoracion;
 
-    @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH },fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "id_variacionPedido", foreignKey = @ForeignKey(name = "id_variacionPedido" ,value =ConstraintMode.CONSTRAINT))
     private List<VariacionModel> variacion;
 
-    @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH }, fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_imagenPedido", foreignKey = @ForeignKey(name = "id_imagenPedido", value = ConstraintMode.CONSTRAINT))
-    private List<ImageModel> imagen;
+    @OneToOne(
+		cascade=CascadeType.ALL,
+		fetch= FetchType.LAZY,
+		mappedBy="producto",
+		optional=true)
+	private ImageModel imagen;
 
     
     private String nombre;
@@ -60,122 +73,6 @@ public class ProductoModel {
     private Integer cantidad;
     private Boolean visible;
 
-    public ProductoModel( String nombre, String descripcionCorta, String descripcionLarga, Float precio, Integer cantidad,Boolean visible,MarcaModel marca,Set<CategoriaModel> categoria,List<ImageModel> imagen
-    ) {
-        this.nombre = nombre;
-        this.descripcionCorta = descripcionCorta;
-        this.descripcionLarga = descripcionLarga;
-        this.precio = precio;
-        this.cantidad = cantidad;
-        this.visible = visible;
-        this.marca = marca;
-        this.categoria = categoria;
-        this.imagen=imagen;
-    }
-    public String getNombre() {
-        return this.nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getDescripcionLarga() {
-        return descripcionLarga;
-    }
-
-    public void setDescripcionLarga(String descripcionLarga) {
-        this.descripcionLarga = descripcionLarga;
-    }
-
-    public String getDescripcionCorta() {
-        return descripcionCorta;
-    }
-    public void setDescripcionCorta(String descripcionCorta) {
-        this.descripcionCorta = descripcionCorta;
-    }
-
-    public Float getPrecio() {
-        return this.precio;
-    }
-
-    public void setPrecio(Float precio) {
-        this.precio = precio;
-    }
-
-    public Integer getCantidad() {
-        return this.cantidad;
-    }
-
-    public void setCantidad(Integer cantidad) {
-        this.cantidad = cantidad;
-    }
-
-    public Boolean getVisible() {
-        return this.visible;
-    }
-
-    public void setVisible(Boolean visible) {
-        this.visible = visible;
-    }
-
-    public Long getId() {
-        return this.id;
-    }
     
-    public MarcaModel getMarca(){
-        return this.marca;
-    }
-    public void setMarca(MarcaModel marca){
-        this.marca=marca;
-    }
-    public List<ValoracionModel> getValoracion(){
-        return this.valoracion;
-    }
-    public void setValoracion(List<ValoracionModel> valoracion){
-        this.valoracion=valoracion;
-    }
-    public List<VariacionModel> getVariacion(){
-        return this.variacion;
-    }
-    public void setVariacion(List<VariacionModel> variacion){
-        this.variacion=variacion;
-    }
-
-
-    // public Set<PedidoModel> getPedido() {
-    //     return this.pedido;
-    // }
-    // public void setPedido(Set<PedidoModel> pedido) {
-    //     this.pedido = pedido;
-    // }
-    
-    public Set<DistribuidorModel> getDistribuidor() {
-        return this.distribuidor;
-    }
-    public void setDistribuidor(Set<DistribuidorModel> distribuidor) {
-        this.distribuidor = distribuidor;
-    }
-  
-    public Set<TagModel> getTag() {
-        return this.tag;
-    }
-    public void setTag(Set<TagModel> tag) {
-        this.tag = tag;
-    }
-   
-    public Set<CategoriaModel> getCategoria() {
-        return this.categoria;
-    }
-    public void setCategoria(Set<CategoriaModel> categoria) {
-        this.categoria = categoria;
-    }
-    public List<ImageModel> getImagen() {
-        return this.imagen;
-    }
-
-    public void setImagen(List<ImageModel> imagen) {
-        this.imagen = imagen;
-    }
 
 }

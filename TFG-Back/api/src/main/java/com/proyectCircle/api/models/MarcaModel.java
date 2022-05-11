@@ -6,68 +6,35 @@ import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 @Entity
 @Table(name="marca")
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class MarcaModel {
-    public MarcaModel(){
-        super();
-     }
+   
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
     private Long id;
 
-    @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH },fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "id_marcaProducto", foreignKey = @ForeignKey(name = "id_marcaProducto" ,value =ConstraintMode.CONSTRAINT))
     @JsonIgnore
     private List<ProductoModel> producto;
 
     @ManyToMany(mappedBy = "marca")
+    @JsonIgnore
     private Set<DescuentoModel> descuento;
 
-    @Column(name = "Nombre")
+    @Column(name = "nombre")
     private String nombre;
 
-    public MarcaModel(long id, List<ProductoModel> producto, Set<DescuentoModel> descuento, String nombre) {
-        this.id = id;
-        this.producto = producto;
-        this.descuento = descuento;
-        this.nombre = nombre;
-    }
-
-    public long getId() {
-        return this.id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-    public List<ProductoModel> getProducto() {
-        return this.producto;
-    }
-
-    public void setProducto(List<ProductoModel> producto) {
-        this.producto = producto;
-    }
-
-    public Set<DescuentoModel> getDescuento() {
-        return this.descuento;
-    }
-
-    public void setDescuento(Set<DescuentoModel> descuento) {
-        this.descuento = descuento;
-    }
-
-
-    public String getNombre() {
-        return this.nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    
-    
 }

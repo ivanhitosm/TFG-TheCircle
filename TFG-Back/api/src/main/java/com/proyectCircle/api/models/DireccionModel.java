@@ -6,13 +6,19 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "direccion")
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class DireccionModel {
-    public DireccionModel(){
-        super();
-     }
+  
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,18 +33,6 @@ public class DireccionModel {
     @JoinColumn(name = "id_direccionPedido", foreignKey = @ForeignKey(name = "id_direccionPedido", value =ConstraintMode.CONSTRAINT))
     private List<PedidoModel> pedidos;
 
-
-    public DireccionModel(Long id, ClienteModel cliente, List<PedidoModel> pedidos, String ciudad, String poblacion,
-            Integer numero, Integer piso) {
-        this.id = id;
-        this.cliente = cliente;
-        this.pedidos = pedidos;
-        this.ciudad = ciudad;
-        this.poblacion = poblacion;
-        this.numero = numero;
-        this.piso = piso;
-    }
-
   
     @Column(name = "Ciudad")
     private String ciudad;
@@ -48,38 +42,5 @@ public class DireccionModel {
     private Integer numero;
     @Column(name = "Piso")
     private Integer piso;
-
-
-    public String getCiudad() {
-        return this.ciudad;
-    }
-
-    public void setCiudad(String ciudad) {
-        this.ciudad = ciudad;
-    }
-
-    public String getPoblacion() {
-        return this.poblacion;
-    }
-
-    public void setPoblacion(String poblacion) {
-        this.poblacion = poblacion;
-    }
-
-    public Integer getNumero() {
-        return this.numero;
-    }
-
-    public void setNumero(Integer numero) {
-        this.numero = numero;
-    }
-
-    public Integer getPiso() {
-        return this.piso;
-    }
-
-    public void setPiso(Integer piso) {
-        this.piso = piso;
-    }
 
 }

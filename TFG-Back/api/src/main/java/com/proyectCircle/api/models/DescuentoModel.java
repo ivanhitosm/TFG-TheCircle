@@ -3,13 +3,22 @@ import java.util.Set;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 @Entity
 @Table(name="descuento")
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class DescuentoModel {
     
-    public DescuentoModel(){
-        super();
-     }
+  
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,6 +31,7 @@ public class DescuentoModel {
     name = "descuento_marca", 
     joinColumns = @JoinColumn(name = "descuento_id"), 
     inverseJoinColumns = @JoinColumn(name = "marca_id"))
+    @JsonIgnore
     private Set<MarcaModel> marca;
 
     @ManyToMany
@@ -29,6 +39,7 @@ public class DescuentoModel {
     name = "descuento_tag", 
     joinColumns = @JoinColumn(name = "descuento_id"), 
     inverseJoinColumns = @JoinColumn(name = "tag_id"))
+    @JsonIgnore
     private Set<TagModel> tag;
 
     @ManyToMany
@@ -36,25 +47,11 @@ public class DescuentoModel {
     name = "descuento_categoria", 
     joinColumns = @JoinColumn(name = "descuento_id"), 
     inverseJoinColumns = @JoinColumn(name = "categoria_id"))
+    @JsonIgnore
     private Set<CategoriaModel> categoria;
 
     private Integer descuestoEur;
 
-    private Integer descuentoPorc;
-
-    public Integer getDescuestoEur() {
-        return descuestoEur;
-    }
-
-    public Integer getDescuentoPorc() {
-        return descuentoPorc;
-    }
-
-    public void setDescuentoPorc(Integer descuentoPorc) {
-        this.descuentoPorc = descuentoPorc;
-    }
-
-    public void setDescuestoEur(Integer descuestoEur) {
-        this.descuestoEur = descuestoEur;
-    }
+  
+   
 }

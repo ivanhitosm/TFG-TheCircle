@@ -2,9 +2,17 @@ package com.proyectCircle.api.models;
 import java.util.Set;
 
 import javax.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name="tag")
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class TagModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

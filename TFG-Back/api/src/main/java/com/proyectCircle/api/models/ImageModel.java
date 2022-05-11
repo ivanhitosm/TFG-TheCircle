@@ -6,6 +6,10 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+
+
 @Entity
 @Table(name = "image")
 @Data
@@ -24,10 +28,13 @@ public class ImageModel {
 	@Column(name = "type")
 	private String type;
 
-	@Column(name = "image", unique = false, nullable = false, length = 100000)
+	@Lob
 	private byte[] image;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_imagenPedido", foreignKey = @ForeignKey(name = "producto_Id"))
+    @OneToOne(
+		cascade=CascadeType.ALL,
+		fetch= FetchType.LAZY,
+		orphanRemoval=true)
+		@JsonIgnore
     private ProductoModel producto;
 }

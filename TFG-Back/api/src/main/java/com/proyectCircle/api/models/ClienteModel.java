@@ -4,12 +4,18 @@ import java.sql.Date;
 import java.util.List;
 import javax.persistence.*;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 @Entity
 @Table(name="cliente")
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class ClienteModel {
-    public ClienteModel(){
-        super();
-     }
+   
 
 
     @Id
@@ -47,62 +53,6 @@ public class ClienteModel {
     @Column(name = "birthdDate")
     private Date birthdDate;
 
-    public ClienteModel(Long id, List<DireccionModel> direcciones,List<PedidoModel> pedido, String firstName, String lastName, String email,
-            String gender, String username, Integer telefoneN, Date birthdDate) {
-        this.id = id;
-        this.direcciones = direcciones;
-        this.pedido=pedido;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.gender = gender;
-        this.username = username;
-        this.telefoneN = telefoneN;
-        this.birthdDate = birthdDate;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-    public Date getBirthdDate() {
-        return birthdDate;
-    }
-    public void setBirthdDate(Date birthdDate) {
-        this.birthdDate = birthdDate;
-    }
-    public Integer getTelefoneN() {
-        return telefoneN;
-    }
-    public void setTelefoneN(Integer telefoneN) {
-        this.telefoneN = telefoneN;
-    }
-    public String getUsername() {
-        return username;
-    }
-    public void setUsername(String username) {
-        this.username = username;
-    }
-    public String getGender() {
-        return gender;
-    }
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-    public String getEmail() {
-        return email;
-    }
-    public void setEmail(String email) {
-        this.email = email;
-    }
-    public String getLastName() {
-        return lastName;
-    }
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
 
 
     

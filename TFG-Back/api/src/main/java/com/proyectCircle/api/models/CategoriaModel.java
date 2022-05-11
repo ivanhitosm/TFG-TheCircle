@@ -5,14 +5,20 @@ import java.util.Set;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name="categoria")
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class CategoriaModel {
     
-    public CategoriaModel(){
-        super();
-     }
+ 
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,32 +37,5 @@ public class CategoriaModel {
     @Column(name = "Nombre")
     private String nombre;
 
-    public CategoriaModel(long id, Set<ProductoModel> producto, Set<DescuentoModel> descuento, String nombre) {
-        this.id = id;
-        this.producto = producto;
-        this.descuento = descuento;
-        this.nombre = nombre;
-    }
-
-    public long getId() {
-        return this.id;
-    }
-    public void setId(long id) {
-        this.id = id;
-    }
-    
-    public Set<ProductoModel> getProducto() {
-        return this.producto;
-    }
-    public void setProducto(Set<ProductoModel> producto) {
-        this.producto = producto;
-    }
-    
-    public String getNombre() {
-        return this.nombre;
-    }
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
 
 }

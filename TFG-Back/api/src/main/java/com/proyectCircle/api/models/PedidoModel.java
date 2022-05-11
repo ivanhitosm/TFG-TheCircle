@@ -4,8 +4,18 @@ import java.sql.Date;
 import java.util.Set;
 
 import javax.persistence.*;
+
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 @Entity
 @Table(name="pedido")
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class PedidoModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,7 +1,10 @@
 package com.proyectCircle.api.controllers;
 
+
+import com.proyectCircle.api.exception.ResourceNotFoundException;
 import com.proyectCircle.api.models.ImageModel;
 import com.proyectCircle.api.repositories.ImageRepository;
+import com.proyectCircle.api.repositories.ProductoRepository;
 import com.proyectCircle.api.services.ImageUtility;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,15 +14,38 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import lombok.Builder;
+
 import java.io.IOException;
 import java.util.Optional;
-
+@Builder
 @RestController
 @CrossOrigin() // open for all ports
 public class ImageController {
 
     @Autowired
     ImageRepository imageRepository;
+    @Autowired
+    ProductoRepository productoRepository;
+
+
+    @PostMapping("/productos/{productoId}/images")
+    public ResponseEntity<ImageModel> createImage(
+        @PathVariable(value = "productoId") Long productoId,
+        @RequestParam("image") MultipartFile file            
+        ){
+        ImageModel imageRequest= new ImageModel();
+        ImageModel image = productoRepository.findById(productoId).map(producto ->  {
+                imageRequest.setProducto(producto);
+                imageRequest.setName(file.getOriginalFilename());
+                imageRequest.setType(file.getContentType());
+                try {imageRequest.setImage(ImageUtility.compressImage(file.getBytes()));
+                } catch (IOException e) {e.printStackTrace();}
+        return imageRepository.save(imageRequest);
+      }).orElseThrow(() -> new ResourceNotFoundException("Not found Producto with id = " + productoId));
+  
+      return new ResponseEntity<>(image, HttpStatus.CREATED);
+    }
 
     @PostMapping("/upload/image/{id}")
     public ResponseEntity<ImageUploadResponse> uplaodImage(@RequestParam("image") MultipartFile file ,@PathVariable("id") Long id)
@@ -66,7 +92,7 @@ public class ImageController {
     @GetMapping(path = {"/get/imageProducto/{id}"})
     public ResponseEntity<byte[]> getImageProducto(@PathVariable("id") Long id)  {
 
-        final Optional<ImageModel> dbImage = imageRepository.findByProducto(id);
+        final Optional<ImageModel> dbImage = imageRepository.findByProductoId(id);
         if (dbImage.isPresent()) {
         return ResponseEntity
                 .ok()
