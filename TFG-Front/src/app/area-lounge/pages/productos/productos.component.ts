@@ -57,6 +57,8 @@ export class ProductosComponent implements OnInit {
           this.productos = result.content;
           this.infoPag = result.pageable;
           this.raw = result;
+          this.getImageProduct(1)
+          console.log('products',  this.productos)
         },
         (error) => {
           console.log(error);
@@ -84,4 +86,29 @@ export class ProductosComponent implements OnInit {
     this.offset = 0;
     this.loadTable();
   }
+
+  getImageProduct(idProduct: number){
+    this._dataService
+    .getImagenesProduct(idProduct)
+    .subscribe(
+      (result) => {
+        console.log('image', result)
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+
+  // prueba(json: any, file: File): Observable<any> {
+  //   const formData = new FormData();
+  //   formData.append('image', file, file.name);
+  //   formData.append('json', JSON.stringify(json));
+  
+  //   const endpoint = 'http://localhost/tus_comercios_en_casa/kitum_rest_service/public/api/kitum/prueba';
+  
+  //   return this.http.post<any>(endpoint, formData, {
+  //     headers: { 'X-Requested-With' : 'XMLHttpRequest' }
+  //   });
+  // }
 }
