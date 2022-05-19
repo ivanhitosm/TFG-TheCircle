@@ -23,9 +23,6 @@ public class ClienteModel {
     @Column(unique = true,nullable = false)
     private Long id;
 
-    @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH },fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_direccionCliente", foreignKey = @ForeignKey(name = "id_direccionCliente", value =ConstraintMode.CONSTRAINT))
-    private List<DireccionModel> direcciones;
 
     @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH },fetch = FetchType.LAZY)
     @JoinColumn(name = "id_pedidoCliente", foreignKey = @ForeignKey(name = "id_pedidoCliente" ,value =ConstraintMode.CONSTRAINT))
@@ -52,6 +49,8 @@ public class ClienteModel {
     private Integer telefoneN;
     @Column(name = "birthdDate")
     private Date birthdDate;
+    @Column(name = "direccion")
+    private String direccion;
 
 
 

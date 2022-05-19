@@ -29,9 +29,6 @@ public class PedidoModel {
     @JoinColumn(name = "id_pedidoCliente", foreignKey = @ForeignKey(name = "id_pedidoCliente"))
     private ClienteModel cliente;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_direccionPedido", foreignKey = @ForeignKey(name = "id_direccionPedido"))
-    private DireccionModel direccion;
  
     @ManyToMany
     @JoinTable(

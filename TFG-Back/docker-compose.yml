@@ -29,7 +29,8 @@ services:
         "spring.jpa.hibernate.ddl-auto" : "update",
         "spring.profiles.active" :"development",
         "logging.level.org.springframework.web": "DEBUG",
-        "logging.level.org.hibernate": "ERROR"
+        "logging.level.org.hibernate": "ERROR",
+        "spring.jackson.serialization.fail-on-empty-beans":"false"
         }'
     volumes:
       - .m2:/root/.m2

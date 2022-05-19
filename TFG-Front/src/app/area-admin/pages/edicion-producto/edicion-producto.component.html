@@ -66,6 +66,7 @@
               <select class="form-select" *ngIf="marcas!= null" class="form-control" formControlName="marca">
                 <option
                  *ngFor="let marca of marcas" 
+                 selected="selected"
                  [value]="marca">{{marca}}
                 </option>  
             </select>

@@ -14,8 +14,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
-
-
 @Entity
 @Table(name = "producto")
 @Data
@@ -46,7 +44,7 @@ public class ProductoModel {
 
     
 
-    @ManyToOne( cascade = CascadeType.ALL)
+    @ManyToOne( cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "id_marcaProducto", foreignKey = @ForeignKey(name = "id_marcaProducto"))
     private MarcaModel marca;
 
