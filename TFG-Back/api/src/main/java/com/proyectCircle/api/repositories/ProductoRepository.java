@@ -13,8 +13,10 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface ProductoRepository extends JpaRepository<ProductoModel, Long> {
 
+    
     ProductoModel findByNombre(String nombre);
 
+    @Query(nativeQuery = true, value="SELECT * FROM producto p WHERE p.visible =1 and p.nombre= ?1")
     List<ProductoModel> findAllByNombreContaining(String nombre);
 
 

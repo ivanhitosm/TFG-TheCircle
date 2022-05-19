@@ -9,13 +9,25 @@
 </p-confirmDialog>
 
 <div class="card shadow mt-2 mb-2">
+  <form [formGroup]="productoForm" (ngSubmit)="onSubmit()">
   <div class="card-header py-3 d-flex justify-content-between">
-    <p class="text-secondary m-0 fw-bold">Producto</p>
-    <input type="checkbox" (click)="checkBoxClicked()" >
+      <div class=" d-xxl-flex justify-content-xxl-center"><button class="btn btn-secondary" type="submit" 
+        [disabled]="!productoForm.valid"><i class="fa fa-save"></i>&nbsp;Guardar producto</button>
+      </div>
+
+      <div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="formCheck-1"formControlName="visible">
+          <label class="form-check-label" for="formCheck-1">
+          <i class="fa fa-eye"></i>Visible</label>
+        </div>
+      </div>
+   
+   
     <a class="btn btn-danger action-button" role="button" routerLink="/areaAdm">Salir</a>
   </div>
   <div class="card-body">
-    <form [formGroup]="productoForm" (ngSubmit)="onSubmit()">
+   
       <div class="row">
         <div class="col-sm-12 col-md-6">
           <label class="form-label">Nombre:</label>
@@ -51,11 +63,17 @@
         </div>
         <div class="col-sm-6 col-md-8"><label class="form-label">Marca:</label>
           <div class="p-inputgroup ">
-            <input type="text" pInputText placeholder="Marca" class="form-control" formControlName="marca"
-              [style]="{'width':'100%'}">
+              <select class="form-select" *ngIf="marcas!= null" class="form-control" formControlName="marca">
+                <option
+                 *ngFor="let marca of marcas" 
+                 [value]="marca">{{marca}}
+                </option>  
+            </select>
           </div>
+
+          
         </div>
-        <div class="col-sm-12 col-md-6"><label class="form-label">Categoria:</label>
+        <!-- <div class="col-sm-12 col-md-6"><label class="form-label">Categoria:</label>
           <div class="p-inputgroup ">
             <input type="text" pInputText placeholder="Categoria" class="form-control" formControlName="categoria"
               [style]="{'width':'100%'}">
@@ -72,71 +90,66 @@
           <select class="form-select" formControlName="tag">
             <option *ngFor="let tag of tags" [value]="tag">{{tag}}</option>
           </select>
-        </div>
+        </div> -->
 
-        <div class="col-sm-12 col-md-6">
+        <div class="col-sm-10 col-md-6">
           <label class="form-label">Imagen de producto:</label>
           <input class="form-control" formControlName="image" #file type="file" accept="image/*" (change)="preview(file.files)">
+         
           <span style="color:red;" *ngIf="message">{{message}}</span>
           <div class="text-center d-xxl-flex justify-content-xxl-center">
             <img class="d-xxl-flex" width="30%" [src]="imgURL" height="200" *ngIf="imgURL">
           </div>
+         
+        
         </div>
-        <div class="col d-xxl-flex justify-content-xxl-center">
-          <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-1"
-              formControlName="visible"><label class="form-check-label" for="formCheck-1"><i
-                class="fa fa-eye"></i>Visible</label></div>
-        </div>
-        <div class="col-12 d-xxl-flex justify-content-xxl-center"><button class="btn btn-secondary" type="submit" 
-            [disabled]="!productoForm.valid"><i class="fa fa-save"></i>&nbsp;Guardar producto</button></div>
-
       </div>
-    </form>
-    <div class="row">
-      <div class="col">
-        <div class="card mt-3">
-          <div class="card-header justify-content-xxl-start py-3">
-            <div class="row">
-              <div class="col-sm-12 col-md-6">
-                <p class="text-secondary m-0 fw-bold">Variaciones</p>
+  </div>
+</form>
+</div>
+ <div class="row">
+        <div class="col">
+          <div class="card mt-3">
+            <div class="card-header justify-content-xxl-start py-3">
+              <div class="row">
+                <div class="col-sm-12 col-md-6">
+                  <p class="text-secondary m-0 fw-bold">Añadir</p>
+                </div>
+                <div
+                  class="col-sm-12 col-md-6 d-flex d-xxl-flex justify-content-center justify-content-sm-end justify-content-xxl-end">
+                  <button class="btn btn-warning" type="button"><i class="fa fa-plus"></i></button></div>
               </div>
-              <div
-                class="col-sm-12 col-md-6 d-flex d-xxl-flex justify-content-center justify-content-sm-end justify-content-xxl-end">
-                <button class="btn btn-warning" type="button"><i class="fa fa-plus"></i></button></div>
+            </div>
+            <div class="card-body">
+              <form>
+                <div class="table-responsive">
+                  <table class="table">
+                    <caption></caption>
+                    <thead>
+                      <tr>
+                        <th>Atributo</th>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th><i class="fa fa-gear"></i></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><input class="form-control" type="text"></td>
+                        <td><input class="form-control" type="text"></td>
+                        <td class="align-items-xxl-center"><input class="form-control" type="number"></td>
+                        <td>
+                          <div class="btn-group" role="group"><button class="btn btn-success" type="button"><i
+                                class="fa fa-save"></i></button><button class="btn btn-danger" type="button"><i
+                                class="fa fa-trash-o"></i></button></div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </form>
             </div>
           </div>
-          <div class="card-body">
-            <form>
-              <div class="table-responsive">
-                <table class="table">
-                  <caption>New York City Marathon Results 2013</caption>
-                  <thead>
-                    <tr>
-                      <th>Atributo</th>
-                      <th>Nombre</th>
-                      <th>Precio</th>
-                      <th><i class="fa fa-gear"></i></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td><input class="form-control" type="text"></td>
-                      <td><input class="form-control" type="text"></td>
-                      <td class="align-items-xxl-center"><input class="form-control" type="number"></td>
-                      <td>
-                        <div class="btn-group" role="group"><button class="btn btn-success" type="button"><i
-                              class="fa fa-save"></i></button><button class="btn btn-danger" type="button"><i
-                              class="fa fa-trash-o"></i></button></div>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </form>
-          </div>
         </div>
       </div>
-    </div>
-  </div>
-</div>
 

@@ -29,7 +29,9 @@ export class EdicionProductoComponent {
   imgURL: any;
   public message: string | undefined;
   tags = ['Producto', 'Camisa', 'Pantalon', 'Complemento'];
+  marcas:any = [];
   completo=false;
+
   
   productoForm = this.fb.group({
     id:[''],
@@ -44,13 +46,19 @@ export class EdicionProductoComponent {
     tag: [null],
     visible: [''],
     image: [null],
+    
   });
+
+  // extrasForm=this.fb.group({
+
+    
+  // });
 
   ngOnInit() {
     this.id = this.route.snapshot.params['id'];
     this.isAddMode = !this.id;
     var urlMode = window.location.pathname.split('/')[2];
-
+    this.getExtras(this.id)
     if (urlMode == 'view') {
       this.productoForm.disable();
     }
@@ -64,26 +72,39 @@ export class EdicionProductoComponent {
         );
     }
   }
-
-  checkBoxClicked(){
-    if (!this.completo) {
-      this.productoForm.controls.marca.disable();
-      this.productoForm.controls.categoria.disable();
-      this.productoForm.controls.distribuidor.disable();
-      this.productoForm.controls.tag.disable();
-      this.productoForm.controls.image.disable();
-
-      this.completo=!this.completo
-    } else {
-      this.productoForm.controls.marca.enable();
-      this.productoForm.controls.categoria.enable();
-      this.productoForm.controls.distribuidor.enable();
-      this.productoForm.controls.tag.enable();
-      this.productoForm.controls.image.enable();
-      this.completo=!this.completo
-    }
-    
+  getExtras(id: number){
+    this.dataService
+    .getProductoID(id) .subscribe(
+      (result: any) => {
+        // console.log(result)
+        this.marcas.push(result.marca.nombre)
+        // console.log(this.marcas)
+      },
+      (error: any) => {
+        console.log(error);
+      }
+    );
   }
+
+  // checkBoxClicked(){
+  //   if (!this.completo) {
+  //     this.productoForm.controls.marca.disable();
+  //     this.productoForm.controls.categoria.disable();
+  //     this.productoForm.controls.distribuidor.disable();
+  //     this.productoForm.controls.tag.disable();
+  //     this.productoForm.controls.image.disable();
+
+  //     this.completo=!this.completo
+  //   } else {
+  //     this.productoForm.controls.marca.enable();
+  //     this.productoForm.controls.categoria.enable();
+  //     this.productoForm.controls.distribuidor.enable();
+  //     this.productoForm.controls.tag.enable();
+  //     this.productoForm.controls.image.enable();
+  //     this.completo=!this.completo
+  //   }
+    
+  // }
 
 
   onSubmit() {
@@ -111,6 +132,10 @@ export class EdicionProductoComponent {
     });
    
   }
+  guardarImagen(){
+    //nno
+
+  }
   preview(files: any) {
     if (files.length === 0) return;
 
@@ -137,6 +162,7 @@ export class EdicionProductoComponent {
         next: () => {
           this.adminMsg.UpdateMsg('Info','Confimed','Producto Añadido');
           this.router.navigate(['../'], { relativeTo: this.route });
+         
         },
         error: (error: any) => {
           this.adminMsg.UpdateMsg('Info','Reject',error);
@@ -155,6 +181,11 @@ export class EdicionProductoComponent {
         next: () => {
           this.adminMsg.UpdateMsg('Info','Confimed','Producto modificado');
           this.router.navigate(['../../'], { relativeTo: this.route });
+          if (this.productoForm.controls.image!= null) {
+            let idProducto=this.productoForm.controls.id.value;
+            let imagenProducto=this.productoForm.controls.image.value;
+            this.dataService.PostimagenEnProducto(idProducto,imagenProducto)
+          }
         },
         error: (error: any) => {
           this.adminMsg.UpdateMsg('Info','Reject',error);

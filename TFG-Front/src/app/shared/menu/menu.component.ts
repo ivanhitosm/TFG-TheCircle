@@ -31,6 +31,7 @@ export class MenuComponent implements OnInit{
       result=>{
         this.productos=result;      
       this._dataService.messageSource=value;
+      this.router.onSameUrlNavigation = 'reload';
       this.router.navigate(['product'],{state: {result}})
       console.log("busqueda")
       },

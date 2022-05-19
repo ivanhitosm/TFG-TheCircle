@@ -56,6 +56,11 @@ public busqueda(nombre: string){
 busquedaMensaje(message: string) {
   this.messageSource.next(message)
 }
+/*-------------imagenes------------------------- */
+
+public PostimagenEnProducto(id:number, image:File){
+  return this._http.post(this.REST_API_SERVER+"productos/"+id+"/images",image)
+}
 
 
 
