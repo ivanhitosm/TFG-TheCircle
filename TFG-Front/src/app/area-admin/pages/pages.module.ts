@@ -13,13 +13,21 @@ import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import { MessagesModule } from 'primeng/messages';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from "src/app/app.component";
+import { TablaClientesComponent } from './tabla-clientes/tabla-clientes.component';
+import { EdicionClienteComponent } from './edicion-cliente/edicion-cliente.component';
+import { TablaPedidosComponent } from './tabla-pedidos/tabla-pedidos.component';
+import { EdicionPedidoComponent } from './edicion-pedido/edicion-pedido.component';
 
 
 
 @NgModule({
   declarations: [
     TablaAdmComponent,
-    EdicionProductoComponent
+    EdicionProductoComponent,
+    TablaClientesComponent,
+    EdicionClienteComponent,
+    TablaPedidosComponent,
+    EdicionPedidoComponent
 
   ],
   exports:[
