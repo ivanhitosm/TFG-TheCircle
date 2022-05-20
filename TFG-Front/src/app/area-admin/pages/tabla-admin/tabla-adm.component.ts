@@ -27,6 +27,8 @@ export class TablaAdmComponent implements OnInit {
   page=0;
   totalPages=0;
   msgs: Message[] = [];
+  Marcas:any = [];
+  
   
   constructor(
     private _dataService: DataService,
@@ -37,7 +39,8 @@ export class TablaAdmComponent implements OnInit {
 
   ngOnInit() {
     //console.log(history.state.result)
-    this.loadTable();
+    this.loadTableProductos();
+    this.loadtableMarcas();
   }
 
   confirm(_id:number) {console.log("confim "+_id)
@@ -60,7 +63,7 @@ export class TablaAdmComponent implements OnInit {
       .deleteProducto(_id)
         .subscribe(result=>{
           console.log(result);
-            this.loadTable();
+            this.loadTableProductos();
             this.adminMsg.UpdateMsg('Info','Confirmed','Producto Borrando');
         },
         (error: any) => {
@@ -69,21 +72,22 @@ export class TablaAdmComponent implements OnInit {
     );
   }
 
-  loadTable() {
+  loadTableProductos() {
     this._dataService
       .getProductosPagAll(this.offset, this.pageSize, this.field)
       .subscribe(
         (result) => {
-          console.log(
-            "totalpages"+" "+result.totalPages+"\n "+
-            "totalelements"+" "+result.totalElements+"\n "+
+          // console.log(
+          //   "totalpages"+" "+result.totalPages+"\n "+
+          //   "totalelements"+" "+result.totalElements+"\n "+
            
             
-            "offset"+" "+this.offset+"\n "+
-            "pageSize"+" "+this.pageSize+"\n "+
-            "field:"+" "+this.field+"\n "+
-            this.raw.totalPages
-          );
+          //   "offset"+" "+this.offset+"\n "+
+          //   "pageSize"+" "+this.pageSize+"\n "+
+          //   "field:"+" "+this.field+"\n "+
+          //   this.raw.totalPages
+          // );
+          // console.log(result);
 
           this.productos = result.content;
           this.infoPag = result.pageable;
@@ -96,26 +100,36 @@ export class TablaAdmComponent implements OnInit {
         }
       );
   }
+
+  loadtableMarcas(){
+    this._dataService
+    .getMarcas().subscribe(
+      (result)=>{
+        console.log(result);
+        this.Marcas=result;
+      }
+    );
+  }
   nextPage() {
     if (!this.raw.last) {
       this.offset = this.offset + 1;
-      this.loadTable();
+      this.loadTableProductos();
     }
   }
   previousPage() {
     if (!this.raw.first) {
       this.offset = this.offset - 1;
-      this.loadTable();
+      this.loadTableProductos();
     }
   }
   specificPage(num: number) {
     this.offset = num;
-    this.loadTable();
+    this.loadTableProductos();
   }
   cambiarPageSize(num: number) {
     this.pageSize = num;
     this.offset = 0;
-    this.loadTable();
+    this.loadTableProductos();
   }
   
  

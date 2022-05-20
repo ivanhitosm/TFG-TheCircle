@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
+@CrossOrigin() // open for all ports
 public class ProductoController {
 
   @Autowired

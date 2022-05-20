@@ -1,4 +1,4 @@
-package com.proyectCircle.api.controllers;
+package com.proyectCircle.api.exception;
 
 public class ImageUploadResponse {
     private String message;

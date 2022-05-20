@@ -12,9 +12,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface AtributoRepository extends JpaRepository<AtributoModel, Long> {
 
-    AtributoModel findByNombre(String nombre);
-
-    List<AtributoModel> findAllByNombreContaining(String nombre);
+   
 
    
 

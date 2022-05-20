@@ -12,9 +12,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface VariacionRepository extends JpaRepository<VariacionModel, Long> {
 
-    VariacionModel findByNombre(String nombre);
-
-    List<VariacionModel> findAllByNombreContaining(String nombre);
+   
 
    
 

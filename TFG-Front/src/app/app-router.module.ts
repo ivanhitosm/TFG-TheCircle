@@ -15,6 +15,7 @@ import { AreaAdmComponent } from "./area-admin/area-adm.component";
 import { CommonModule } from "@angular/common";
 import { TablaAdmComponent } from './area-admin/pages/tabla-admin/tabla-adm.component';
 import { EdicionProductoComponent } from './area-admin/pages/edicion-producto/edicion-producto.component';
+import { EdicionMarcaComponent } from './area-admin/pages/edicion-marca/edicion-marca.component';
 
 
 const routes: Routes=[
@@ -48,9 +49,12 @@ const routes: Routes=[
     component: AreaAdmComponent,
     children: [
         { path: '', component: TablaAdmComponent , pathMatch: 'full'},
-        { path: 'add', component: EdicionProductoComponent },
-        { path: 'edit/:id', component: EdicionProductoComponent },
-        { path: 'view/:id', component: EdicionProductoComponent }
+        { path: 'addProducto', component: EdicionProductoComponent },
+        { path: 'addMarca', component: EdicionMarcaComponent },
+        { path: 'editProducto/:id', component: EdicionProductoComponent },
+        { path: 'viewProducto/:id', component: EdicionProductoComponent },
+        { path: 'viewMarca/:id', component: EdicionMarcaComponent },
+        { path: 'editMarca/:id', component: EdicionMarcaComponent },
     ]
   },
   {

@@ -11,10 +11,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ValoracionRepository extends JpaRepository<ValoracionModel, Long> {
 
-    ValoracionModel findByNombre(String nombre);
-
-    List<ValoracionModel> findAllByNombreContaining(String nombre);
-
+   
 
     
 }

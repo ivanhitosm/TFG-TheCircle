@@ -13,18 +13,22 @@ import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import { MessagesModule } from 'primeng/messages';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from "src/app/app.component";
+import { EdicionMarcaComponent } from "./edicion-marca/edicion-marca.component";
 
 
 
 @NgModule({
   declarations: [
     TablaAdmComponent,
-    EdicionProductoComponent
+    EdicionProductoComponent,
+    EdicionMarcaComponent
 
   ],
   exports:[
     TablaAdmComponent,
-    EdicionProductoComponent
+    EdicionProductoComponent,
+    EdicionMarcaComponent
+
   ],
   imports: [
     ConfirmPopupModule,
