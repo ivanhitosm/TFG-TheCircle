@@ -64,9 +64,6 @@ const routes: Routes=[
         { path: 'editProducto/:id', component: EdicionProductoComponent },
         { path: 'viewProducto/:id', component: EdicionProductoComponent },
         { path: 'addProducto', component: EdicionProductoComponent },
-        
-       
-        
         { path: 'areaClientes', component: TablaClientesComponent },
         { path: 'editCliente', component: EdicionClienteComponent },
         { path: 'viewCliente', component: EdicionClienteComponent },
