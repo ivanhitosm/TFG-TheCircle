@@ -14,6 +14,10 @@ import { MessagesModule } from 'primeng/messages';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from "src/app/app.component";
 import { EdicionMarcaComponent } from "./edicion-marca/edicion-marca.component";
+import { TablaClientesComponent } from './tabla-clientes/tabla-clientes.component';
+import { EdicionClienteComponent } from './edicion-cliente/edicion-cliente.component';
+import { TablaPedidosComponent } from './tabla-pedidos/tabla-pedidos.component';
+import { EdicionPedidoComponent } from './edicion-pedido/edicion-pedido.component';
 
 
 
@@ -21,7 +25,11 @@ import { EdicionMarcaComponent } from "./edicion-marca/edicion-marca.component";
   declarations: [
     TablaAdmComponent,
     EdicionProductoComponent,
-    EdicionMarcaComponent
+    EdicionMarcaComponent,
+    TablaClientesComponent,
+    EdicionClienteComponent,
+    TablaPedidosComponent,
+    EdicionPedidoComponent
 
   ],
   exports:[
