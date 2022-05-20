@@ -15,10 +15,15 @@ import { AreaAdmComponent } from "./area-admin/area-adm.component";
 import { CommonModule } from "@angular/common";
 import { TablaAdmComponent } from './area-admin/pages/tabla-admin/tabla-adm.component';
 import { EdicionProductoComponent } from './area-admin/pages/edicion-producto/edicion-producto.component';
-import { TablaClientesComponent } from './area-admin/pages/tabla-clientes/tabla-clientes.component';
-import { EdicionClienteComponent } from './area-admin/pages/edicion-cliente/edicion-cliente.component';
-import { TablaPedidosComponent } from './area-admin/pages/tabla-pedidos/tabla-pedidos.component';
+import { EdicionMarcaComponent } from './area-admin/pages/edicion-marca/edicion-marca.component';
+
 import { EdicionPedidoComponent } from './area-admin/pages/edicion-pedido/edicion-pedido.component';
+import { TablaClientesComponent } from './area-admin/pages/tabla-clientes/tabla-clientes.component';
+import { TablaPedidosComponent } from './area-admin/pages/tabla-pedidos/tabla-pedidos.component';
+
+import { EdicionClienteComponent } from './area-admin/pages/edicion-cliente/edicion-cliente.component';
+
+
 
 
 const routes: Routes=[
@@ -52,9 +57,13 @@ const routes: Routes=[
     component: AreaAdmComponent,
     children: [
         { path: '', component: TablaAdmComponent , pathMatch: 'full'},
-        { path: 'add', component: EdicionProductoComponent },
-        { path: 'edit/:id', component: EdicionProductoComponent },
-        { path: 'view/:id', component: EdicionProductoComponent },
+        
+        { path: 'addMarca', component: EdicionMarcaComponent },
+        { path: 'viewMarca/:id', component: EdicionMarcaComponent },
+        { path: 'editMarca/:id', component: EdicionMarcaComponent },
+        { path: 'editProducto/:id', component: EdicionProductoComponent },
+        { path: 'viewProducto/:id', component: EdicionProductoComponent },
+        { path: 'addProducto', component: EdicionProductoComponent },
         { path: 'areaClientes', component: TablaClientesComponent },
         { path: 'editCliente', component: EdicionClienteComponent },
         { path: 'viewCliente', component: EdicionClienteComponent },

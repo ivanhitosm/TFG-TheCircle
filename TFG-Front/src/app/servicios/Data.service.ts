@@ -58,51 +58,36 @@ export class DataService {
   }
   /*-------------imagenes------------------------- */
 
-  public PostimagenEnProducto(id:number, image:File){
+  public postimagenEnProducto(id:number, image:File){
     return this._http.post(this.REST_API_SERVER+"productos/"+id+"/images",image)
   }
 
-  public getImagenesProduct(id: number):Observable<any>{
-    return this._http.get(this.REST_API_SERVER+"get/imageProducto/"+id)
+  public getImagenesProduct(id: number){
+    return this._http.get(this.REST_API_SERVER+"get/imageProducto/"+id ,{responseType: 'blob'})
   }
 
+  /*-------------Marcas------------------------- */
+  public getMarcas(){
+    return this._http.get(this.REST_API_SERVER+"Marcas")
+  }
+  public getMarcaID(id:number){
+    return this._http.get(this.REST_API_SERVER+"MarcaId/"+id)
+  }
+  public postMarca(form: any){
+    return this._http.get(this.REST_API_SERVER+"addMarca",form)
+  }
+  public deleteMarca(id: number){
+    return this._http.delete(this.REST_API_SERVER+"deleteMarca/"+ id,{responseType: 'text'})
+  }
+  public updateMarca(form: any){
+    return this._http.put(this.REST_API_SERVER+"updateMarca",form)
+  }
+  public postproductosnEnMarca(id:number,id2:number){
+    return this._http.post(this.REST_API_SERVER+"addProducto/"+id+"/Marca/"+id2,null)
+  }
 
-
+  public getProductosDeMarca(id:number){
+    return this._http.get(this.REST_API_SERVER+"ProductosDeMarca/"+id)
+  }
 
 }
-/*
-implementacion
-componete.ts:
- import { DataService } from "../../../servicios/Data.service";
-
- .....
-
-  productos:any = [];
-
-  constructor(private dataService: DataService) { }
-
-  ngOnInit() {
-
-    this.dataService.Get("Productos").subscribe((data)=>{
-      console.log(data);
-      this.productos=data;
-    })  
-  }
-
-componente.html:
-<div>
-      <ul>
-        <li *ngFor="let producto of productos; let id = index">
-          {{producto.id}} {{producto.nombre}}
-        </li>
-      </ul>
-     </div>
-
-
-     --------------
-
-
-    
-
-
-*/

@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@CrossOrigin() // open for all ports
 public class ClienteController {
 
     @Autowired

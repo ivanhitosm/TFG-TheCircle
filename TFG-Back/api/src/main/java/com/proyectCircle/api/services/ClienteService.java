@@ -43,7 +43,7 @@ public class ClienteService {
     }
 
     public List<ClienteModel> getClientesByNombre(String nombre){
-        return clienteRepository.findAllByNombreContaining(nombre);
+        return clienteRepository.findAllByfirstNameContaining(nombre);
     }
 
     public ClienteModel guardarCliente(ClienteModel cliente){

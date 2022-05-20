@@ -1,8 +1,10 @@
 package com.proyectCircle.api.controllers;
 
 
+import com.proyectCircle.api.exception.ImageUploadResponse;
 import com.proyectCircle.api.exception.ResourceNotFoundException;
 import com.proyectCircle.api.models.ImageModel;
+import com.proyectCircle.api.models.ProductoModel;
 import com.proyectCircle.api.repositories.ImageRepository;
 import com.proyectCircle.api.repositories.ProductoRepository;
 import com.proyectCircle.api.services.ImageUtility;
@@ -34,6 +36,7 @@ public class ImageController {
         @PathVariable(value = "productoId") Long productoId,
         @RequestParam("image") MultipartFile file            
         ){
+              
         ImageModel imageRequest= new ImageModel();
         ImageModel image = productoRepository.findById(productoId).map(producto ->  {
                 imageRequest.setProducto(producto);

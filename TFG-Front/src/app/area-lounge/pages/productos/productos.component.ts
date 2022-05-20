@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/servicios/Data.service';
 import { Router } from '@angular/router';
-
+import { DomSanitizer } from '@angular/platform-browser';
 @Component({
   selector: 'app-productos',
   templateUrl: './productos.component.html',
@@ -17,8 +17,10 @@ export class ProductosComponent implements OnInit {
   raw: any = [];
   busqueda: boolean = true;
   value = '';
+  imgUrl:any;
+  thumbnail: any[]=[];
 
-  constructor(private _dataService: DataService, private router: Router) {}
+  constructor(private _dataService: DataService, private router: Router, private sanitizer: DomSanitizer) {}
 
   ngOnInit() {
     //console.log(history.state.result)
@@ -43,28 +45,30 @@ export class ProductosComponent implements OnInit {
       .getProductosPag(this.offset, this.pageSize, this.field)
       .subscribe(
         (result) => {
-          // console.log(
-          //   "totalpages"+" "+result.totalPages+"\n "+
-          //   "totalelements"+" "+result.totalElements+"\n "+
-          //   "size"+" "+result.size+"\n "+
-          //   "number"+" "+result.number+"\n "+
-          //   "offset"+" "+this.offset+"\n "+
-          //   "pageSize"+" "+this.pageSize+"\n "+
-          //   "field:"+" "+this.field+"\n "+
-          //   this.raw.totalPages
-          // );
 
           this.productos = result.content;
           this.infoPag = result.pageable;
           this.raw = result;
-          this.getImageProduct(1)
-          console.log('products',  this.productos)
+
+                   
+console.log(this.productos)
+         this.productos.forEach((element: any) => {
+          let objectURL = 'data:image/jpeg;base64,' + result.content[element].imagen.imagen;
+           this.thumbnail.push(this.sanitizer.bypassSecurityTrustUrl(objectURL))
+           console.log(objectURL)
+         });
+          
+          
+        console.log(
+          this.productos[0].imagen.image
+        );
         },
         (error) => {
           console.log(error);
         }
       );
   }
+
   nextPage() {
     if (!this.raw.last) {
       this.offset = this.offset + 1;

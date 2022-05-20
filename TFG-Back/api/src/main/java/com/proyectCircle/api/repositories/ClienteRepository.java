@@ -12,9 +12,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ClienteRepository extends JpaRepository<ClienteModel, Long> {
 
-    ClienteModel findByNombre(String nombre);
+    ClienteModel findByfirstName(String firstName);
 
-    List<ClienteModel> findAllByNombreContaining(String nombre);
+    List<ClienteModel> findAllByfirstNameContaining(String firstName);
 
    
 

@@ -74,12 +74,11 @@ public class MarcaService {
         }else{
             return Collections.emptyList();
         }
-       
-           
-       
-       
-       
+    }
 
+    public String deleteMarca(long id) {
+        marcaRepository.deleteById(id);
+        return "Marca Eliminado!! "+id;
     }
 
 }

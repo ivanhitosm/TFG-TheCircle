@@ -3,7 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationService} from 'primeng/api';
 import { first } from 'rxjs/operators';
-
+import { DomSanitizer } from '@angular/platform-browser';
 import { DataService } from 'src/app/servicios/Data.service';
 import { AreaAdmComponent } from '../../area-adm.component';
 
@@ -13,15 +13,7 @@ import { AreaAdmComponent } from '../../area-adm.component';
   styleUrls: ['./edicion-producto.component.css'],
 })
 export class EdicionProductoComponent {
-  constructor(
-    private router: Router,
-    private fb: FormBuilder,
-    private dataService: DataService,
-    private route: ActivatedRoute,
-    private adminMsg:AreaAdmComponent,
-    private confirmationService: ConfirmationService,
-
-  ) {}
+ 
   id!: number;
   isAddMode: boolean = false;
   loading = false;
@@ -31,7 +23,20 @@ export class EdicionProductoComponent {
   tags = ['Producto', 'Camisa', 'Pantalon', 'Complemento'];
   marcas:any = [];
   completo=false;
+  urlMode!: string;
+  Image: Blob | undefined;
+  selectedFile: any;
 
+  constructor(
+    private router: Router,
+    private fb: FormBuilder,
+    private dataService: DataService,
+    private route: ActivatedRoute,
+    private adminMsg:AreaAdmComponent,
+    private confirmationService: ConfirmationService,
+    private sanitizer: DomSanitizer
+
+  ) {}
   
   productoForm = this.fb.group({
     id:[''],
@@ -49,18 +54,16 @@ export class EdicionProductoComponent {
     
   });
 
-  // extrasForm=this.fb.group({
-
-    
-  // });
+ 
 
   ngOnInit() {
     this.id = this.route.snapshot.params['id'];
     this.isAddMode = !this.id;
-    var urlMode = window.location.pathname.split('/')[2];
-    this.getExtras(this.id)
-    if (urlMode == 'view') {
+    this.urlMode = window.location.pathname.split('/')[2];
+    // this.getExtras(this.id)
+    if (this.urlMode == 'viewProducto') {
       this.productoForm.disable();
+     
     }
    // console.log('viewMode=' + this.isViewMode + ' ' + urlMode);
     if (!this.isAddMode) {
@@ -68,44 +71,29 @@ export class EdicionProductoComponent {
         .getProductoID(this.id)
         .pipe(first())
         .subscribe((x: { [key: string]: any }) =>
-          this.productoForm.patchValue(x)
+          this.productoForm.patchValue(x),
+          
         );
+        this.loadImage();
     }
   }
-  getExtras(id: number){
+  loadImage(){
     this.dataService
-    .getProductoID(id) .subscribe(
-      (result: any) => {
-        // console.log(result)
-        this.marcas.push(result.marca.nombre)
-        // console.log(this.marcas)
+    .getImagenesProduct(this.id)
+    .subscribe(
+      (result) => {
+       
+      //  
+      this.imgURL
+       = URL.createObjectURL(result);       
+            this.imgURL = this.sanitizer.bypassSecurityTrustUrl(this.imgURL);
+       
       },
-      (error: any) => {
+      (error) => {
         console.log(error);
       }
     );
   }
-
-  // checkBoxClicked(){
-  //   if (!this.completo) {
-  //     this.productoForm.controls.marca.disable();
-  //     this.productoForm.controls.categoria.disable();
-  //     this.productoForm.controls.distribuidor.disable();
-  //     this.productoForm.controls.tag.disable();
-  //     this.productoForm.controls.image.disable();
-
-  //     this.completo=!this.completo
-  //   } else {
-  //     this.productoForm.controls.marca.enable();
-  //     this.productoForm.controls.categoria.enable();
-  //     this.productoForm.controls.distribuidor.enable();
-  //     this.productoForm.controls.tag.enable();
-  //     this.productoForm.controls.image.enable();
-  //     this.completo=!this.completo
-  //   }
-    
-  // }
-
 
   onSubmit() {
     this.confirmationService.confirm({
@@ -132,10 +120,7 @@ export class EdicionProductoComponent {
     });
    
   }
-  guardarImagen(){
-    //nno
 
-  }
   preview(files: any) {
     if (files.length === 0) return;
 
@@ -151,6 +136,8 @@ export class EdicionProductoComponent {
     reader.onload = (_event) => {
       this.imgURL = reader.result;
     };
+    console.log(files[0])
+    this.productoForm.patchValue({image:files[0]})
   }
 
   private createUser() {
@@ -171,6 +158,10 @@ export class EdicionProductoComponent {
       });
   }
 
+
+    
+    
+
   private updateUser() {
     //console.log(this.productoForm.value)
     this.productoForm.patchValue({id:this.id});
@@ -182,9 +173,12 @@ export class EdicionProductoComponent {
           this.adminMsg.UpdateMsg('Info','Confimed','Producto modificado');
           this.router.navigate(['../../'], { relativeTo: this.route });
           if (this.productoForm.controls.image!= null) {
+            console.log(this.productoForm.controls.image)
+          
             let idProducto=this.productoForm.controls.id.value;
             let imagenProducto=this.productoForm.controls.image.value;
-            this.dataService.PostimagenEnProducto(idProducto,imagenProducto)
+            this.dataService.postimagenEnProducto(idProducto,imagenProducto).subscribe();
+            console.log("hay imagen"+ idProducto+imagenProducto)
           }
         },
         error: (error: any) => {

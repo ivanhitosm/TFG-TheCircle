@@ -11,13 +11,16 @@ import com.proyectCircle.api.services.MarcaService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@CrossOrigin() // open for all ports
 public class MarcaController {
 
     @Autowired
@@ -65,5 +68,16 @@ public class MarcaController {
     public  List<ProductoModel> guardarProductosEnMarcas(@PathVariable("id") Long id,@PathVariable("id2") Long id2){
         return marcaService.postProductoEnMarca(id,id2);
     }
+
+  @CrossOrigin(origins = "http://localhost:4200")
+  @DeleteMapping("/deleteMarca/{id}")
+  public String deleteMarca(@PathVariable long id) {
+    return marcaService.deleteMarca(id);
+  }
+  @CrossOrigin(origins = "http://localhost:4200")
+  @PutMapping("/updateMarca")
+  public MarcaModel updateMarca(@RequestBody MarcaModel marca) {
+    return marcaService.actualizarMarca(marca);
+  }
 
 }

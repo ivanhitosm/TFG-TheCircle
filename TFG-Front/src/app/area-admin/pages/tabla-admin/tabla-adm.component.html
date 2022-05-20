@@ -12,7 +12,7 @@
                 
                 <div class="card-header py-3 d-flex justify-content-between">
                     <p class="text-secondary m-0 fw-bold">Productos</p>
-                    <button class="btn btn-warning " type="button" routerLink="./add"><i class="fa fa-plus"></i></button>
+                    <button class="btn btn-warning " type="button" routerLink="./addProducto"><i class="fa fa-plus"></i></button>
                    
                 </div>
                 <div class="card-body">
@@ -57,8 +57,8 @@
                                     <td><span>{{ producto.visible == true ? 'Visible' : 'No Visible' }}</span></td>
                                     <td class="text-center">
                                         <div class="btn-group" role="group">
-                                            <button class="btn btn-success" type="button"><i class="fa fa-eye" routerLink="./view/{{producto.id}}"></i></button>
-                                            <button class="btn btn-warning" type="button"><i class="fa fa-edit" style="color: rgb(255,255,255);" routerLink="./edit/{{producto.id}}"></i></button>
+                                            <button class="btn btn-success" type="button"><i class="fa fa-eye" routerLink="./viewProducto/{{producto.id}}"></i></button>
+                                            <button class="btn btn-warning" type="button"><i class="fa fa-edit" style="color: rgb(255,255,255);" routerLink="./editProducto/{{producto.id}}"></i></button>
                                             <button class="btn btn-danger"type="button" (click)="confirm(producto.id)" ><i class="fa fa-trash-o"></i></button>
 
                                             
@@ -106,3 +106,49 @@
                     </div>
                 </div>
             </div>
+             <div class="card shadow mt-2 mb-2">
+                
+                <div class="card-header py-3 d-flex justify-content-between">
+                    <p class="text-secondary m-0 fw-bold">Marcas</p>
+                    <button class="btn btn-warning " type="button" routerLink="./addMarca"><i class="fa fa-plus"></i></button>
+                   
+                </div>
+                <div class="card-body">
+                 
+                    <div class="table-responsive d-xxl-flex table mt-2" id="dataTable-1" role="grid" aria-describedby="dataTable_info">
+                        <table class="table my-0" id="dataTable" >
+                            <caption>Tabla de marcas</caption>
+                            <thead class="text-center">
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Nombre</th>
+                                    <th>Descuento</th>
+
+                                   
+                                    <th><i class="fa fa-gear"></i></th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-center">
+                                <tr *ngFor="let marca of Marcas">
+                                    <td><span>{{marca.id}}</span></td>
+                                    <td><span>{{marca.nombre}}</span></td>
+                                    <!-- <td><span>{{marca.Descuento}}</span></td> -->
+                                    
+                                    <td class="text-center">
+                                        <div class="btn-group" role="group">
+                                            <button class="btn btn-success" type="button"><i class="fa fa-eye" routerLink="./viewMarca/{{marca.id}}"></i></button>
+                                            <button class="btn btn-warning" type="button"><i class="fa fa-edit" style="color: rgb(255,255,255);" routerLink="./editMarca/{{marca.id}}"></i></button>
+                                            <button class="btn btn-danger"type="button" (click)="confirm(marca.id)" ><i class="fa fa-trash-o"></i></button>
+                                            
+                                            
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                         
+                        </table>
+                    </div>
+                    
+                </div>
+            </div>
+            
