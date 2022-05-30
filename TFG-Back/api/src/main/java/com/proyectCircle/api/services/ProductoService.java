@@ -3,9 +3,8 @@ package com.proyectCircle.api.services;
 
 import java.util.List;
 
-
 import com.proyectCircle.api.models.ProductoModel;
-
+import com.proyectCircle.api.repositories.ImageRepository;
 import com.proyectCircle.api.repositories.ProductoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -18,6 +17,9 @@ import org.springframework.stereotype.Service;
 public class ProductoService {
     @Autowired
     private ProductoRepository productoRepository;
+
+    @Autowired
+    private ImageRepository imageRepository;
 
     public ProductoModel guardarProducto(ProductoModel producto){
         
@@ -82,4 +84,13 @@ public class ProductoService {
       
        return productoRepository.findAll(PageRequest.of(offset, pageSize).withSort(Sort.by(field)));
    }
+    public  void deleteImagenDeProducto(long id) {
+        ProductoModel producto = productoRepository.findById(id).orElseThrow(()-> new IllegalStateException("id Producto not found"));
+        if(producto.getImagen()!=null){
+            Long imagen= producto.getImagen().getId();
+            imageRepository.deleteById(imagen);           
+        }
+       
+       
+    }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Validators, FormBuilder } from '@angular/forms'
 import { ConfirmationService ,Message} from 'primeng/api';
 
 
@@ -28,19 +29,33 @@ export class TablaAdmComponent implements OnInit {
   totalPages=0;
   msgs: Message[] = [];
   Marcas:any = [];
-  
-  
+  ProductoList: Producto[] = [
+    new Producto("1", "India"),
+    new Producto('2', 'USA'),
+    new Producto('3', 'England')
+  ];
+  marcaForm;
   constructor(
+    private formBuilder: FormBuilder,
     private _dataService: DataService,
    private adminMsg:AreaAdmComponent,
     private confirmationService: ConfirmationService,
   
-  ) {}
+  ) {
+    this.marcaForm = this.formBuilder.group({
+      nombre: ['', [Validators.required, Validators.minLength(10)]],
+      id: ['', [Validators.required, Validators.maxLength(15), Validators.pattern("^[a-zA-Z]+$")]],
+     
+      Productos: ['', [Validators.required]],
+      
+    });
+  }
 
   ngOnInit() {
     //console.log(history.state.result)
     this.loadTableProductos();
     this.loadtableMarcas();
+    
   }
 
   confirm(_id:number) {console.log("confim "+_id)
@@ -133,4 +148,14 @@ export class TablaAdmComponent implements OnInit {
   }
   
  
+}
+
+export class Producto {
+  id: string;
+  name: string;
+ 
+  constructor(id: string, name: string) {
+    this.id = id;
+    this.name = name;
+  }
 }

@@ -25,8 +25,8 @@ public class MarcaModel {
     @Column(unique = true, nullable = false)
     private Long id;
 
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_marcaProducto", foreignKey = @ForeignKey(name = "id_marcaProducto" ,value =ConstraintMode.CONSTRAINT))
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_Producto", foreignKey = @ForeignKey(name = "id" ,value =ConstraintMode.CONSTRAINT))
     @JsonIgnore
     private List<ProductoModel> producto;
 

@@ -57,7 +57,7 @@
                   class="form-check-label" for="formCheck-3">Videojuegos</label></div>
             </div>
             <div>
-              <h4>MARCAS</h4>
+              <h4>MARCAS</h4> 
               <div class="form-check ms-2"><input class="form-check-input" type="checkbox" id="formCheck-13"><label
                   class="form-check-label" for="formCheck-1">Nike</label></div>
               <div class="form-check ms-2"><input class="form-check-input" type="checkbox" id="formCheck-14"><label
@@ -82,7 +82,7 @@
                     <div *ngFor="let producto of productos; let id = index">
                         <div class="col column-center">
                             <div class="m-2 p-2" style="border-radius: 15px;border: 4.5px solid rgb(238,238,238) ;">
-                            <div class="view-product"><img src="../../../../assets/img/comprar-nuevo-iphone-13-pro-max-color-plata-128gb.jpg"
+                            <div class="view-product"><img [src]="thumbnail[id]"
                                 (click)="linkProductoSolo(producto.id)">
                             </div>
                             <div class="p-2">
@@ -96,7 +96,7 @@
                     </div>
                 </div>
             </div>
-          <!-- <div class="ColM">
+          <!-- <div class="ColM">!-- 
             <div class="row col-12">
               <div *ngFor="let producto of productos; let id = index">
                 <div class="col column-center">

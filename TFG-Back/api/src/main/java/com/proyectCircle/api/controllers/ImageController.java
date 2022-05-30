@@ -4,7 +4,6 @@ package com.proyectCircle.api.controllers;
 import com.proyectCircle.api.exception.ImageUploadResponse;
 import com.proyectCircle.api.exception.ResourceNotFoundException;
 import com.proyectCircle.api.models.ImageModel;
-import com.proyectCircle.api.models.ProductoModel;
 import com.proyectCircle.api.repositories.ImageRepository;
 import com.proyectCircle.api.repositories.ProductoRepository;
 import com.proyectCircle.api.services.ImageUtility;

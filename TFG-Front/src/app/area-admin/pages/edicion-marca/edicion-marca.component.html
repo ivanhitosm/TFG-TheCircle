@@ -9,49 +9,35 @@
   </ng-template>
 </p-confirmDialog>
 
-<div class="card shadow mt-2 mb-2">
-  <form [formGroup]="marcaForm" (ngSubmit)="onSubmit()">
-    <div class="card-header py-3 d-flex justify-content-between">
-      <div class=" d-xxl-flex justify-content-xxl-center" *ngIf="this.urlMode == 'editMarca'|| this.isAddMode"><button class="btn btn-secondary" type="submit"
-          [disabled]="!marcaForm.valid"><i class="fa fa-save"></i>&nbsp;Guardar marca</button>
-      </div>
 
-
-
-
-      <a class="btn btn-danger action-button" role="button" routerLink="/areaAdm">Salir</a>
+  <div class="card-header py-3 d-flex justify-content-between">
+    <div class=" d-xxl-flex justify-content-xxl-center" *ngIf="this.urlMode == 'editMarca'|| this.isAddMode"><button class="btn btn-secondary" type="submit"
+        [disabled]="!marcaForm.valid"><i class="fa fa-save"></i>&nbsp;Guardar marca</button>
     </div>
-    <div class="card-body">
+    <a class="btn btn-danger action-button" role="button" routerLink="/areaAdm">Salir</a>
+  </div>
 
-      <div class="row">
-        <div class="col-sm-12 col-md-6">
-          <label class="form-label">Nombre:</label>
-          <div class="p-inputgroup ">
-            <input type="text" pInputText placeholder="Nombre" class="form-control" formControlName="nombre"
-              [style]="{'width':'100%'}">
-          </div>
-        </div>
 
-        <div class="col-sm-6 col-md-8"><label class="form-label">Añadir Producto:</label>
-          <div class="p-inputgroup ">
-            <select class="form-select" *ngIf="Productos!= null" >
-              <option *ngFor="let producto of Productos" selected="selected" [value]="producto">{{producto}}
-              </option>
-            </select>
-            <div>
-              <a class="btn btn-success action-button" role="button" (click)="productoEnMarca()">Guardar</a>
-            </div>
-          </div>
-        </div>
-        <div>
-          <label >Productos añadidos</label>
-          <ul>
-            <li *ngFor="let producto of Productos">
-              {{producto.name}}
-            </li>
-          </ul>
-        </div>
+  <div class="row">
+    <form [formGroup]="marcaForm" (ngSubmit)="onSubmit()">
+      <div class="col-2">
+        <label for="name">Nombre Marca </label>
+        <input type="text" id="name" name="name" formControlName="nombre">
       </div>
-    </div>
-  </form>
-</div>
+      <div  class="col-2">
+        <label for="producto">Añadir Producto </label>
+          <select class="form-control" [(ngModel)]="selectedProduct" formControlName="Productos" #product>
+            <option *ngFor="let product of ProductoList" [ngValue]='product'>{{product.name}}</option>
+          </select>
+          <button class="btn btn-success" type="submit" (click)="guardarProductoEnMarca()" [disabled]="!marcaForm.valid"><i class="fa fa-save"></i>&nbsp;Guardar Producto</button>
+      </div>
+     
+     
+
+      <label >Producto Añadido</label>
+      <ul>
+        <li *ngFor="let c of ProductosEnMarca">{{c.name}}</li>
+      </ul>
+
+    </form> 
+  </div>

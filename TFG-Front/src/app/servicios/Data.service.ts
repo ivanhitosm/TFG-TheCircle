@@ -59,11 +59,16 @@ export class DataService {
   /*-------------imagenes------------------------- */
 
   public postimagenEnProducto(id:number, image:File){
-    return this._http.post(this.REST_API_SERVER+"productos/"+id+"/images",image)
+    var fd = new FormData();
+        fd.append('image', image);
+    return this._http.post(this.REST_API_SERVER+"productos/"+id+"/images",fd)
   }
 
   public getImagenesProduct(id: number){
     return this._http.get(this.REST_API_SERVER+"get/imageProducto/"+id ,{responseType: 'blob'})
+  }
+  public borrarImagen(id:number){
+    return this._http.delete(this.REST_API_SERVER+"deleteImagenProducto/"+id)
   }
 
   /*-------------Marcas------------------------- */
@@ -89,5 +94,6 @@ export class DataService {
   public getProductosDeMarca(id:number){
     return this._http.get(this.REST_API_SERVER+"ProductosDeMarca/"+id)
   }
+  
 
 }

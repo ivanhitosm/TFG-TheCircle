@@ -19,8 +19,13 @@ export class ProductosComponent implements OnInit {
   value = '';
   imgUrl:any;
   thumbnail: any[]=[];
+  image: any="";
+  
 
-  constructor(private _dataService: DataService, private router: Router, private sanitizer: DomSanitizer) {}
+  constructor(
+    private _dataService: DataService,
+     private router: Router,
+      private _sanitizer: DomSanitizer) {}
 
   ngOnInit() {
     //console.log(history.state.result)
@@ -49,25 +54,26 @@ export class ProductosComponent implements OnInit {
           this.productos = result.content;
           this.infoPag = result.pageable;
           this.raw = result;
-
-                   
-console.log(this.productos)
-         this.productos.forEach((element: any) => {
-          let objectURL = 'data:image/jpeg;base64,' + result.content[element].imagen.imagen;
-           this.thumbnail.push(this.sanitizer.bypassSecurityTrustUrl(objectURL))
-           console.log(objectURL)
-         });
+         console.log(this.productos);
+          for (const element of this.productos) {
+           if (element.imagen!=null) {         
+             
+              this.getImageProduct(element.id);
+             
+           } else {
+            
+            this.thumbnail.push(this.image)
+           }
+            
+          } 
           
-          
-        console.log(
-          this.productos[0].imagen.image
-        );
         },
         (error) => {
           console.log(error);
         }
       );
   }
+  
 
   nextPage() {
     if (!this.raw.last) {
@@ -91,28 +97,20 @@ console.log(this.productos)
     this.loadTable();
   }
 
-  getImageProduct(idProduct: number){
+  getImageProduct(id:number){ 
     this._dataService
-    .getImagenesProduct(idProduct)
+    .getImagenesProduct(id)
     .subscribe(
       (result) => {
-        console.log('image', result)
+        let objectURL = URL.createObjectURL(result);       
+       this.image = this._sanitizer.bypassSecurityTrustUrl(objectURL);
+        this.thumbnail.push(this.image);
+        console.log(this.thumbnail)
       },
       (error) => {
-        console.log(error);
+        console.log("error", error);
       }
     );
   }
-
-  // prueba(json: any, file: File): Observable<any> {
-  //   const formData = new FormData();
-  //   formData.append('image', file, file.name);
-  //   formData.append('json', JSON.stringify(json));
   
-  //   const endpoint = 'http://localhost/tus_comercios_en_casa/kitum_rest_service/public/api/kitum/prueba';
-  
-  //   return this.http.post<any>(endpoint, formData, {
-  //     headers: { 'X-Requested-With' : 'XMLHttpRequest' }
-  //   });
-  // }
 }

@@ -31,10 +31,7 @@ public class ImageModel {
 	@Lob
 	private byte[] image;
 
-    @OneToOne(
-		cascade=CascadeType.ALL,
-		fetch= FetchType.LAZY,
-		orphanRemoval=true)
+    @OneToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH },fetch = FetchType.LAZY)
 		@JsonIgnore
     private ProductoModel producto;
 }

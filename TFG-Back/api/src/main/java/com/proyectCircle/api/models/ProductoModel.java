@@ -12,12 +12,14 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 
 @Entity
 @Table(name = "producto")
 @Data
 @Builder
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProductoModel {
@@ -57,10 +59,10 @@ public class ProductoModel {
     private List<VariacionModel> variacion;
 
     @OneToOne(
-		cascade=CascadeType.ALL,
-		fetch= FetchType.LAZY,
 		mappedBy="producto",
-		optional=true)
+        cascade = CascadeType.ALL,
+		orphanRemoval = true,
+		fetch = FetchType.LAZY)
 	private ImageModel imagen;
 
     

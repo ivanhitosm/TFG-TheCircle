@@ -12,9 +12,7 @@ export class ProductSoloComponent implements OnInit {
   id:any = this.route.snapshot.paramMap.get('id');
   producto: any;
   idProducto: any;
-  foto : any;
-  base64Data : any;
-  retrievedImage: any;
+  image: any;
 
 
   constructor(
@@ -35,13 +33,7 @@ export class ProductSoloComponent implements OnInit {
       .subscribe(
         (result) => {
           this.producto = result;
-          this.idProducto = this.producto.id;
-          console.log('producto', this.producto)
-          this.base64Data = this.producto.imagen.image;
-          this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
-
-          console.log('ey', this.retrievedImage)
-
+          this.idProducto = this.producto.id;   
         },
         (error) => {
           console.log(error)
@@ -54,8 +46,8 @@ export class ProductSoloComponent implements OnInit {
     .getImagenesProduct(this.id)
     .subscribe(
       (result) => {
-       
-        console.log('image', result)
+        let objectURL = URL.createObjectURL(result);       
+            this.image = this._sanitizer.bypassSecurityTrustUrl(objectURL);
       },
       (error) => {
         console.log("error", error);

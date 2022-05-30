@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { ConfirmationService} from 'primeng/api';
+import { Validators, FormBuilder } from '@angular/forms'
+import { Router, ActivatedRoute } from '@angular/router';
+import { ConfirmationService } from 'primeng/api';
 import { first } from 'rxjs/operators';
-
 import { DataService } from 'src/app/servicios/Data.service';
 import { AreaAdmComponent } from '../../area-adm.component';
 
@@ -13,64 +12,58 @@ import { AreaAdmComponent } from '../../area-adm.component';
   styleUrls: ['./edicion-marca.component.css'],
 })
 export class EdicionMarcaComponent {
- 
+
  
   id!: number;
-  isAddMode: boolean = false;
-  loading = false;
-  public imagePath: any;
-  imgURL: any;
-  public message: string | undefined;
-  Productos :any;
-  marcas:any = [];
-  completo=false;
+  marcaForm;
+  offset=0;
+  pageSize=10;
+  field="";
+  ProductosEnMarca: any[]=[];
+  isAddMode: boolean=false;
   urlMode!: string;
-  productoId!: number ;
-  arr!: unknown[] ;
+  ProductoList: Producto[] = [];
+  selectedProduct:any;
+ 
   constructor(
+    private formBuilder: FormBuilder,
     private router: Router,
-    private fb: FormBuilder,
     private dataService: DataService,
     private route: ActivatedRoute,
     private adminMsg:AreaAdmComponent,
-    private confirmationService: ConfirmationService,
-
-  ) {}
-  
-  marcaForm = this.fb.group({
-    id:[''],
-    nombre: ['', Validators.required],
-    
-    
-  });
-
+    private confirmationService: ConfirmationService,) {
  
-
-
-  ngOnInit() {
+    this.marcaForm = this.formBuilder.group({
+      nombre: ['', [Validators.required]],
+      id: [''],
+     
+      Productos: ['', [Validators.required]],
+      
+    });
+  }
+  ngOnInit(){
     this.id = this.route.snapshot.params['id'];
     this.isAddMode = !this.id;
    this.urlMode = window.location.pathname.split('/')[2];
+  
    
     if (this.urlMode == 'viewMarca') {
       this.marcaForm.disable();
+     
     }
-   // console.log('viewMode=' + this.isViewMode + ' ' + urlMode);
-    if (!this.isAddMode) {
+    if(!this.isAddMode){
       this.dataService
-        .getMarcaID(this.id)
-        .pipe(first())
-        .subscribe((x: { [key: string]: any }) =>
-          this.marcaForm.patchValue(x)
-        );
+      .getMarcaID(this.id)
+      .pipe(first())
+      .subscribe((x: { [key: string]: any }) =>
+        this.marcaForm.patchValue(x)
+      );
+    this.getAllProductos();
+     this.getProductosDeMarca();
     }
-    this.loadProductosDeMarca();
-
+ 
   }
-
-
-
-
+ 
   onSubmit() {
     this.confirmationService.confirm({
       message: 'Are you sure that you want to proceed?',
@@ -80,38 +73,36 @@ export class EdicionMarcaComponent {
         this.adminMsg.UpdateMsg('Info','Loading','Cargando');
           // stop here if form is invalid
           if (this.marcaForm.invalid) {
-            this.adminMsg.UpdateMsg('Warn','Loading','Marca Invalido');
+            this.adminMsg.UpdateMsg('Warn','Loading','Marca Invalida');
                      return;
           }
-          this.loading = true;
+          
           if (this.isAddMode) {
-            this.createUser();
+            this.createMarca();
           } else {
             this.updateMarca();
           }
       },
       reject: () => {
-        this.adminMsg.UpdateMsg('Info','Reject','Marca No modificado');  
+        this.adminMsg.UpdateMsg('Info','Reject','Marca No modificada');  
       },
     });
    
   }
- 
-
-  private createUser() {
+  private createMarca() {
     this.marcaForm.removeControl("id");
     this.dataService
       .postMarca(this.marcaForm.value)
       .pipe(first())
       .subscribe({
         next: () => {
-          this.adminMsg.UpdateMsg('Info','Confimed','Marca Añadido');
+          this.adminMsg.UpdateMsg('Info','Confimed','Marca Añadida');
           this.router.navigate(['../'], { relativeTo: this.route });
          
         },
         error: (error: any) => {
           this.adminMsg.UpdateMsg('Info','Reject',error);
-          this.loading = false;
+         
         },
       });
   }
@@ -124,44 +115,78 @@ export class EdicionMarcaComponent {
       .pipe(first())
       .subscribe({
         next: () => {
-          this.adminMsg.UpdateMsg('Info','Confimed','Marca modificado');
+          this.adminMsg.UpdateMsg('Info','Confimed','Marca modificada');
           this.router.navigate(['../../'], { relativeTo: this.route });
+          if (this.marcaForm.controls.image!= null) {
+            console.log(this.marcaForm.controls.image)
+          
+            let idProducto=this.marcaForm.controls.id.value;
+            let imagenProducto=this.marcaForm.controls.image.value;
+            this.dataService.postimagenEnProducto(idProducto,imagenProducto).subscribe();
+            console.log("hay imagen"+ idProducto+imagenProducto)
+          }
         },
         error: (error: any) => {
           this.adminMsg.UpdateMsg('Info','Reject',error);
-          this.loading = false;
+          
         },
       });
   }
-  public loadProductosDeMarca(){
+  getAllProductos(){
     this.dataService
-    .getProductosDeMarca(this.id)
+    .getProductosPagAll(this.offset, this.pageSize, this.field)
     .subscribe(
-      (result) => {
-
-        console.log(result)
-
+      (result: { content: any; }) => {
+        result.content.forEach((producto: any) => {
+         this.ProductoList.push( new Producto(producto.id,producto.nombre))
+        });
       },
-      (error) => {
+      (error: any) => {
         console.log(error);
       }
     );
   }
-
-  public productoEnMarca(){
-    this.dataService
-    .postproductosnEnMarca(this.productoId,this.id)
+  getProductosDeMarca(){
+    this.dataService.getProductosDeMarca(this.id)
+          
     .subscribe(
-      (result) => {
-       
-        console.log(result);
-
-       
+      (results ) => {
+        Object.entries(results).forEach(item => {
+          this.ProductosEnMarca.push(new Producto(item[1].id,item[1].nombre))
+        })
+        
       },
-      (error) => {
+      (error: any) => {
         console.log(error);
       }
     );
+  }
+  guardarProductoEnMarca(){
+    let idProducto=this.selectedProduct.id;
+    let idMarca=this.id;
+    this.dataService.postproductosnEnMarca(idProducto,idMarca).subscribe(
+      (result) => {
+        console.log(result)
+      },
+      (error: any) => {
+        console.log(error);
+      }
+    );
+    this.ProductosEnMarca=[];
+   
+   this.getProductosDeMarca();
+  }
 
+ 
+}
+ 
+ 
+export class Producto {
+  id: string;
+  name: string;
+ 
+  constructor(id: string, name: string) {
+    this.id = id;
+    this.name = name;
   }
 }
